@@ -97,13 +97,13 @@ AnimatorController:
   m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Horizontal
+  - m_Name: AnimationDirectionX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Vertical
+  - m_Name: AnimationDirectionY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -331,8 +331,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
-  m_BlendParameter: Horizontal
-  m_BlendParameterY: Vertical
+  m_BlendParameter: AnimationDirectionX
+  m_BlendParameterY: AnimationDirectionY
   m_MinThreshold: -1
   m_MaxThreshold: 13
   m_UseAutomaticThresholds: 0
