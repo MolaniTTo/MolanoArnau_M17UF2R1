@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\",
+  "WorkspaceRootPath": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|e:\\arnaunotocar\\repos\\molanoarnau_m17uf2r1\\assets\\playermovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|d:\\rogue like\\molanoarnau_m17uf2r1\\assets\\playermovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\playermovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "PlayerMovment.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\Assets\\PlayerMovment.cs",
+              "DocumentMoniker": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\PlayerMovment.cs",
               "RelativeDocumentMoniker": "Assets\\PlayerMovment.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\Assets\\PlayerMovment.cs",
+              "ToolTip": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\PlayerMovment.cs",
               "RelativeToolTip": "Assets\\PlayerMovment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAB8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-06T15:33:06.672Z",
               "EditorCaption": ""

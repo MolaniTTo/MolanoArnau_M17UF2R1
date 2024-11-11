@@ -18,8 +18,11 @@ public class PlayerController : MonoBehaviour
         // Moure el personatge en la direccio dels inputs
         transform.position += (Vector3)moveDirection * speed * Time.deltaTime;
 
-        // Només miro la direccio del cursor per fer l'animació si el personatge es mou
-        if (moveDirection != Vector2.zero)
+        //si el clic dret del mouse esta presionat
+        bool isRightClickPressed = Input.GetMouseButton(1);
+
+        // Només miro la direccio del cursor per fer l'animació si faig clic dret, sino, es mou on marquen les tecles
+        if (isRightClickPressed) //Si es presiona el clic dret (apuntar)
         {
             // Obtenir la posicio del ratoli dins del marc de la camara
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -30,6 +33,13 @@ public class PlayerController : MonoBehaviour
             // Passar els parametres al Blend Tree en base a la direccio del cursor
             animator.SetFloat("AnimationDirectionX", lookDirection.x);
             animator.SetFloat("AnimationDirectionY", lookDirection.y);
+        }
+
+        //sino es controla default per les tecles WASD
+        else if(moveDirection!= Vector2.zero) 
+        {
+            animator.SetFloat("AnimationDirectionX", moveDirection.x);
+            animator.SetFloat("AnimationDirectionY", moveDirection.y);
         }
 
         // Establir la velocitat de l'animació en base a la magnitud del vector de moviment
