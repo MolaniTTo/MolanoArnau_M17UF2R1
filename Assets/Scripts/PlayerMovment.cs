@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     public bool isDied = false;
 
+    public float live = 30;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -56,8 +58,17 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            animator.SetTrigger("Die");
-            isDied = true;
+            Debug.Log("Player hit");
+           
+
+            live -= 10;
+            if (live <= 0)
+            {
+                animator.SetTrigger("Die");
+                isDied = true;
+            }
+            Debug.Log(live);
+
         }
     }
 
