@@ -60,7 +60,9 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.46f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PlayerMovment.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovment.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Torreta\BulletEnemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Torreta\Turret.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

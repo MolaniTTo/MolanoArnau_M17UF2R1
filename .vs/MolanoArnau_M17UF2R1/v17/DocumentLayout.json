@@ -1,10 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\",
+  "WorkspaceRootPath": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|e:\\arnaunotocar\\repos\\molanoarnau_m17uf2r1\\molanoarnau_m17uf2r1\\assets\\playermovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\playermovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|d:\\rogue like\\molanoarnau_m17uf2r1\\assets\\scripts\\enemy\\torreta\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\torreta\\turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|d:\\rogue like\\molanoarnau_m17uf2r1\\assets\\scripts\\enemy\\torreta\\bulletenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\torreta\\bulletenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PlayerMovment.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\PlayerMovment.cs",
-              "RelativeDocumentMoniker": "Assets\\PlayerMovment.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\PlayerMovment.cs",
-              "RelativeToolTip": "Assets\\PlayerMovment.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAADwvykAAAAzAAAAAAAAAA==",
+              "Title": "Turret.cs",
+              "DocumentMoniker": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\Turret.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Torreta\\Turret.cs",
+              "ToolTip": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\Turret.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy\\Torreta\\Turret.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T15:33:06.672Z",
+              "WhenOpened": "2024-11-13T11:09:13.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BulletEnemy.cs",
+              "DocumentMoniker": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs",
+              "ToolTip": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAA5wAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T10:58:04.59Z",
               "EditorCaption": ""
             }
           ]
