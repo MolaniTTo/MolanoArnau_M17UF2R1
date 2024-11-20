@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38be68777743c7743bcbc7639891dbbe
+guid: b5ed8c3825e65114284b41eeec44cfc0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 45
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -97,64 +97,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Ara\xF1aMelee_0"
+      name: SniperSeta_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 261
-        height: 280
-      alignment: 9
-      pivot: {x: 0.35664743, y: 0.3492634}
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc75e3c2c252e4645825bd5bbdd57440
-      internalID: 309870314
+      spriteID: 92586829072c180428ef85bc8f76fad4
+      internalID: -1762687937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ara\xF1aMelee_1"
+      name: SniperSeta_1
       rect:
         serializedVersion: 2
-        x: 260
+        x: 120
         y: 0
-        width: 261
-        height: 280
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f099fa14da9c94041bd7f767ea97424b
-      internalID: -1861088171
+      spriteID: 6b02ca2865573a44dab82f842a657ad4
+      internalID: -1788538749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Ara\xF1aMelee_2"
+      name: SniperSeta_2
       rect:
         serializedVersion: 2
-        x: 522
+        x: 240
         y: 0
-        width: 261
-        height: 280
+        width: 120
+        height: 120
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d521e65775caff84ca3f90d2d7053278
-      internalID: -1184348017
+      spriteID: 7ebcc04f2d2071e46996fa8764faa551
+      internalID: -779139039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SniperSeta_3
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c7e554bd47d7448a653db2bbb045f3
+      internalID: -1579798481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SniperSeta_4
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4de42841df9102b428f96803898b106a
+      internalID: -307955037
       vertices: []
       indices: 
       edges: []
@@ -170,9 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "Ara\xF1aMelee_0": 309870314
-      "Ara\xF1aMelee_1": -1861088171
-      "Ara\xF1aMelee_2": -1184348017
+      SniperSeta_0: -1762687937
+      SniperSeta_1: -1788538749
+      SniperSeta_2: -779139039
+      SniperSeta_3: -1579798481
+      SniperSeta_4: -307955037
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
