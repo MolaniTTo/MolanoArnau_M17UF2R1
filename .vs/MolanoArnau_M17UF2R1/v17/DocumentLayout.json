@@ -1,26 +1,24 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\",
+  "WorkspaceRootPath": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|e:\\arnaunotocar\\repos\\molanoarnau_m17uf2r1\\molanoarnau_m17uf2r1\\assets\\scripts\\weapons\\meleeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|d:\\rogue like\\molanoarnau_m17uf2r1\\assets\\scripts\\weapons\\meleeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\meleeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|e:\\arnaunotocar\\repos\\molanoarnau_m17uf2r1\\molanoarnau_m17uf2r1\\assets\\scripts\\enemys\\bomb\\bombmovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|D:\\Rogue Like\\MolanoArnau_M17UF2R1\\assets\\scripts\\enemys\\bomb\\bombmovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemys\\bomb\\bombmovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\playermovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|D:\\Rogue Like\\MolanoArnau_M17UF2R1\\assets\\scripts\\playermovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\Turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Enemy\\Torreta\\Turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\Turret.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,11 +34,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MeleeWeapon.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\MeleeWeapon.cs",
+              "DocumentMoniker": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\MeleeWeapon.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\MeleeWeapon.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\MeleeWeapon.cs",
+              "ToolTip": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\MeleeWeapon.cs",
               "RelativeToolTip": "Assets\\Scripts\\Weapons\\MeleeWeapon.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAwwGAAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-20T18:12:41.141Z",
               "EditorCaption": ""
@@ -49,22 +47,21 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "BombMovment.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemys\\Bomb\\BombMovment.cs",
+              "DocumentMoniker": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemys\\Bomb\\BombMovment.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemys\\Bomb\\BombMovment.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemys\\Bomb\\BombMovment.cs",
+              "ToolTip": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemys\\Bomb\\BombMovment.cs",
               "RelativeToolTip": "Assets\\Scripts\\Enemys\\Bomb\\BombMovment.cs",
               "ViewState": "AgIAAEgAAAAAAAAAAAAUwGEAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T21:38:08.941Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T21:38:08.941Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "PlayerMovment.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\PlayerMovment.cs",
+              "DocumentMoniker": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\PlayerMovment.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovment.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\PlayerMovment.cs",
+              "ToolTip": "D:\\Rogue Like\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\PlayerMovment.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerMovment.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAowEUAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -75,9 +72,7 @@
               "DocumentIndex": 4,
               "Title": "Turret.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\Turret.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Torreta\\Turret.cs",
               "ToolTip": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\Turret.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemy\\Torreta\\Turret.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T11:09:13.187Z"
@@ -87,9 +82,7 @@
               "DocumentIndex": 2,
               "Title": "BulletEnemy.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs",
               "ToolTip": "E:\\ArnauNOTOCAR\\Repos\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemy\\Torreta\\BulletEnemy.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T10:58:04.59Z"

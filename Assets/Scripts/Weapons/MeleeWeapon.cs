@@ -2,99 +2,106 @@ using UnityEngine;
 
 public class MeleeWeapon : MonoBehaviour
 {
-    public Transform player;              // Referencia al jugador
-    public float distanceFromPlayer = 1.5f;  // Distancia fija del arma al jugador
-    public float pushForce = 5f;          // Fuerza de empuje
-    public GameObject melee; // Referencia al arma
-    public SpriteRenderer spriteRenderer; // Referencia al sprite del arma
-    public Collider2D weaponCollider;     // Collider del arma
-
-    private bool isAttacking = false;     // Estado del golpe
+    public Transform player;
+    public float rotationOffset = 90f; // Offset para ajustar la orientación del sprite
+    public float weaponDistance = 1.5f;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-        // Asegurarse de que el arma comience desactivada
-        DeactivateWeapon();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();   
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = false;
+        }
     }
 
-    private void Update()
+    void Update()
     {
-        if (Input.GetMouseButton(1)) // Mientras se mantenga el clic derecho
+        if (Input.GetMouseButton(1))
         {
-            ActivateWeapon();
-            FollowCursor();
-
-            // Solo permite golpear mientras el clic derecho esté activo
-            if (Input.GetMouseButtonDown(0)) // Detectar clic izquierdo
+            if(spriteRenderer != null)
             {
-                StartAttack();
+                spriteRenderer.enabled = true;
+                Debug.Log("Sword enabled");
+            }
+
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0; // Asegúrate de que la posición Z esté en 0 para 2D
+
+            if(Vector3.Distance(player.position, mousePosition) > weaponDistance)
+            {
+                RotateSwordToCursor();
+                UpdateSwordPosition();
+                UpdateSwordLayer(mousePosition);
             }
         }
-
-        if (Input.GetMouseButtonUp(1)) // Al soltar el clic derecho
+        else
         {
-            DeactivateWeapon();
-        }
-
-        if (Input.GetMouseButtonUp(0)) // Al soltar el clic izquierdo
-        {
-            StopAttack();
+            if(spriteRenderer != null)
+                spriteRenderer.enabled = false;
         }
     }
 
-    private void FollowCursor()
+    void RotateSwordToCursor()
     {
-        // Obtener la posición del cursor en el mundo
-        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        cursorPosition.z = 0f; // Mantener en el plano 2D
+        // Obtén la posición del mouse en el mundo
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        mousePosition.z = 0; // Asegúrate de que la posición Z esté en 0 para 2D
 
-        // Calcular la posición del arma alrededor del jugador
-        Vector3 direction = (cursorPosition - player.position).normalized;
-        transform.position = player.position + direction * distanceFromPlayer;
+        // Calcula la dirección desde el objeto hacia el mouse
+        Vector3 direction = mousePosition - transform.position;
 
-        // Rotar el arma hacia el cursor
+        // Calcula el ángulo hacia el mouse en grados
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        // Aplica la rotación al objeto
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - rotationOffset));
+
     }
 
-    private void ActivateWeapon()
+    void UpdateSwordPosition()
     {
-       spriteRenderer.enabled = true;    // Mostrar el sprite
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0; // Asegúrate de que la posición Z esté en 0 para 2D
+
+        Vector3 direction = (mousePosition - player.position).normalized;
+
+        transform.position = player.position + direction * weaponDistance;
+
     }
 
-    private void DeactivateWeapon()
+    private void UpdateSwordLayer(Vector3 mousePosition)
     {
-        spriteRenderer.enabled = false;  // Ocultar el sprite
-        weaponCollider.enabled = false; // Desactivar el collider
-        StopAttack(); // Por si estaba atacando, detener el ataque
-    }
+        if (spriteRenderer == null) return;
 
-    private void StartAttack()
-    {
-        isAttacking = true;
-        weaponCollider.enabled = true;   // Activar el collider solo durante el golpe
-        Debug.Log("Ataque iniciado.");
-    }
+        // Calcula la dirección desde el jugador hacia el mouse
+        Vector3 direction = mousePosition - player.position;
 
-    private void StopAttack()
-    {
-        isAttacking = false;
-        weaponCollider.enabled = false;  // Desactivar el collider después del golpe
-        Debug.Log("Ataque detenido.");
-    }
+        // Calcula el ángulo hacia el mouse en grados
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (isAttacking && collision.CompareTag("Enemy")) // Golpea un enemigo solo si está atacando
+        // Aplica el rotationOffset al cálculo del ángulo
+        angle += rotationOffset;
+
+        // Asegura que el ángulo sea siempre positivo (0° a 360°)
+        if (angle < 0)
         {
-            Rigidbody2D enemyRb = collision.GetComponent<Rigidbody2D>();
-            if (enemyRb != null)
-            {
-                // Aplicar fuerza en la dirección del golpe
-                Vector2 pushDirection = (collision.transform.position - transform.position).normalized;
-                enemyRb.AddForce(pushDirection * pushForce, ForceMode2D.Impulse);
-                Debug.Log("Golpe exitoso al enemigo.");
-            }
+            angle += 360f;
+        }
+
+        // Cambia el sortingOrder basado en el cuadrante
+        if (angle >= 0 && angle < 90 || angle >= 270 && angle < 360)
+        {
+            // Primer y Cuarto cuadrante: delante del jugador
+            spriteRenderer.sortingOrder = 11; // Capa detrás
+        }
+        else
+        {
+            // Segundo y Tercer cuadrante: detras del jugador
+            spriteRenderer.sortingOrder = 9; // Capa delante
         }
     }
+
 }
