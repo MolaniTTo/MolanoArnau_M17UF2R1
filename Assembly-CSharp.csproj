@@ -62,11 +62,17 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Items\ItemData.cs" />
     <Compile Include="Assets\Scripts\Enemys\Turret\BulletEnemy.cs" />
+    <Compile Include="Assets\Scripts\Weapons\ActiveWeapon.cs" />
+    <Compile Include="Assets\Scripts\Enemys\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemys\Bomb\BombMovment.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerMovment.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Weapons\DamageSource.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInputActions.cs" />
+    <Compile Include="Assets\Scripts\Weapons\SlashAnim.cs" />
+    <Compile Include="Assets\Scripts\Enemys\Flash.cs" />
     <Compile Include="Assets\Scripts\Enemys\Turret\Turret.cs" />
     <Compile Include="Assets\Scripts\Items\WeaponData.cs" />
-    <Compile Include="Assets\Scripts\Weapons\MeleeWeapon.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Sword.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventorySystem.cs" />
   </ItemGroup>
   <ItemGroup>
