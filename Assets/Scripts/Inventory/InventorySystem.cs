@@ -4,20 +4,38 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
-    public List<ItemData> items = new List<ItemData>();
+    private int activeSlotIndex = 0;
 
-    public void AddItem(ItemData item)
+    private PlayerInputActions playerInputActions;
+    private void Awake()
     {
-        items.Add(item);
-        Debug.Log($"Item {item.itemName} added to inventory");
+        playerInputActions = new PlayerInputActions();
     }
 
-    public void RemoveItem(ItemData item)
+    private void Start()
     {
-        if (items.Contains(item))
+        playerInputActions.Inventory.Keyboard.performed += ctx => ChangeActiveSlot((int)ctx.ReadValue<float>());
+    }
+
+    private void OnEnable()
+    {
+        playerInputActions.Enable();
+    }
+
+    private void ChangeActiveSlot(int slotIndex)
+    {
+        ChangeActiveHightLight(slotIndex - 1);
+    }
+
+    private void ChangeActiveHightLight(int slotIndex)
+    {
+        activeSlotIndex = slotIndex;
+        foreach(Transform slot in this.transform)
         {
-            items.Remove(item);
-            Debug.Log($"Item {item.itemName} removed from inventory");
+            slot.GetChild(0).gameObject.SetActive(false);
         }
+        this.transform.GetChild(slotIndex).GetChild(0).gameObject.SetActive(true);
+
     }
+
 }

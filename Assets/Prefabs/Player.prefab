@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc3ad7f1ad90954489f1502500b232a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentActiveWeapon: {fileID: 7497677236348222591}
 --- !u!1 &4202186319891881548
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +627,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7ebd501d-ed73-4b0e-afda-3cea8a2325a2
     m_ActionName: Combat/Dash[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 12d1583b-b123-4aea-9d76-349815f3b8b6
+    m_ActionName: Inventory/Keyboard[/Keyboard/1,/Keyboard/2,/Keyboard/3]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
