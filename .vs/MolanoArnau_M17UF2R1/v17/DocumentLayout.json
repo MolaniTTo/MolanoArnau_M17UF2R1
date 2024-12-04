@@ -3,44 +3,56 @@
   "WorkspaceRootPath": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|e:\\arnaunotocar\\molanoarnau_m17uf2r1\\molanoarnau_m17uf2r1\\assets\\scripts\\weapons\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\inventory\\inventorysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\inventorysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\dungeongeneration\\initgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongeneration\\initgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\inventory\\inventoryslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\inventoryslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\weapons\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\activeweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\weapons\\interface\\iweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\interface\\iweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\inventory\\inventorysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inventory\\inventorysystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\weapons\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\dungeongeneration\\cameraconfiner\\cameraconfinermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongeneration\\cameraconfiner\\cameraconfinermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\weapons\\slashanim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\slashanim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\dungeongeneration\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongeneration\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\items\\weaponso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\items\\weaponso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\weapons\\damagesource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\damagesource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\dungeongeneration\\initgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongeneration\\initgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\dungeongeneration\\screenfade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongeneration\\screenfade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\weapons\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\sword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\dungeongeneration\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongeneration\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|e:\\arnaunotocar\\molanoarnau_m17uf2r1\\molanoarnau_m17uf2r1\\assets\\scripts\\singleton\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\dungeongeneration\\cameraconfiner\\cameraconfinermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongeneration\\cameraconfiner\\cameraconfinermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\singleton\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\singleton\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\weapons\\slashanim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\slashanim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\player\\playerinputactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,10 +75,6 @@
       "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemys\\turret\\bulletenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\weapons\\damagesource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\weapons\\damagesource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\assets\\scripts\\enemys\\enemyhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B51769FF-2906-80B6-C45E-F06DB3034E70}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemys\\enemyhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -82,17 +90,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "SlashAnim.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\SlashAnim.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\SlashAnim.cs",
               "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\SlashAnim.cs",
               "RelativeToolTip": "Assets\\Scripts\\Weapons\\SlashAnim.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-23T20:58:27.225Z",
               "IsPinned": true,
@@ -100,78 +108,65 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Sword.cs",
+              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\Sword.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\Sword.cs",
+              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\Sword.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Weapons\\Sword.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T16:23:34.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "InventorySystem.cs",
+              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Inventory\\InventorySystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\InventorySystem.cs",
+              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Inventory\\InventorySystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\InventorySystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T17:46:22.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InventorySlot.cs",
+              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Inventory\\InventorySlot.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\InventorySlot.cs",
+              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Inventory\\InventorySlot.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Inventory\\InventorySlot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T18:29:32.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ActiveWeapon.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\ActiveWeapon.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\ActiveWeapon.cs",
               "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\ActiveWeapon.cs",
               "RelativeToolTip": "Assets\\Scripts\\Weapons\\ActiveWeapon.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAkwDUAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-03T18:16:54.825Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CameraConfinerManager.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\CameraConfiner\\CameraConfinerManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\CameraConfiner\\CameraConfinerManager.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\CameraConfiner\\CameraConfinerManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\DungeonGeneration\\CameraConfiner\\CameraConfinerManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T11:05:12.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MapGenerator.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\MapGenerator.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\MapGenerator.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\MapGenerator.cs",
-              "RelativeToolTip": "Assets\\Scripts\\DungeonGeneration\\MapGenerator.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAAANcAAABUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-29T09:16:34.196Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ScreenFade.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\ScreenFade.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\ScreenFade.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\ScreenFade.cs",
-              "RelativeToolTip": "Assets\\Scripts\\DungeonGeneration\\ScreenFade.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T15:17:40.292Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InitGame.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\InitGame.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\InitGame.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\InitGame.cs",
-              "RelativeToolTip": "Assets\\Scripts\\DungeonGeneration\\InitGame.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAABhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T12:28:46.687Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IWeapon.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\Interface\\IWeapon.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\Interface\\IWeapon.cs",
               "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\Interface\\IWeapon.cs",
               "RelativeToolTip": "Assets\\Scripts\\Weapons\\Interface\\IWeapon.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-03T18:15:51.469Z",
               "EditorCaption": ""
@@ -179,32 +174,78 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Sword.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\Sword.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\Sword.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\Sword.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Weapons\\Sword.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGsAAAAFAAAAAAAAAA==",
+              "Title": "DamageSource.cs",
+              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\DamageSource.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\DamageSource.cs",
+              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\DamageSource.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Weapons\\DamageSource.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T16:23:34.982Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-23T22:32:31.359Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InventorySystem.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Inventory\\InventorySystem.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\InventorySystem.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Inventory\\InventorySystem.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Inventory\\InventorySystem.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAowBkAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "WeaponSO.cs",
+              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Items\\WeaponSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Items\\WeaponSO.cs",
+              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Items\\WeaponSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Items\\WeaponSO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T17:46:22.973Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-04T18:31:12.689Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "InitGame.cs",
+              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\InitGame.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\InitGame.cs",
+              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\InitGame.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DungeonGeneration\\InitGame.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T12:28:46.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ScreenFade.cs",
+              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\ScreenFade.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\ScreenFade.cs",
+              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\ScreenFade.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DungeonGeneration\\ScreenFade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T15:17:40.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MapGenerator.cs",
+              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\MapGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\MapGenerator.cs",
+              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\MapGenerator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DungeonGeneration\\MapGenerator.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAAANcAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T09:16:34.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CameraConfinerManager.cs",
+              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\CameraConfiner\\CameraConfinerManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\CameraConfiner\\CameraConfinerManager.cs",
+              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\CameraConfiner\\CameraConfinerManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DungeonGeneration\\CameraConfiner\\CameraConfinerManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T11:05:12.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Singleton.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Singleton\\Singleton.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Singleton\\Singleton.cs",
@@ -212,12 +253,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Singleton\\Singleton.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T18:47:59.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T18:47:59.004Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "PlayerInputActions.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Player\\PlayerInputActions.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerInputActions.cs",
@@ -225,12 +265,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerInputActions.cs",
               "ViewState": "AgIAAOsBAAAAAAAAAAAqwAYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T09:14:22.274Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-23T09:14:22.274Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Player\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerController.cs",
@@ -242,7 +281,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "AreaExit.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\Doors\\AreaExit.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\Doors\\AreaExit.cs",
@@ -254,7 +293,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "Room.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\DungeonGeneration\\Room.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGeneration\\Room.cs",
@@ -266,7 +305,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "BulletEnemy.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemys\\Turret\\BulletEnemy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemys\\Turret\\BulletEnemy.cs",
@@ -278,19 +317,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "DamageSource.cs",
-              "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\DamageSource.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Weapons\\DamageSource.cs",
-              "ToolTip": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Weapons\\DamageSource.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Weapons\\DamageSource.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T22:32:31.359Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "EnemyHealth.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemys\\EnemyHealth.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemys\\EnemyHealth.cs",
@@ -302,7 +329,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Flash.cs",
               "DocumentMoniker": "E:\\ArnauNOTOCAR\\MolanoArnau_M17UF2R1\\MolanoArnau_M17UF2R1\\Assets\\Scripts\\Enemys\\Flash.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Enemys\\Flash.cs",

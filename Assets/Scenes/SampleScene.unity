@@ -955,6 +955,7 @@ GameObject:
   - component: {fileID: 1320150200}
   - component: {fileID: 1320150202}
   - component: {fileID: 1320150201}
+  - component: {fileID: 1320150203}
   m_Layer: 5
   m_Name: Inventory (1)
   m_TagString: Untagged
@@ -1021,6 +1022,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320150199}
   m_CullTransparentMesh: 1
+--- !u!114 &1320150203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320150199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fc6d8dee58ded4fbcb55aec29da420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSO: {fileID: 11400000, guid: 13f3f4ddc18937349b97f68ed36ae1ca, type: 2}
 --- !u!1 &1326592026
 GameObject:
   m_ObjectHideFlags: 3
@@ -1127,6 +1141,7 @@ GameObject:
   - component: {fileID: 1608896021}
   - component: {fileID: 1608896023}
   - component: {fileID: 1608896022}
+  - component: {fileID: 1608896024}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -1193,6 +1208,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608896020}
   m_CullTransparentMesh: 1
+--- !u!114 &1608896024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608896020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fc6d8dee58ded4fbcb55aec29da420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSO: {fileID: 11400000, guid: 7f381c0795e329f47b85cb39f1baf366, type: 2}
 --- !u!1 &1680632936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1302,7 @@ GameObject:
   - component: {fileID: 1709265760}
   - component: {fileID: 1709265762}
   - component: {fileID: 1709265761}
+  - component: {fileID: 1709265763}
   m_Layer: 5
   m_Name: Inventory (2)
   m_TagString: Untagged
@@ -1340,6 +1369,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709265759}
   m_CullTransparentMesh: 1
+--- !u!114 &1709265763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709265759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fc6d8dee58ded4fbcb55aec29da420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSO: {fileID: 11400000, guid: 858e38928b8cebc47a0d72d39c297884, type: 2}
 --- !u!1 &1834346487 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4818628460256449937, guid: 97f048e28c2334d4485216c8fd8a22fb, type: 3}
