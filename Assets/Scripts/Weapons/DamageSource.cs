@@ -11,6 +11,12 @@ public class DamageSource : MonoBehaviour
         {
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(damageAmount);
+
+            KnockBack knockBack = collision.gameObject.GetComponent<KnockBack>();
+            if(knockBack != null)
+            {
+                knockBack.ApplyKnockBack(collision.transform.position - transform.position);
+            }
         }
        
     }

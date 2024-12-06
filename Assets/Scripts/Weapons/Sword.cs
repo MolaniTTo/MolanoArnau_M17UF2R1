@@ -12,6 +12,7 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
     private PlayerController playerController;
     private ActiveWeapon activeWeapon;
     private Vector2 mousePosition;
+    bool isAttacking = false;
 
     private GameObject slashAnim;
 
@@ -37,7 +38,6 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
 
     private void Start()
     {
-        ic.Combat.Attack.performed += _ => Attack();
         playerController = GetComponentInParent<PlayerController>();
         if (playerController == null)
         {
@@ -56,6 +56,8 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
 
     private void Attack()
     {
+        if (isAttacking) return;
+        isAttacking = true;
         animator.SetTrigger("Attack");
         weaponCollider.gameObject.SetActive(true);
         slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
@@ -66,6 +68,7 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
     {
         weaponCollider.gameObject.SetActive(false);
         Destroy(slashAnim);
+        isAttacking = false;
 
     }
 

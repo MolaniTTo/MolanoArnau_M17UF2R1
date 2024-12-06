@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\DungeonGeneration\Room.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Weapons\DamageSource.cs" />
+    <Compile Include="Assets\Scripts\Enemys\KnockBack.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Weapons\SlashAnim.cs" />
     <Compile Include="Assets\Scripts\DungeonGeneration\MapGenerator.cs" />
