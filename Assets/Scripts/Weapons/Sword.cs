@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
+public class Sword : MonoBehaviour, PlayerInputActions.ICombatActions
 {
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimSpawnPoint;
@@ -30,7 +30,7 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
     {
         ic.Enable();
     }
-    
+
     private void OnDisable()
     {
         ic.Disable();
@@ -76,7 +76,7 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
     {
         slashAnim.gameObject.transform.rotation = Quaternion.Euler(-180, 0, 0);
 
-        if(playerController.facingLeft)
+        if (playerController.facingLeft)
         {
             slashAnim.GetComponent<SpriteRenderer>().flipX = true;
         }
@@ -86,9 +86,9 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
     {
         slashAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        if(playerController.facingLeft)
+        if (playerController.facingLeft)
         {
-            slashAnim.GetComponent<SpriteRenderer>().flipX = true; 
+            slashAnim.GetComponent<SpriteRenderer>().flipX = true;
         }
     }
 
@@ -97,7 +97,7 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(playerController.transform.position);
         float angle = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
 
-        if(mousePosition.x < playerScreenPoint.x)
+        if (mousePosition.x < playerScreenPoint.x)
         {
             activeWeapon.transform.rotation = (Quaternion.Euler(0, 180, angle));
             weaponCollider.transform.rotation = (Quaternion.Euler(0, 180, 0));
@@ -112,7 +112,7 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             Attack();
         }
@@ -120,7 +120,7 @@ public class Sword : MonoBehaviour , PlayerInputActions.ICombatActions
 
     public void OnLookCombat(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (context.performed)
         {
             mousePosition = context.ReadValue<Vector2>();
         }

@@ -4,20 +4,58 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
-    public List<ItemData> items = new List<ItemData>();
+    private int activeSlotIndex = 0;
 
-    public void AddItem(ItemData item)
+    private PlayerInputActions playerInputActions;
+    private void Awake()
     {
-        items.Add(item);
-        Debug.Log($"Item {item.itemName} added to inventory");
+        playerInputActions = new PlayerInputActions();
     }
 
-    public void RemoveItem(ItemData item)
+    private void Start()
     {
-        if (items.Contains(item))
+        playerInputActions.Inventory.Keyboard.performed += ctx => ChangeActiveSlot((int)ctx.ReadValue<float>());
+        ChangeActiveHightLight(0);
+    }
+
+    private void OnEnable()
+    {
+        playerInputActions.Enable();
+    }
+
+    private void ChangeActiveSlot(int slotIndex)
+    {
+        ChangeActiveHightLight(slotIndex - 1);
+    }
+
+    private void ChangeActiveHightLight(int slotIndex)
+    {
+        activeSlotIndex = slotIndex;
+        foreach(Transform slot in this.transform)
         {
-            items.Remove(item);
-            Debug.Log($"Item {item.itemName} removed from inventory");
+            slot.GetChild(0).gameObject.SetActive(false);
         }
+        this.transform.GetChild(slotIndex).GetChild(0).gameObject.SetActive(true);
+        //ChangeActiveWeapon();
+
     }
+
+   /* private void ChangeActiveWeapon()
+    {
+        if(ActiveWeapon.Instance.CurrentActiveWeapon != null)
+        {
+            Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
+        }
+
+        if(!transform.GetChild(activeSlotIndex).GetComponentInChildren<InventorySlot>())
+        {
+            ActiveWeapon.Instance.WeaponNull();
+            return;
+        }
+
+        GameObject weaponToSpawn = transform.GetChild(activeSlotIndex).GetComponentInChildren<InventorySlot>().GetWeaponInfo().weaponPrefab;
+        GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);
+
+    }*/
+
 }

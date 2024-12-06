@@ -10,10 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec9bba1b3c2506a4ca9149fa33daca70, type: 3}
-  m_Name: Melee
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  itemName: Espada
-  itemIcon: {fileID: 309870314, guid: 38be68777743c7743bcbc7639891dbbe, type: 3}
-  itemDescription: 
-  damage: 50
-  attackSpeed: 0
+  weaponPrefab: {fileID: 5912756667421799540, guid: a6ba5355e8c1fb94f833b23f1344af95, type: 3}
+  weaponColldown: 1

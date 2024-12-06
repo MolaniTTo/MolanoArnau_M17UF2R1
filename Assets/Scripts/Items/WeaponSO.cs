@@ -4,9 +4,9 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Inventory/Weapon")]
 
-public class WeaponData : ItemData
+public class WeaponSO : ScriptableObject
 {
-    public int damage;
-    public float attackSpeed;
+    public GameObject weaponPrefab;
+    public float weaponColldown;
 }
 
