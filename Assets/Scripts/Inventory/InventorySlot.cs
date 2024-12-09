@@ -10,7 +10,4 @@ public class InventorySlot : MonoBehaviour
     {
         return weaponSO;
     }
-
-
-
 }

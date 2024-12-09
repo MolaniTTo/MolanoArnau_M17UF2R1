@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
-    private int activeSlotIndex = 0;
+    private int activeSlotIndexNum = 0;
 
     private PlayerInputActions playerInputActions;
+
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
@@ -14,8 +15,7 @@ public class InventorySystem : MonoBehaviour
 
     private void Start()
     {
-        playerInputActions.Inventory.Keyboard.performed += ctx => ChangeActiveSlot((int)ctx.ReadValue<float>());
-        ChangeActiveHightLight(0);
+        playerInputActions.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
     }
 
     private void OnEnable()
@@ -23,39 +23,29 @@ public class InventorySystem : MonoBehaviour
         playerInputActions.Enable();
     }
 
-    private void ChangeActiveSlot(int slotIndex)
+    private void ToggleActiveSlot(int numValue)
     {
-        ChangeActiveHightLight(slotIndex - 1);
+        ToggleActiveHighlight(numValue - 1);
     }
 
-    private void ChangeActiveHightLight(int slotIndex)
+    private void ToggleActiveHighlight(int indexNum)
     {
-        activeSlotIndex = slotIndex;
-        foreach(Transform slot in this.transform)
+        activeSlotIndexNum = indexNum;
+
+        foreach (Transform inventorySlot in this.transform)
         {
-            slot.GetChild(0).gameObject.SetActive(false);
+            inventorySlot.GetChild(0).gameObject.SetActive(false);
         }
-        this.transform.GetChild(slotIndex).GetChild(0).gameObject.SetActive(true);
-        //ChangeActiveWeapon();
+
+        this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
+
+        ChangeActiveWeapon();
 
     }
 
-   /* private void ChangeActiveWeapon()
+    private void ChangeActiveWeapon()
     {
-        if(ActiveWeapon.Instance.CurrentActiveWeapon != null)
-        {
-            Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
-        }
-
-        if(!transform.GetChild(activeSlotIndex).GetComponentInChildren<InventorySlot>())
-        {
-            ActiveWeapon.Instance.WeaponNull();
-            return;
-        }
-
-        GameObject weaponToSpawn = transform.GetChild(activeSlotIndex).GetComponentInChildren<InventorySlot>().GetWeaponInfo().weaponPrefab;
-        GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);
-
-    }*/
-
+        Debug.Log(transform.GetChild(activeSlotIndexNum).GetComponent<InventorySlot>().GetWeaponInfo().weaponPrefab.name);
+       
+    }
 }

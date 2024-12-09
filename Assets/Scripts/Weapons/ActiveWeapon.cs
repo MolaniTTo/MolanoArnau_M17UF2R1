@@ -1,22 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class ActiveWeapon : MonoBehaviour 
+public class ActiveWeapon : Singleton<ActiveWeapon>
 {
-
-    [SerializeField] private MonoBehaviour currentActiveWeapon;
+    [SerializeField] private MonoBehaviour CurrentActiveWeapon;
 
     private PlayerInputActions playerInputActions;
 
     private bool attackButtonDown, isAttacking = false;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         playerInputActions = new PlayerInputActions();
     }
-
 
     private void OnEnable()
     {
@@ -25,8 +24,8 @@ public class ActiveWeapon : MonoBehaviour
 
     private void Start()
     {
-        playerInputActions.Combat.Attack.started += ctx => StartAttacking();
-        playerInputActions.Combat.Attack.canceled += ctx => StopAttacking();
+        playerInputActions.Combat.Attack.started += _ => StartAttacking();
+        playerInputActions.Combat.Attack.canceled += _ => StopAttacking();
     }
 
     private void Update()
@@ -34,7 +33,10 @@ public class ActiveWeapon : MonoBehaviour
         Attack();
     }
 
-    public void ToggleIsAttacking(bool value) { isAttacking = value; }
+    public void ToggleIsAttacking(bool value)
+    {
+        isAttacking = value;
+    }
 
     private void StartAttacking()
     {
@@ -48,12 +50,11 @@ public class ActiveWeapon : MonoBehaviour
 
     private void Attack()
     {
-        if (attackButtonDown && !isAttacking)
+        if(attackButtonDown && !isAttacking)
         {
             isAttacking = true;
-            (currentActiveWeapon as IWeapon).Attack();
+            (CurrentActiveWeapon as IWeapon).Attack();
+           
         }
     }
-
 }
-

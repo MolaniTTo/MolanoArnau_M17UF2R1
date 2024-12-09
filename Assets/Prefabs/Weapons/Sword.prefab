@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5912756667421799540
+--- !u!1 &906942064550412745
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4842692970675098123}
-  - component: {fileID: 3555768238458337372}
-  - component: {fileID: 3615367080565803448}
-  - component: {fileID: 7918564618265975072}
+  - component: {fileID: 2138361298000439222}
+  - component: {fileID: 8052699482433801697}
+  - component: {fileID: 7832906441296493573}
+  - component: {fileID: 3709887802274802845}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -19,13 +19,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4842692970675098123
+--- !u!4 &2138361298000439222
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5912756667421799540}
+  m_GameObject: {fileID: 906942064550412745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: -0.7200667, w: -0.6939049}
   m_LocalPosition: {x: 0.45, y: 0.19, z: 0}
@@ -34,13 +34,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 452.12}
---- !u!212 &3555768238458337372
+--- !u!212 &8052699482433801697
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5912756667421799540}
+  m_GameObject: {fileID: 906942064550412745}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -86,14 +86,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3615367080565803448
+--- !u!95 &7832906441296493573
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5912756667421799540}
+  m_GameObject: {fileID: 906942064550412745}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 089eff164c8c49345a601e5b04e4bdd5, type: 2}
@@ -107,13 +107,13 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7918564618265975072
+--- !u!114 &3709887802274802845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5912756667421799540}
+  m_GameObject: {fileID: 906942064550412745}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90140b8ffb5062a43801aede0014cdb8, type: 3}
@@ -121,4 +121,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slashAnimPrefab: {fileID: 7041584024867311841, guid: 0ee8560e2a3e5c94899cf0270b64c169, type: 3}
   slashAnimSpawnPoint: {fileID: 0}
-  weaponCollider: {fileID: 0}

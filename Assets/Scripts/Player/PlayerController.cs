@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerActions , PlayerInputActions.ICombatActions
 {
-   
+    public static PlayerController Instance { get; private set; } //Singleton
+    public bool FacingLeft { get { return facingLeft; } } // Propiedad para obtener la dirección del jugador
+
     private PlayerInputActions ic; // Referencia al Input Action
     private Animator animator; // Referencia al componente Animator
 
@@ -12,6 +14,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     [SerializeField] private float speed = 5f;
     [SerializeField] private int live = 100;
     [SerializeField] private TrailRenderer mytrailRenderer;
+    [SerializeField] private Transform weaponCollider;
 
     private Vector2 moveDirection;    // Dirección del movimiento
     public Vector2 lookDirection { get; private set;}
@@ -22,12 +25,16 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     public bool isDashing = false;
     public bool isDied = false;
 
+    private Sword sword; // Referencia a la espasa
+
 
     private void Awake()
     {
         ic = new PlayerInputActions();
         ic.Player.SetCallbacks(this);
         animator = GetComponent<Animator>();
+
+        sword = GetComponentInChildren<Sword>(); //Busquem la espasa com a fill del jugador
     }
 
     public void Start()
@@ -53,16 +60,23 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         ic.Disable();
     }
 
+    public Transform GetWeaponCollider()
+    {
+        if (weaponCollider == null)
+        {
+            Debug.LogError("Weapon Collider is not assigned in PlayerController!");
+        }
+        return weaponCollider;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            // Actualizar dirección de movimiento desde el Input System
             moveDirection = context.ReadValue<Vector2>();
         }
         else if(context.canceled)
         {
-            // Detener el movimiento
             moveDirection = Vector2.zero;
         }
 
@@ -102,6 +116,10 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     {
         // Actualizar el estado del clic izquierdo
         isLeftClickPressed = context.phase == InputActionPhase.Performed;
+        if (isLeftClickPressed)
+        {
+            sword?.Attack();
+        }
     }
 
 
@@ -155,6 +173,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     {
         throw new System.NotImplementedException();
     }
+
 
     public void OnDash(InputAction.CallbackContext context)
     {
