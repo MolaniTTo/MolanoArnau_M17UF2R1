@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     [SerializeField] private int live = 100;
     [SerializeField] private TrailRenderer mytrailRenderer;
     [SerializeField] private Transform weaponCollider;
+    [SerializeField] private Transform SlashAnimSpawnPoint;
 
     private Vector2 moveDirection;    // Dirección del movimiento
     public Vector2 lookDirection { get; private set;}
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
 
     private void Awake()
     {
+        Instance = this;
         ic = new PlayerInputActions();
         ic.Player.SetCallbacks(this);
         animator = GetComponent<Animator>();
@@ -67,6 +69,15 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
             Debug.LogError("Weapon Collider is not assigned in PlayerController!");
         }
         return weaponCollider;
+    }
+
+    public Transform GetSlashAnimSpawnPoint()
+    {
+        if (SlashAnimSpawnPoint == null)
+        {
+            Debug.LogError("SlashAnimSpawnPoint is not assigned in PlayerController!");
+        }
+        return SlashAnimSpawnPoint;
     }
 
     public void OnMove(InputAction.CallbackContext context)

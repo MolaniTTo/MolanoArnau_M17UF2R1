@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActiveWeapon : Singleton<ActiveWeapon>
 {
-    [SerializeField] private MonoBehaviour CurrentActiveWeapon;
+    public MonoBehaviour CurrentActiveWeapon { get; private set; }
 
     private PlayerInputActions playerInputActions;
 
@@ -33,6 +33,16 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         Attack();
     }
 
+    public void NewWeapon(MonoBehaviour newWeapon)
+    {
+        CurrentActiveWeapon = newWeapon;
+    }
+
+    public void WeaponNull()
+    {
+        CurrentActiveWeapon = null;
+    }
+
     public void ToggleIsAttacking(bool value)
     {
         isAttacking = value;
@@ -53,8 +63,12 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         if(attackButtonDown && !isAttacking)
         {
             isAttacking = true;
-            (CurrentActiveWeapon as IWeapon).Attack();
-           
+            if(CurrentActiveWeapon == null)
+            {
+                Debug.LogError("No weapon is assigned to the player!");
+                return;
+            }
+            (CurrentActiveWeapon as IWeapon)?.Attack();
         }
     }
 }

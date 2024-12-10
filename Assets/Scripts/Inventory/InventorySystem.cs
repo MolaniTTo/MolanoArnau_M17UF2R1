@@ -15,7 +15,14 @@ public class InventorySystem : MonoBehaviour
 
     private void Start()
     {
+        if (GetComponentInChildren<InventorySlot>() == null || GetComponentInChildren<InventorySlot>().GetWeaponInfo() == null)
+        {
+            Debug.LogError("No weapons are assigned in the inventory slots!");
+            return;
+        }
+
         playerInputActions.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
+        ToggleActiveHighlight(0);
     }
 
     private void OnEnable()
@@ -25,7 +32,7 @@ public class InventorySystem : MonoBehaviour
 
     private void ToggleActiveSlot(int numValue)
     {
-        ToggleActiveHighlight(numValue - 1);
+        ToggleActiveHighlight(numValue-1);
     }
 
     private void ToggleActiveHighlight(int indexNum)
@@ -45,7 +52,28 @@ public class InventorySystem : MonoBehaviour
 
     private void ChangeActiveWeapon()
     {
-        Debug.Log(transform.GetChild(activeSlotIndexNum).GetComponent<InventorySlot>().GetWeaponInfo().weaponPrefab.name);
-       
+        if (ActiveWeapon.Instance.CurrentActiveWeapon != null)
+        {
+            Destroy(ActiveWeapon.Instance.CurrentActiveWeapon.gameObject);
+        }
+
+        // Validar si el slot activo tiene un InventorySlot con WeaponSO
+        var activeSlot = transform.GetChild(activeSlotIndexNum).GetComponentInChildren<InventorySlot>();
+        if (activeSlot == null || activeSlot.GetWeaponInfo() == null)
+        {
+            ActiveWeapon.Instance.WeaponNull();
+            Debug.LogWarning("No weapon assigned to the active slot!");
+            return;
+        }
+
+        // Instanciar el arma
+        GameObject weaponToSpawn = activeSlot.GetWeaponInfo().weaponPrefab;
+        GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);
+        newWeapon.transform.parent = ActiveWeapon.Instance.transform;
+        newWeapon.transform.localScale = new Vector3(0.779029965f, 0.779029965f, 0);
+
+        // Configurar el arma como la activa
+        ActiveWeapon.Instance.NewWeapon(newWeapon.GetComponent<MonoBehaviour>());
+
     }
 }
