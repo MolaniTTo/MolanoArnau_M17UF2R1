@@ -5,10 +5,11 @@ public class Sword : MonoBehaviour, IWeapon
 {
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimSpawnPoint;
-    [SerializeField] private float swordAttackCD = .5f;
+    [SerializeField] private float swordAttackCD = 2f;
 
     private Transform weaponCollider;
     private Animator animator;
+    private bool isAttaking;
 
     private GameObject slashAnim;
 
@@ -41,8 +42,8 @@ public class Sword : MonoBehaviour, IWeapon
 
     public void Attack()
     {
-
-        //isAttacking = true;
+        if (isAttaking) return;
+        isAttaking = true;
         animator.SetTrigger("Attack");
         weaponCollider.gameObject.SetActive(true);
         slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
@@ -53,6 +54,7 @@ public class Sword : MonoBehaviour, IWeapon
     private IEnumerator AttackCDRoutine()
     {
         yield return new WaitForSeconds(swordAttackCD);
+        isAttaking = false;
         ActiveWeapon.Instance.ToggleIsAttacking(false);
     }
 
@@ -84,8 +86,9 @@ public class Sword : MonoBehaviour, IWeapon
 
     private void MouseFollowWithOffset()
     {
-        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
-        Vector2 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
+        if (isAttaking) return;
+        Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
+        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerController.Instance.transform.position);    
 
         float angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
 

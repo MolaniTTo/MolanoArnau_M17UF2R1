@@ -15,14 +15,7 @@ public class InventorySystem : MonoBehaviour
 
     private void Start()
     {
-        if (GetComponentInChildren<InventorySlot>() == null || GetComponentInChildren<InventorySlot>().GetWeaponInfo() == null)
-        {
-            Debug.LogError("No weapons are assigned in the inventory slots!");
-            return;
-        }
-
-        playerInputActions.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
-        ToggleActiveHighlight(0);
+        StartCoroutine(InitializeInventory());
     }
 
     private void OnEnable()
@@ -35,8 +28,31 @@ public class InventorySystem : MonoBehaviour
         ToggleActiveHighlight(numValue-1);
     }
 
+    private IEnumerator InitializeInventory()
+    {
+        // Esperar un frame para asegurarse de que todos los objetos han sido instanciados
+        yield return null;
+
+        if (GetComponentInChildren<InventorySlot>() == null || GetComponentInChildren<InventorySlot>().GetWeaponInfo() == null)
+        {
+            Debug.LogError("No weapons are assigned in the inventory slots!");
+            yield break;
+        }
+
+        playerInputActions.Inventory.Keyboard.performed += ctx => ToggleActiveSlot((int)ctx.ReadValue<float>());
+        ToggleActiveHighlight(0); // Inicializar el arma del primer slot
+    }
+
+
+
     private void ToggleActiveHighlight(int indexNum)
     {
+        if (indexNum < 0 || indexNum >= transform.childCount)
+        {
+            Debug.LogError($"Invalid inventory slot index: {indexNum}");
+            return;
+        }
+
         activeSlotIndexNum = indexNum;
 
         foreach (Transform inventorySlot in this.transform)
@@ -44,7 +60,8 @@ public class InventorySystem : MonoBehaviour
             inventorySlot.GetChild(0).gameObject.SetActive(false);
         }
 
-        this.transform.GetChild(indexNum).GetChild(0).gameObject.SetActive(true);
+        Transform selectedSlot = transform.GetChild(indexNum);
+        selectedSlot.GetChild(0).gameObject.SetActive(true);
 
         ChangeActiveWeapon();
 
