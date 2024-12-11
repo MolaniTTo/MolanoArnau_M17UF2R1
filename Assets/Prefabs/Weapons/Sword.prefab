@@ -121,3 +121,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slashAnimPrefab: {fileID: 7041584024867311841, guid: 0ee8560e2a3e5c94899cf0270b64c169, type: 3}
   slashAnimSpawnPoint: {fileID: 0}
+  weaponSO: {fileID: 11400000, guid: 9c0fc1c3e1609ec429a8017bd3e8d34c, type: 2}

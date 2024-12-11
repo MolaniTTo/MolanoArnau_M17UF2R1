@@ -8,6 +8,8 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     private PlayerInputActions playerInputActions;
 
+    private float TimeBetweenAttacks;
+
     private bool attackButtonDown, isAttacking = false;
 
     protected override void Awake()
@@ -26,6 +28,8 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     {
         playerInputActions.Combat.Attack.started += _ => StartAttacking();
         playerInputActions.Combat.Attack.canceled += _ => StopAttacking();
+
+        AttackCooldown();
     }
 
     private void Update()
@@ -36,6 +40,9 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     public void NewWeapon(MonoBehaviour newWeapon)
     {
         CurrentActiveWeapon = newWeapon;
+
+        AttackCooldown();
+        TimeBetweenAttacks = (CurrentActiveWeapon as IWeapon).GetWeaponSO().weaponCooldown;
     }
 
     public void WeaponNull()
@@ -43,10 +50,19 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         CurrentActiveWeapon = null;
     }
 
-    public void ToggleIsAttacking(bool value)
+    public void AttackCooldown()
     {
-        isAttacking = value;
+        isAttacking = true;
+        StopAllCoroutines();
+        StartCoroutine(TimeBetAttacksR());
     }
+
+    private IEnumerator TimeBetAttacksR()
+    {
+        yield return new WaitForSeconds(TimeBetweenAttacks);
+        isAttacking = false;
+    }
+
 
     private void StartAttacking()
     {
@@ -62,7 +78,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     {
         if(attackButtonDown && !isAttacking)
         {
-            isAttacking = true;
+            AttackCooldown();
             if(CurrentActiveWeapon == null)
             {
                 Debug.LogError("No weapon is assigned to the player!");

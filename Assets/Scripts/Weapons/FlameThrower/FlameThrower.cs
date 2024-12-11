@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class FlameThrower : MonoBehaviour, IWeapon
 {
+    [SerializeField] private WeaponSO weaponSO;
     public void Attack()
     {
         Debug.Log("FlameThrower Attack");
-        ActiveWeapon.Instance.ToggleIsAttacking(false);
+    }
+
+    public WeaponSO GetWeaponSO()
+    {
+        return weaponSO;
     }
 }

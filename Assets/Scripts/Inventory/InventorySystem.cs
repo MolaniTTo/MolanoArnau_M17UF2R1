@@ -88,6 +88,7 @@ public class InventorySystem : MonoBehaviour
         GameObject newWeapon = Instantiate(weaponToSpawn, ActiveWeapon.Instance.transform.position, Quaternion.identity);
         newWeapon.transform.parent = ActiveWeapon.Instance.transform;
         newWeapon.transform.localScale = new Vector3(0.779029965f, 0.779029965f, 0);
+        ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         // Configurar el arma como la activa
         ActiveWeapon.Instance.NewWeapon(newWeapon.GetComponent<MonoBehaviour>());
