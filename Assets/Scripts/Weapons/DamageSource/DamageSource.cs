@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class DamageSource : MonoBehaviour
 {
-    [SerializeField] private int damageAmount = 1;
+    [SerializeField] private float damageAmount = 1;
+    [SerializeField] private string weaponName = "Default";
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<EnemyHealth>())
+        if(collision.gameObject.GetComponent<EnemyHealth>() && weaponName == "Sword" || weaponName == "Arrow")
         {
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(damageAmount);
@@ -18,7 +20,15 @@ public class DamageSource : MonoBehaviour
                 knockBack.ApplyKnockBack(collision.transform.position - transform.position);
             }
         }
-       
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<EnemyHealth>() && weaponName == "FlameThrower")
+        {
+            EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(damageAmount);
+        }
     }
 
 }

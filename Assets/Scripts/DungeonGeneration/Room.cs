@@ -7,4 +7,5 @@ public class Room : MonoBehaviour
 {
     public Transform spawnPoint;
     public PolygonCollider2D roomConfiner;
+    public Transform[] EnemySpawnPoints;
 }

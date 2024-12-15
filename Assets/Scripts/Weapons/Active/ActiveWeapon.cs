@@ -72,6 +72,11 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     private void StopAttacking()
     {
         attackButtonDown = false;
+
+        if (CurrentActiveWeapon is IWeapon weapon)
+        {
+            (CurrentActiveWeapon as FlameThrower)?.StopAttacking();
+        }
     }
 
     private void Attack()

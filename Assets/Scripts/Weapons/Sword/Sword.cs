@@ -54,12 +54,10 @@ public class Sword : MonoBehaviour, IWeapon
     }
 
 
-
     public void DoneAttackingAnimEvent()
     {
         weaponCollider.gameObject.SetActive(false);
     }
-
 
     public void SwingUpFlipAnimEvent()
     {
@@ -99,21 +97,5 @@ public class Sword : MonoBehaviour, IWeapon
             ActiveWeapon.Instance.transform.rotation = Quaternion.Euler(0, 0, angle);
             weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-    }
-
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnLookCombat(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
-      
-    }
-
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        throw new System.NotImplementedException();
     }
 }

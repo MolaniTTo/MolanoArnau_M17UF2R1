@@ -109,9 +109,11 @@ GameObject:
   - component: {fileID: 1260836696761168088}
   - component: {fileID: 3088969424897015352}
   - component: {fileID: 553963575872753137}
+  - component: {fileID: 8388160081592028025}
+  - component: {fileID: 6718760857722381716}
   m_Layer: 0
   m_Name: EnemyLatigo
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +174,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1622825113, guid: b29b99185d33fcf4c8e21f4994cf1eeb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -302,3 +304,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0.008515057, y: -0.5308767}
   m_Size: {x: 1.3884147, y: 0.58100516}
   m_Direction: 1
+--- !u!114 &8388160081592028025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5039685072689281795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c67b84af9e4913489b164071d5f4e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 20
+--- !u!114 &6718760857722381716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5039685072689281795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f09989fbf020846beccdc8fc32d01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: b3e8022f0bc15fc47af307f81e665df6, type: 2}
+  restoreDefaultMatTime: 0.2

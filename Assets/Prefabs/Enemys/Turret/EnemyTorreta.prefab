@@ -182,9 +182,11 @@ GameObject:
   - component: {fileID: 503549459900628083}
   - component: {fileID: 388367293146025985}
   - component: {fileID: 3997082305021303637}
+  - component: {fileID: 2576197428466321522}
+  - component: {fileID: 504389132377372550}
   m_Layer: 0
   m_Name: EnemyTorreta
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,7 +247,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 497501358, guid: b7b568355eadf284ba1f8e18071a4c73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -370,6 +372,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0.013076718, y: -0.5235383}
   m_Size: {x: 1.1622865, y: 0.5043091}
   m_Direction: 1
+--- !u!114 &2576197428466321522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4818628460256449937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c67b84af9e4913489b164071d5f4e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 15
+--- !u!114 &504389132377372550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4818628460256449937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f09989fbf020846beccdc8fc32d01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: b3e8022f0bc15fc47af307f81e665df6, type: 2}
+  restoreDefaultMatTime: 0.2
 --- !u!1 &5334205253534128216
 GameObject:
   m_ObjectHideFlags: 0

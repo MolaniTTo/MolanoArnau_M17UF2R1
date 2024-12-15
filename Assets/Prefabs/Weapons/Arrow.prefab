@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 383461645794337498}
   - component: {fileID: 4258397079128091566}
   - component: {fileID: 7795546190011268081}
+  - component: {fileID: 2436483438232224722}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -118,11 +119,11 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03856641, y: 0.02454216}
-  m_Size: {x: 1.0771345, y: 0.73354244}
+  m_Offset: {x: -0.02192974, y: 0.024542158}
+  m_Size: {x: 1.1104094, y: 0.7335481}
   m_Direction: 1
 --- !u!50 &4416084389517474491
 Rigidbody2D:
@@ -289,3 +290,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
+  maxDistance: 10
+--- !u!114 &2436483438232224722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939726600727425665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccea95e46ed37294690322906a7b0388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 2
+  weaponName: Arrow

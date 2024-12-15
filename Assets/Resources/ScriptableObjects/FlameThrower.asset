@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec9bba1b3c2506a4ca9149fa33daca70, type: 3}
-  m_Name: LanzaLlamas
+  m_Name: FlameThrower
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 5912756667421799540, guid: 235758bcb837af44191aba56631f31b4, type: 3}
-  weaponColldown: 0
+  weaponPrefab: {fileID: 1613092878805031770, guid: 9b4260664e42f8549bd996410777d3a2, type: 3}
+  weaponCooldown: 0.2
