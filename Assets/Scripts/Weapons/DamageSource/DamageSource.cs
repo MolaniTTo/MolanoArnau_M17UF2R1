@@ -9,7 +9,7 @@ public class DamageSource : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<EnemyHealth>() && weaponName == "Sword" || weaponName == "Arrow")
+        if(collision.gameObject.GetComponent<EnemyHealth>() && (weaponName == "Sword" || weaponName == "Arrow"))
         {
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(damageAmount);

@@ -8,7 +8,11 @@ public class InitGame : MonoBehaviour
 {
     public GameObject playerPrefab;
     public CinemachineVirtualCamera virtualCamera;
+    public GameObject[] enemyPrefabs;
     private CinemachineConfiner2D confiner;
+    private List<GameObject> activeEnemies = new List<GameObject>();
+
+    private int round = 1;
 
     private void Awake()
     {
@@ -46,7 +50,52 @@ public class InitGame : MonoBehaviour
                 }
             }
         }
+        StartCoroutine(SpawnEnemiesInAllRooms());
     }
 
-   
+
+    private IEnumerator SpawnEnemiesInAllRooms()
+    {
+        Room[] allRooms = FindObjectsOfType<Room>();
+
+        foreach (Room room in allRooms)
+        {
+            Debug.Log("Spawning enemies in room " + room.name);
+            SpawnEnemiesInAllRooms(room, round);
+            yield return null;
+
+        }
+    }
+
+    private void SpawnEnemiesInAllRooms(Room room, int round)
+    {
+        if (enemyPrefabs == null || enemyPrefabs.Length == 0)
+        {
+            Debug.LogError("No se han asignado prefabs de enemigos.");
+            return;
+        }
+
+        if (room.EnemySpawnPoints == null || room.EnemySpawnPoints.Length == 0)
+        {
+            Debug.LogWarning($"La habitación {room.name} no tiene puntos de spawn de enemigos.");
+            return;
+        }
+
+        int enemyCount = Mathf.Min(round * 5, room.EnemySpawnPoints.Length);
+        List<Transform> avalibleSpawnPoints = new List<Transform>(room.EnemySpawnPoints);
+
+        for(int i=0; i<enemyCount; i++)
+        {
+            int spawnIndex = Random.Range(0, avalibleSpawnPoints.Count);
+            Transform spawnpoint = avalibleSpawnPoints[spawnIndex];
+            avalibleSpawnPoints.RemoveAt(spawnIndex);
+
+            int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+            GameObject enemyPrefab = enemyPrefabs[enemyIndex];
+
+            GameObject enemy = Instantiate(enemyPrefab, spawnpoint.position, Quaternion.identity);
+            room.AddEnemy(enemy);
+
+        }
+    }
 }

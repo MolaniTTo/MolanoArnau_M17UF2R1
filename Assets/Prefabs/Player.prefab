@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
+  weaponName: Sword
 --- !u!1 &5137026633248240795
 GameObject:
   m_ObjectHideFlags: 0

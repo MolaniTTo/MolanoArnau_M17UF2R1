@@ -16,12 +16,14 @@ public class BombMovment : MonoBehaviour
     private bool isExploding = false;
     private float timeInExplosionRadius = 0f;
     SpriteRenderer spriteRenderer;
+    EnemyHealth enemyHealth;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     private void Update()
@@ -46,7 +48,6 @@ public class BombMovment : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log($"Time in explosion radius: {timeInExplosionRadius}/{explosionDelay}");
                     animator.SetBool("IsWalking", false); // Cambiar animación si no está caminando
                 }
             }
@@ -79,6 +80,7 @@ public class BombMovment : MonoBehaviour
         animator.SetTrigger("Explode");
         //esperar a que termine la animación
         StartCoroutine(FadeOut());
+        
     }
 
     IEnumerator FadeOut()
@@ -95,7 +97,7 @@ public class BombMovment : MonoBehaviour
             yield return null;
         }
         spriteRenderer.color = new Color(color.r, color.g, color.b, 0f);
-        Destroy(gameObject);
+        enemyHealth.Die();
     }
 
     private void OnDrawGizmosSelected()

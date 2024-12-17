@@ -1,9 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public event Action<GameObject> OnEnemyDeath;
+
+    public void Die()
+    {
+        Debug.Log($"{name} ha muerto.");
+        // Disparar el evento
+        OnEnemyDeath?.Invoke(gameObject);
+        Destroy(gameObject);
+    }
+
     [SerializeField] private int startingHealth = 3;
 
     private Flash flash;
@@ -23,7 +34,6 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        Debug.Log(currentHealth);
         StartCoroutine(flash.FlashRoutine());
         
     }
@@ -32,8 +42,10 @@ public class EnemyHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
+
+
     
 }

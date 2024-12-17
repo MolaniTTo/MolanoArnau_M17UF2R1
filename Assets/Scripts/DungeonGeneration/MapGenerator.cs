@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class SnakeMapGenerator : MonoBehaviour
 {
+    public int round = 1; 
     public int rows = 10; // Número de filas
     public int columns = 10; // Número de columnas
     public GameObject[] roomPrefabs; // Lista de prefabs de habitaciones (Room1, Room2, etc.)
@@ -164,22 +165,41 @@ public class SnakeMapGenerator : MonoBehaviour
             return;
         }
 
+        Transform doorA = null, doorB = null;
+
         // Conectar puertas y configurar áreas
         if (posB.x == posA.x && posB.y == posA.y + 1) // Derecha
         {
-            SetupDoorConnection(doorsA.Find("RightDoor"), doorsB.Find("LeftDoor"));
+            doorA = doorsA.Find("RightDoor");
+            doorB = doorsB.Find("LeftDoor");
         }
         else if (posB.x == posA.x && posB.y == posA.y - 1) // Izquierda
         {
-            SetupDoorConnection(doorsA.Find("LeftDoor"), doorsB.Find("RightDoor"));
+            doorA = doorsA.Find("LeftDoor");
+            doorB = doorsB.Find("RightDoor");
         }
         else if (posB.x == posA.x + 1 && posB.y == posA.y) // Arriba
         {
-            SetupDoorConnection(doorsA.Find("TopDoor"), doorsB.Find("BottomDoor"));
+            doorA = doorsA.Find("TopDoor");
+            doorB = doorsB.Find("BottomDoor");
         }
         else if (posB.x == posA.x - 1 && posB.y == posA.y) // Abajo
         {
-            SetupDoorConnection(doorsA.Find("BottomDoor"), doorsB.Find("TopDoor"));
+            doorA = doorsA.Find("BottomDoor");
+            doorB = doorsB.Find("TopDoor");
+        }
+
+        if(doorA != null && doorB != null)
+        {
+            Room roomComponentA = roomA.GetComponent<Room>();
+            if (roomComponentA != null)
+            {
+                List<Transform> updatedDoors = new List<Transform>(roomComponentA.DoorsToUnlock);
+                updatedDoors.Add(doorA);
+                roomComponentA.DoorsToUnlock = updatedDoors.ToArray();
+            }
+
+            SetupDoorConnection(doorA, doorB);
         }
     }
 
@@ -201,24 +221,16 @@ public class SnakeMapGenerator : MonoBehaviour
             // Desactivar el collider de la puerta A
             collidersA.Find(doorA.name).gameObject.SetActive(false);
         }
-        else
-        {
-            Debug.LogWarning($"No se encontró el collider para {doorA.name} en la habitación A.");
-        }
 
         if (collidersB != null && collidersB.Find(doorB.name) != null)
         {
             // Desactivar el collider de la puerta B
             collidersB.Find(doorB.name).gameObject.SetActive(false);
         }
-        else
-        {
-            Debug.LogWarning($"No se encontró el collider para {doorB.name} en la habitación B.");
-        }
 
         // Activar las puertas (no desactivamos las puertas, solo los colliders)
-        doorA.gameObject.SetActive(true);
-        doorB.gameObject.SetActive(true);
+        doorA.gameObject.SetActive(false);
+        doorB.gameObject.SetActive(false);
 
         // Configurar AreaExit y AreaEntrance
         AreaExit areaExitA = doorA.GetComponentInChildren<AreaExit>();
@@ -279,4 +291,5 @@ public class SnakeMapGenerator : MonoBehaviour
 
         return Vector2Int.zero; // Sin posiciones válidas
     }
+
 }
