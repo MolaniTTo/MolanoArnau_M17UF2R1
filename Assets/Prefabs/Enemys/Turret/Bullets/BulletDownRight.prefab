@@ -164,3 +164,4 @@ MonoBehaviour:
   speed: 5
   maxDistance: 10
   explosionEffect: {fileID: 7642035469015055693, guid: c055f98395fd2a44cba17235c7a7b75f, type: 3}
+  player: {fileID: 7342152835514400731, guid: dd79f32be5e4bd0459b17d441de68d29, type: 3}

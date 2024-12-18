@@ -12,7 +12,7 @@ public class InitGame : MonoBehaviour
     private CinemachineConfiner2D confiner;
     private List<GameObject> activeEnemies = new List<GameObject>();
 
-    private int round = 1;
+    private int round = 5;
 
     private void Awake()
     {

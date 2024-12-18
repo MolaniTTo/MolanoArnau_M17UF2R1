@@ -302,6 +302,9 @@ MonoBehaviour:
   - {fileID: 1588990065329358150}
   - {fileID: 8956803820869949757}
   - {fileID: 6502919693212020477}
+  Player: {fileID: 7342152835514400731, guid: dd79f32be5e4bd0459b17d441de68d29, type: 3}
+  minDistance: 5
+  myAnimator: {fileID: 6652005354163679419}
 --- !u!70 &388367293146025985
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

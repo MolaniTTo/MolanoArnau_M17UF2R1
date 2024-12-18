@@ -7,6 +7,15 @@ public class Turret : MonoBehaviour
     public GameObject[] bulletPrefabs;
 
     public Transform[] firePoints;
+    public Transform Player;
+    public float minDistance = 15f;
+    public Animator myAnimator;
+
+    private void Start()
+    {
+        myAnimator = GetComponent<Animator>();
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 
     private Vector2[] directions = new Vector2[]
     {
@@ -15,6 +24,14 @@ public class Turret : MonoBehaviour
         new Vector2(-1,1),
         new Vector2(-1,-1)
     };
+
+    public void IsInArea()
+    {
+        if (Vector2.Distance(transform.position, Player.position) < minDistance)
+        {
+            myAnimator.SetTrigger("Attack");
+        }
+    }
 
     public void Shoot()
     {

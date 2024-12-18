@@ -22,7 +22,6 @@ public class BulletEnemy : MonoBehaviour
     void Update()
     {
         transform.Translate(moveDirection * speed * Time.deltaTime);
-
         if(Vector3.Distance(startPosition, transform.position) > maxDistance)
         {
             Explode();

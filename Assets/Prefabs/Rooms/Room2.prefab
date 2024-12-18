@@ -30940,7 +30940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &439047910144756389
 Transform:
   m_ObjectHideFlags: 0
@@ -32226,6 +32226,7 @@ MonoBehaviour:
   - {fileID: 3126223344139441114}
   - {fileID: 4945109232062209243}
   - {fileID: 151965624615230241}
+  DoorsToUnlock: []
 --- !u!1 &8240954561346998498
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class SnakeMapGenerator : MonoBehaviour
 {
-    public int round = 1; 
+    public int round = 5; 
     public int rows = 10; // Número de filas
     public int columns = 10; // Número de columnas
     public GameObject[] roomPrefabs; // Lista de prefabs de habitaciones (Room1, Room2, etc.)
