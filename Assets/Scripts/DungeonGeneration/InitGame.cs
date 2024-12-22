@@ -12,7 +12,7 @@ public class InitGame : MonoBehaviour
     private CinemachineConfiner2D confiner;
     private List<GameObject> activeEnemies = new List<GameObject>();
 
-    private int round = 5;
+    private int round = 1;
 
     private void Awake()
     {
@@ -29,6 +29,12 @@ public class InitGame : MonoBehaviour
             return;
         }
 
+        SetUpPlayer();
+        StartCoroutine(SpawnEnemiesInAllRooms());
+    }
+
+    private void SetUpPlayer()
+    {
         GameObject startRoom = GameObject.Find("Start");
         if (startRoom != null)
         {
@@ -50,7 +56,6 @@ public class InitGame : MonoBehaviour
                 }
             }
         }
-        StartCoroutine(SpawnEnemiesInAllRooms());
     }
 
 
@@ -95,7 +100,6 @@ public class InitGame : MonoBehaviour
 
             GameObject enemy = Instantiate(enemyPrefab, spawnpoint.position, Quaternion.identity);
             room.AddEnemy(enemy);
-
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class SnakeMapGenerator : MonoBehaviour
 {
-    public int round = 5; 
     public int rows = 10; // Número de filas
     public int columns = 10; // Número de columnas
     public GameObject[] roomPrefabs; // Lista de prefabs de habitaciones (Room1, Room2, etc.)
@@ -25,14 +24,12 @@ public class SnakeMapGenerator : MonoBehaviour
 
     private void Start()
     {
-        GenerateSnake();
-        InitGame initGame = FindObjectOfType<InitGame>();
-        initGame.StartGame();
     }
 
     // Generar la serpiente de habitaciones
-    void GenerateSnake()
+    public void GenerateSnake()
     {
+        Debug.Log("Generando serpiente de habitaciones...");
         if (roomPrefabs == null || roomPrefabs.Length == 0 || grid == null)
         {
             Debug.LogError("No se han asignado prefabs de habitación o Grid no asignado.");
@@ -218,15 +215,14 @@ public class SnakeMapGenerator : MonoBehaviour
 
         if (collidersA != null && collidersA.Find(doorA.name) != null)
         {
-            // Desactivar el collider de la puerta A
-            collidersA.Find(doorA.name).gameObject.SetActive(false);
+            collidersA.Find(doorA.name).gameObject.SetActive(true);
         }
 
         if (collidersB != null && collidersB.Find(doorB.name) != null)
         {
-            // Desactivar el collider de la puerta B
-            collidersB.Find(doorB.name).gameObject.SetActive(false);
+            collidersB.Find(doorB.name).gameObject.SetActive(true);
         }
+
 
         // Activar las puertas (no desactivamos las puertas, solo los colliders)
         doorA.gameObject.SetActive(false);

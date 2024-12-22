@@ -47,6 +47,8 @@ public class Room : MonoBehaviour
 
         // Abrir las puertas correspondientes
         SetDoorsActive(true);
+        GameManager.Instance.StartNewRound();
+
     }
 
     private void SetDoorsActive(bool active)
@@ -57,11 +59,21 @@ public class Room : MonoBehaviour
             {
                 door.gameObject.SetActive(active);
 
+                Transform colliders = door.GetComponentInParent<Room>()?.transform.Find("colliders");
+                if (colliders != null && colliders.Find(door.name) != null)
+                {
+                    colliders.Find(door.name).gameObject.SetActive(!active);
+                }
+                
                 Transform connectedDoor = FindConnectedDoor(door);
-                if (connectedDoor != null)
+                if(connectedDoor != null)
                 {
                     connectedDoor.gameObject.SetActive(active);
-
+                    Transform connectedColliders = connectedDoor.GetComponentInParent<Room>()?.transform.Find("colliders");
+                    if(connectedColliders != null && connectedColliders.Find(connectedDoor.name) != null)
+                    {
+                        connectedColliders.Find(connectedDoor.name).gameObject.SetActive(!active);
+                    }
                 }
             }
         }

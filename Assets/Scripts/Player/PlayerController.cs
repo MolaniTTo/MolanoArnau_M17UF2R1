@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     [SerializeField] private Transform SlashAnimSpawnPoint;
 
     private Vector2 moveDirection;    // Dirección del movimiento
+    public bool isMovementBlocked { get; set; } = false;  // Estado del movimiento
     public Vector2 lookDirection { get; private set;}
 
     public bool isRightClickPressed { get; private set; }// Estado del clic derecho
@@ -136,6 +137,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
 
     private void MovePlayer()
     {
+        if (isMovementBlocked) return;
         // Aplicar el movimiento
         Vector3 movement = new Vector3(moveDirection.x, moveDirection.y, 0f);
         transform.position += movement * speed * Time.deltaTime;

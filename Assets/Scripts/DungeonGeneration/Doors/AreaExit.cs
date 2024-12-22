@@ -29,6 +29,7 @@ public class AreaExit : MonoBehaviour
 
     private IEnumerator HandleRoomTransition(Transform player)
     {
+        PlayerController.Instance.isMovementBlocked = true;
         screenFade.FadeOut();
         yield return new WaitForSeconds(2f);
 
@@ -37,6 +38,8 @@ public class AreaExit : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         screenFade.FadeIn();
+        PlayerController.Instance.isMovementBlocked = false;
        
+
     }
 }
