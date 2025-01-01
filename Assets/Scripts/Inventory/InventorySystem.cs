@@ -31,7 +31,7 @@ public class InventorySystem : MonoBehaviour
     private IEnumerator InitializeInventory()
     {
         // Esperar un frame para asegurarse de que todos los objetos han sido instanciados
-        yield return new WaitForSeconds(0.1f);  
+        yield return new WaitForSeconds(0.5f);  
 
         if (GetComponentInChildren<InventorySlot>() == null || GetComponentInChildren<InventorySlot>().GetWeaponInfo() == null)
         {

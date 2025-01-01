@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class SnakeMapGenerator : MonoBehaviour
 {
+    public bool IsMapGenerated { get; private set; }
     public int rows = 10; // Número de filas
     public int columns = 10; // Número de columnas
     public GameObject[] roomPrefabs; // Lista de prefabs de habitaciones (Room1, Room2, etc.)
@@ -22,13 +23,12 @@ public class SnakeMapGenerator : MonoBehaviour
     private List<Vector2Int> roomPositions = new List<Vector2Int>(); // Lista para almacenar las posiciones de las habitaciones
     private List<GameObject> availablePrefabs; // Lista para manejar los prefabs disponibles
 
-    private void Start()
-    {
-    }
+
 
     // Generar la serpiente de habitaciones
     public void GenerateSnake()
     {
+        IsMapGenerated = false;
         Debug.Log("Generando serpiente de habitaciones...");
         if (roomPrefabs == null || roomPrefabs.Length == 0 || grid == null)
         {
@@ -65,6 +65,7 @@ public class SnakeMapGenerator : MonoBehaviour
 
         // Generar la serpiente de habitaciones
         GenerateSnakeRooms(width, height);
+        IsMapGenerated = true;
     }
 
     // Método para generar las habitaciones de la serpiente
@@ -97,7 +98,14 @@ public class SnakeMapGenerator : MonoBehaviour
 
             // Instanciar la habitación
             GameObject newRoom = PlaceRoom(nextPos, width, height, i == snakeLength - 1 ? "End" : $"Room {i}");
-
+            if(i == snakeLength - 1)
+            {
+                Room roomComponent = newRoom.GetComponent<Room>();
+                if (roomComponent != null)
+                {
+                    roomComponent.isLastRoom = true;
+                }
+            }
             // Guardar la posición de la nueva habitación
             roomPositions.Add(nextPos);
 

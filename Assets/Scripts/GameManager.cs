@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     private SnakeMapGenerator mapGenerator;
     private InitGame initGame;
-    public int currentRound = 1;
+    public ScreenFade screenFade;
+    public int currentRound = 2;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         mapGenerator = FindObjectOfType<SnakeMapGenerator>();
         initGame = FindObjectOfType<InitGame>();
+        screenFade = FindObjectOfType<ScreenFade>();
 
         if (mapGenerator == null || initGame == null)
         {
@@ -47,13 +49,22 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Comenzando un nuevo juego.");
         currentRound = 1;
+        if(initGame != null)
+        {
+            initGame.SetRound(currentRound);
+        }
         InitializeGame();
     }
 
     public void StartNewRound()
     {
+        screenFade.FadeOut();
         Debug.Log("Comenzando una nueva ronda.");
         currentRound++;
+        if(initGame != null)
+        {
+            initGame.SetRound(currentRound);
+        }
         InitializeGame();
     }
 
@@ -63,8 +74,16 @@ public class GameManager : MonoBehaviour
         ClearCurrentState();
         Debug.Log("Estado previo limpiado. Generando mapa...");
         mapGenerator.GenerateSnake(); // Agregar Debug aquí para ver si se llama.
+        StartCoroutine(StartGameAfterMapGenerated());
+    }
+
+    private IEnumerator StartGameAfterMapGenerated()
+    {
+        Debug.Log("Esperando a que se genere el mapa...");
+        yield return new WaitUntil(() => mapGenerator.IsMapGenerated);
         Debug.Log("Mapa generado. Iniciando el juego...");
-        initGame.StartGame(); // También agregar Debug aquí
+        initGame.StartGame();
+        screenFade.FadeIn();
     }
 
     private void ClearCurrentState()
@@ -77,9 +96,17 @@ public class GameManager : MonoBehaviour
         }
 
         // Limpia ítems o cualquier otro objeto necesario
-        foreach (var item in GameObject.FindGameObjectsWithTag("Obstacle"))
+        foreach (var room in GameObject.FindGameObjectsWithTag("Room"))
         {
-            Destroy(item);
+            Room roomComponent = room.GetComponent<Room>();
+            if(roomComponent != null)
+            {
+                roomComponent.EnemySpawnPoints = null;
+                roomComponent.DoorsToUnlock = null;
+                roomComponent.roomConfiner = null;
+                roomComponent.spawnPoint = null;
+            }
+            Destroy(room);
         }
 
         Debug.Log("Estado previo limpiado.");

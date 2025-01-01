@@ -12,7 +12,7 @@ public class InitGame : MonoBehaviour
     private CinemachineConfiner2D confiner;
     private List<GameObject> activeEnemies = new List<GameObject>();
 
-    private int round = 1;
+    private int round = 1;  
 
     private void Awake()
     {
@@ -36,14 +36,21 @@ public class InitGame : MonoBehaviour
     private void SetUpPlayer()
     {
         GameObject startRoom = GameObject.Find("Start");
+        GameObject existingPlayer = GameObject.FindGameObjectWithTag("Player");
         if (startRoom != null)
         {
             Room roomComponent = startRoom.GetComponent<Room>();
             if (roomComponent != null)
             {
-                GameObject player = Instantiate(playerPrefab, roomComponent.spawnPoint.position, Quaternion.identity);
-                virtualCamera.Follow = player.transform;
-
+                if (existingPlayer == null)
+                {
+                    existingPlayer = Instantiate(playerPrefab, roomComponent.spawnPoint.position, Quaternion.identity);
+                }
+                else
+                {
+                    existingPlayer.transform.position = roomComponent.spawnPoint.position;
+                }
+                virtualCamera.Follow = existingPlayer.transform;
                 // Asignar el confiner inicial
                 if (roomComponent.roomConfiner != null)
                 {
@@ -56,6 +63,12 @@ public class InitGame : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetRound(int newRound)
+    {
+        round = newRound;
+        Debug.Log($"Round actualizado en InitGame: {round}");
     }
 
 
@@ -74,6 +87,7 @@ public class InitGame : MonoBehaviour
 
     private void SpawnEnemiesInAllRooms(Room room, int round)
     {
+        if (room == null) return;
         if (enemyPrefabs == null || enemyPrefabs.Length == 0)
         {
             Debug.LogError("No se han asignado prefabs de enemigos.");

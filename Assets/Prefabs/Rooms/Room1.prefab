@@ -37148,7 +37148,7 @@ GameObject:
   - component: {fileID: 8804804327419938025}
   m_Layer: 0
   m_Name: Room1
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37230,6 +37230,8 @@ MonoBehaviour:
   - {fileID: 87436255972855021}
   - {fileID: 264391858173485738}
   - {fileID: 2287736229761142395}
+  DoorsToUnlock: []
+  isLastRoom: 0
 --- !u!1 &5194948759473427819
 GameObject:
   m_ObjectHideFlags: 0

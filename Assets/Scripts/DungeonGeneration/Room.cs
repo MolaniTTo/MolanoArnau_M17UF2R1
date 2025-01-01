@@ -12,7 +12,7 @@ public class Room : MonoBehaviour
 
     private List<GameObject> activeEnemies = new List<GameObject>();
     private bool isCleared = false;
-
+    public bool isLastRoom = false;
     private void Start()
     {
         SetDoorsActive(false);
@@ -47,8 +47,11 @@ public class Room : MonoBehaviour
 
         // Abrir las puertas correspondientes
         SetDoorsActive(true);
-        GameManager.Instance.StartNewRound();
-
+        if(isLastRoom)
+        {
+            Debug.Log("Starting new round...");
+            GameManager.Instance.StartNewRound();
+        }
     }
 
     private void SetDoorsActive(bool active)
