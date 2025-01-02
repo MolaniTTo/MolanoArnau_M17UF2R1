@@ -29,8 +29,8 @@ public class InitGame : MonoBehaviour
             return;
         }
 
-        SetUpPlayer();
         StartCoroutine(SpawnEnemiesInAllRooms());
+        SetUpPlayer();
     }
 
     private void SetUpPlayer()

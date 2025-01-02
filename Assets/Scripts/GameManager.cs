@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => mapGenerator.IsMapGenerated);
         Debug.Log("Mapa generado. Iniciando el juego...");
         initGame.StartGame();
+        yield return new WaitForSeconds(2f);
         screenFade.FadeIn();
     }
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7217346163609578089}
   - component: {fileID: 4756336827218993683}
   - component: {fileID: 5128382466849865536}
+  - component: {fileID: 413004613406685043}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Enemy
@@ -95,6 +96,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &413004613406685043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3866663327724301308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da2b7738f342cd4f8074bc75ddfce16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5039685072689281795
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,8 +279,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00923419, y: -0.027451575}
-  m_Size: {x: 1.1062388, y: 1.7327923}
+  m_Offset: {x: 0.00087682303, y: 0.016367678}
+  m_Size: {x: 0.67166257, y: 1.6451552}
   m_Direction: 0
 --- !u!70 &553963575872753137
 CapsuleCollider2D:
@@ -301,8 +314,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008515057, y: -0.5308767}
-  m_Size: {x: 1.3884147, y: 0.58100516}
+  m_Offset: {x: 0.018440304, y: -0.4554445}
+  m_Size: {x: 1.1780032, y: 0.43014294}
   m_Direction: 1
 --- !u!114 &8388160081592028025
 MonoBehaviour:
@@ -316,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c67b84af9e4913489b164071d5f4e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCounter: {fileID: 0}
   startingHealth: 20
 --- !u!114 &6718760857722381716
 MonoBehaviour:

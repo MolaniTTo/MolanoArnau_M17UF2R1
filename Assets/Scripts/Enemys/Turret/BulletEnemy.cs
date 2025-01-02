@@ -10,13 +10,15 @@ public class BulletEnemy : MonoBehaviour
     public float speed = 5f;
     public float maxDistance = 10f;
     public GameObject explosionEffect;
+    private Transform player;
 
     private Vector3 startPosition;
     private Vector2 moveDirection;
     
     void Start()
     {
-        startPosition = transform.position; 
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        startPosition = transform.position;
     }
 
     void Update()
@@ -37,8 +39,20 @@ public class BulletEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Obstacle"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
+            Explode();
+        }
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(5);
+            KnockBack knockBack = player.GetComponent<KnockBack>();
+            if (knockBack != null)
+            {
+                Vector2 knockBackDirection = (player.position - transform.position).normalized;
+                knockBack.ApplyKnockBack(knockBackDirection); // Empujar al jugador
+            }
             Explode();
         }
     }

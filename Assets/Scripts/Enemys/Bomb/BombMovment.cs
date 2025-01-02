@@ -5,10 +5,10 @@ public class BombMovment : MonoBehaviour
 {
     public float detectionRadious = 5f;  // Radio de detección para seguir al jugador
     public float explosionRadious = 3f; // Radio de explosión
-    public float explosionDelay = 10f;  // Tiempo necesario dentro del radio de explosión para detonar
+    public float explosionDelay = 2f;  // Tiempo necesario dentro del radio de explosión para detonar
     public float moveSpeed = 2f;        // Velocidad de movimiento del enemigo
 
-    public int damage = 50;
+    public int damage = 15;
     public float fadeDuration = 2.0f;
 
     private Animator animator;
@@ -28,12 +28,14 @@ public class BombMovment : MonoBehaviour
 
     private void Update()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        // Si ya está explotando, no hacer nada más
+        // Si ya está explotando moure's cap al jugador
         if (isExploding)
+        {
+            FollowPlayer();
             return;
+        }
 
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         // Si el jugador está dentro del radio de detección
         if (distanceToPlayer <= detectionRadious)
         {
@@ -48,7 +50,8 @@ public class BombMovment : MonoBehaviour
                 }
                 else
                 {
-                    animator.SetBool("IsWalking", false); // Cambiar animación si no está caminando
+                    animator.SetBool("IsWalking", true); // Cambiar animación si no está caminando
+                    FollowPlayer();
                 }
             }
             else
@@ -66,6 +69,7 @@ public class BombMovment : MonoBehaviour
 
     void FollowPlayer()
     {
+        if (player == null) return;
         animator.SetBool("IsWalking", true);
 
         // Movimiento hacia el jugador
@@ -80,12 +84,29 @@ public class BombMovment : MonoBehaviour
         animator.SetTrigger("Explode");
         //esperar a que termine la animación
         StartCoroutine(FadeOut());
-        
     }
 
+    public void HandleExplosionDamage()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (distanceToPlayer <= explosionRadious)
+        {
+            PlayerController playerController = player.GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                playerController.TakeDamage(damage); // Aplicar daño al jugador
+                KnockBack knockBack = player.GetComponent<KnockBack>();
+                if (knockBack != null)
+                {
+                    Vector2 knockBackDirection = (player.position - transform.position).normalized;
+                    knockBack.ApplyKnockBack(knockBackDirection); // Empujar al jugador
+                }
+            }
+        }
+    }
     IEnumerator FadeOut()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(0.5f);
         float elapsedTime = 0f;
         Color color = spriteRenderer.color;
 

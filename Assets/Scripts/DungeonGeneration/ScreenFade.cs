@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ScreenFade : MonoBehaviour
 {
     public Image fadeImage; // La imagen que cubre la pantalla
-    public float fadeDuration = 2f; // Duración del fade in y fade out
+    public float fadeDuration = 0.5f; // Duración del fade in y fade out
 
     private IEnumerator fadeRoutine;
 

@@ -125,11 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec2d960a23bc774f842a0777fa2e592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadious: 8
+  detectionRadious: 10
   explosionRadious: 2.5
-  explosionDelay: 2
+  explosionDelay: 1
   moveSpeed: 1.5
-  damage: 50
+  damage: 15
   fadeDuration: 2
 --- !u!114 &4014484984536055789
 MonoBehaviour:
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c67b84af9e4913489b164071d5f4e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCounter: {fileID: 0}
   startingHealth: 25
 --- !u!70 &3535594764370802407
 CapsuleCollider2D:

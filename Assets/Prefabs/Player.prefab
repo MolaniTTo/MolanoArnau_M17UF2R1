@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 9040289308592283022}
   - component: {fileID: 4153612624299063433}
   - component: {fileID: 2067489028110763940}
+  - component: {fileID: 2878015648851676518}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -477,7 +478,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashSpeed: 5
   speed: 5
-  live: 100
+  maxHealth: 100
+  healthBar: {fileID: 0}
   mytrailRenderer: {fileID: 7503487415981651115}
   weaponCollider: {fileID: 4190088553152329944}
   SlashAnimSpawnPoint: {fileID: 8987885736772180761}
@@ -650,3 +652,17 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2878015648851676518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5167048140116247073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f265bd00b4287be42842cd596d6fa1ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackForce: 10
+  knockBachDuration: 0.3

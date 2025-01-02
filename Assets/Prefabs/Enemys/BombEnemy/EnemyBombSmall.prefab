@@ -129,7 +129,7 @@ MonoBehaviour:
   explosionRadious: 2.5
   explosionDelay: 1
   moveSpeed: 3
-  damage: 30
+  damage: 10
   fadeDuration: 2
 --- !u!114 &2435936831182768646
 MonoBehaviour:
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c67b84af9e4913489b164071d5f4e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCounter: {fileID: 0}
   startingHealth: 10
 --- !u!70 &268679038832099480
 CapsuleCollider2D:

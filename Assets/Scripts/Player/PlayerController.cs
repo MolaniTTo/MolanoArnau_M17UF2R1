@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerActions , PlayerInputActions.ICombatActions
 {
@@ -12,10 +13,15 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
 
     [SerializeField] private float dashSpeed = 9f;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private int live = 100;
+    [SerializeField] private int maxHealth = 100;
+    private int currentHealth;
+
+    [SerializeField] private Image healthBar;
+
     [SerializeField] private TrailRenderer mytrailRenderer;
     [SerializeField] private Transform weaponCollider;
     [SerializeField] private Transform SlashAnimSpawnPoint;
+
 
     private Vector2 moveDirection;    // Dirección del movimiento
     public bool isMovementBlocked { get; set; } = false;  // Estado del movimiento
@@ -38,12 +44,15 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         animator = GetComponent<Animator>();
 
         sword = GetComponentInChildren<Sword>(); //Busquem la espasa com a fill del jugador
+
     }
 
     public void Start()
     {
+        currentHealth = maxHealth;
+        healthBar = GameObject.Find("BackGround").GetComponent<Image>();
+        UpdateHealthBar();
         ic.Combat.Dash.performed += _ => Dash();
-       
     }
 
     void Update()
@@ -162,18 +171,34 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Player hit");
-           
+            TakeDamage(5);
+        }
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Die();
+        }
+        UpdateHealthBar();
+    }
 
-            live -= 10;
-            if (live <= 0)
-            {
-                animator.SetTrigger("Die");
-                isDied = true;
-            }
-            Debug.Log(live);
+    private void Die()
+    {
+        animator.SetTrigger("Die");
+        isDied = true;
+        Debug.Log("Player has died.");
+    }
+    private void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = (float)currentHealth / maxHealth;
         }
     }
 
