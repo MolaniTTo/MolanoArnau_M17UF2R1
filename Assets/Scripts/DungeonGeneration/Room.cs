@@ -10,11 +10,16 @@ public class Room : MonoBehaviour
     public Transform[] EnemySpawnPoints;
     public Transform[] DoorsToUnlock;
 
+    private CinemachineVirtualCamera virtualCamera;
+    private Transform playerTransform;
+    [SerializeField] private float focusDuration = 2f;
+
     private List<GameObject> activeEnemies = new List<GameObject>();
     private bool isCleared = false;
     public bool isLastRoom = false;
     private void Start()
     {
+        virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         SetDoorsActive(false);
     }
 
@@ -45,14 +50,15 @@ public class Room : MonoBehaviour
         isCleared = true;
         Debug.Log($"Room {name} cleared!");
 
-        // Abrir las puertas correspondientes
-        SetDoorsActive(true);
+        StartCoroutine(AnimateDoorOpening());
+       
         if(isLastRoom)
         {
             Debug.Log("Starting new round...");
             GameManager.Instance.StartNewRound();
         }
     }
+
 
     private void SetDoorsActive(bool active)
     {
@@ -67,13 +73,13 @@ public class Room : MonoBehaviour
                 {
                     colliders.Find(door.name).gameObject.SetActive(!active);
                 }
-                
+
                 Transform connectedDoor = FindConnectedDoor(door);
-                if(connectedDoor != null)
+                if (connectedDoor != null)
                 {
                     connectedDoor.gameObject.SetActive(active);
                     Transform connectedColliders = connectedDoor.GetComponentInParent<Room>()?.transform.Find("colliders");
-                    if(connectedColliders != null && connectedColliders.Find(connectedDoor.name) != null)
+                    if (connectedColliders != null && connectedColliders.Find(connectedDoor.name) != null)
                     {
                         connectedColliders.Find(connectedDoor.name).gameObject.SetActive(!active);
                     }
@@ -81,6 +87,68 @@ public class Room : MonoBehaviour
             }
         }
     }
+    private IEnumerator AnimateDoorOpening()
+    {
+        Vector3 originalCameraPosition = virtualCamera.transform.position;
+        Quaternion originalCameraRotation = virtualCamera.transform.rotation;
+
+        foreach (Transform door in DoorsToUnlock)
+        {
+            if (door != null)
+            {
+                // Buscar el componente AreaExit en el hijo de la puerta
+                AreaExit areaExit = door.GetComponentInChildren<AreaExit>();
+
+                if (areaExit != null)
+                {
+                    // Desplazar la cámara hacia la posición de AreaExit, ajustando el offset si es necesario
+                    Vector3 areaExitPosition = areaExit.transform.position;
+                    virtualCamera.transform.position = new Vector3(areaExitPosition.x, areaExitPosition.y, virtualCamera.transform.position.z);
+
+                    // Cambiar el Follow a la puerta solo por un tiempo
+                    if (virtualCamera != null)
+                    {
+                        virtualCamera.Follow = door;
+                        yield return new WaitForSeconds(focusDuration);
+                    }
+
+                    // Abrir la puerta
+                    door.gameObject.SetActive(true);
+
+                    // Gestionar los coliders
+                    Transform colliders = door.GetComponentInParent<Room>()?.transform.Find("colliders");
+                    if (colliders != null && colliders.Find(door.name) != null)
+                    {
+                        colliders.Find(door.name).gameObject.SetActive(false);
+                    }
+
+                    // Gestionar la puerta conectada
+                    Transform connectedDoor = FindConnectedDoor(door);
+                    if (connectedDoor != null)
+                    {
+                        connectedDoor.gameObject.SetActive(true);
+                        Transform connectedColliders = connectedDoor.GetComponentInParent<Room>()?.transform.Find("colliders");
+                        if (connectedColliders != null && connectedColliders.Find(connectedDoor.name) != null)
+                        {
+                            connectedColliders.Find(connectedDoor.name).gameObject.SetActive(false);
+                        }
+                    }
+                }
+            }
+        }
+
+        // Regresar la cámara a su posición original y seguir al jugador
+        if (virtualCamera != null)
+        {
+            virtualCamera.transform.position = originalCameraPosition;  // Restaurar la posición original
+            virtualCamera.transform.rotation = originalCameraRotation;  // Restaurar la rotación original
+
+            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            virtualCamera.Follow = playerTransform;  // Volver a seguir al jugador
+        }
+    }
+
+
 
     private Transform FindConnectedDoor(Transform door)
     {

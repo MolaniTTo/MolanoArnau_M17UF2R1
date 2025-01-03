@@ -6,6 +6,7 @@ public class InventorySystem : MonoBehaviour
 {
     private int activeSlotIndexNum = 0;
 
+
     private PlayerInputActions playerInputActions;
 
     private void Awake()
@@ -25,7 +26,27 @@ public class InventorySystem : MonoBehaviour
 
     private void ToggleActiveSlot(int numValue)
     {
+        if(transform.GetChild(numValue-1).GetComponentInChildren<InventorySlot>().GetWeaponInfo() == null)
+        {
+            Debug.LogWarning("Slot is locked or weapon not assigned!");
+            return;
+        }
+
         ToggleActiveHighlight(numValue-1);
+    }
+
+    public void UnlockSlot(int index)
+    {
+        if (index >= 0 && index < transform.childCount)
+        {
+            var slot = transform.GetChild(index).GetComponentInChildren<InventorySlot>();
+            if (slot != null)
+            {
+                slot.UnlockSlot(); // Desbloquea el slot.
+                Debug.Log($"Slot {index} unlocked!");
+            }
+        }
+
     }
 
     private IEnumerator InitializeInventory()

@@ -37231,6 +37231,7 @@ MonoBehaviour:
   - {fileID: 264391858173485738}
   - {fileID: 2287736229761142395}
   DoorsToUnlock: []
+  focusDuration: 2
   isLastRoom: 0
 --- !u!1 &5194948759473427819
 GameObject:

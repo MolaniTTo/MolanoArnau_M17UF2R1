@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 65531801}
   - component: {fileID: 65531800}
   m_Layer: 5
-  m_Name: Kills
+  m_Name: KillsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1031,7 +1031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &693018345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1039,13 +1039,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693018344}
-  m_LocalRotation: {x: -0, y: -0, z: 0.22362597, w: 0.9746751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7952829, y: 0.7952829, z: 0.7952829}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1709265760}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 25.844}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.0000038146973}
@@ -1134,6 +1134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterText: {fileID: 65531800}
+  inventorySystem: {fileID: 1851659014}
+  basekillsToUnlockSlots: 00000000050000000a000000
 --- !u!1 &822978288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1148,7 @@ GameObject:
   - component: {fileID: 822978291}
   - component: {fileID: 822978290}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Kills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1498,6 +1500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 13f3f4ddc18937349b97f68ed36ae1ca, type: 2}
+  isUnlocked: 0
 --- !u!1 &1326592026
 GameObject:
   m_ObjectHideFlags: 3
@@ -1759,6 +1762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 9c0fc1c3e1609ec429a8017bd3e8d34c, type: 2}
+  isUnlocked: 1
 --- !u!1 &1677507177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,7 +1813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31925955, g: 0.7169812, b: 0.31452474, a: 1}
+  m_Color: {r: 0.20957606, g: 0.4528302, b: 0.20719118, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1995,6 +1999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 858e38928b8cebc47a0d72d39c297884, type: 2}
+  isUnlocked: 0
 --- !u!1 &1851659011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.49056602, g: 0.0995016, b: 0.0995016, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2386,7 +2391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2098489280
 RectTransform:
   m_ObjectHideFlags: 0

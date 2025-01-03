@@ -56,12 +56,18 @@ public class GameManager : MonoBehaviour
         InitializeGame();
     }
 
-    public void StartNewRound()
+    public IEnumerator StartNewRound()
     {
         screenFade.FadeOut();
+        yield return new WaitForSeconds(2f);
         Debug.Log("Comenzando una nueva ronda.");
         currentRound++;
-        if(initGame != null)
+        EnemyCounter enemyCounter = FindObjectOfType<EnemyCounter>();
+        if(enemyCounter != null)
+        {
+            enemyCounter.UpdateKillsToUnlockForRound(currentRound);
+        }
+        if (initGame != null)
         {
             initGame.SetRound(currentRound);
         }
@@ -83,7 +89,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => mapGenerator.IsMapGenerated);
         Debug.Log("Mapa generado. Iniciando el juego...");
         initGame.StartGame();
-        yield return new WaitForSeconds(2f);
         screenFade.FadeIn();
     }
 
