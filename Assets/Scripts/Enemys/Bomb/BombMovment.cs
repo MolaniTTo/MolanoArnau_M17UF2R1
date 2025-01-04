@@ -9,11 +9,13 @@ public class BombMovment : MonoBehaviour
     public float moveSpeed = 2f;        // Velocidad de movimiento del enemigo
 
     public int damage = 15;
-    public float fadeDuration = 2.0f;
+    public float fadeDuration = 1f;
 
     private Animator animator;
     private Transform player;
     private bool isExploding = false;
+    private bool isDead = false;
+    private bool isFadingOut = false;
     private float timeInExplosionRadius = 0f;
     SpriteRenderer spriteRenderer;
     EnemyHealth enemyHealth;
@@ -28,12 +30,7 @@ public class BombMovment : MonoBehaviour
 
     private void Update()
     {
-        // Si ya está explotando moure's cap al jugador
-        if (isExploding)
-        {
-            FollowPlayer();
-            return;
-        }
+        if(isDead || isFadingOut) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         // Si el jugador está dentro del radio de detección
@@ -69,6 +66,7 @@ public class BombMovment : MonoBehaviour
 
     void FollowPlayer()
     {
+        if(isFadingOut) return;
         if (player == null) return;
         animator.SetBool("IsWalking", true);
 
@@ -82,8 +80,6 @@ public class BombMovment : MonoBehaviour
         isExploding = true;
         Debug.Log("BOOOM! Explosion triggered.");
         animator.SetTrigger("Explode");
-        //esperar a que termine la animación
-        StartCoroutine(FadeOut());
     }
 
     public void HandleExplosionDamage()
@@ -103,10 +99,13 @@ public class BombMovment : MonoBehaviour
                 }
             }
         }
+        isFadingOut = true;
+
     }
     IEnumerator FadeOut()
     {
-        yield return new WaitForSeconds(0.5f);
+
+        animator.SetBool("IsWalking", false);
         float elapsedTime = 0f;
         Color color = spriteRenderer.color;
 
@@ -118,6 +117,7 @@ public class BombMovment : MonoBehaviour
             yield return null;
         }
         spriteRenderer.color = new Color(color.r, color.g, color.b, 0f);
+        isDead = true;
         enemyHealth.Die();
     }
 

@@ -16,6 +16,7 @@ public class ScreenFade : MonoBehaviour
 
     public void FadeOut()
     {
+        Debug.Log("FadeOut");
         if (fadeRoutine != null)
         {
             StopCoroutine(fadeRoutine);
@@ -39,6 +40,7 @@ public class ScreenFade : MonoBehaviour
 
     private IEnumerator FadeOutRoutine()
     {
+        Debug.Log("FadeOutRoutine");
         float timer = 0f;
         Color color = fadeImage.color;
 

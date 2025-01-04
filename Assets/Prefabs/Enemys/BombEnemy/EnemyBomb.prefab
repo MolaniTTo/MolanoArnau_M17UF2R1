@@ -126,11 +126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadious: 10
-  explosionRadious: 2.5
+  explosionRadious: 3.5
   explosionDelay: 1
   moveSpeed: 1.5
   damage: 15
-  fadeDuration: 2
+  fadeDuration: 1
 --- !u!114 &4014484984536055789
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -50,12 +51,14 @@ public class Room : MonoBehaviour
         isCleared = true;
         Debug.Log($"Room {name} cleared!");
 
-        StartCoroutine(AnimateDoorOpening());
-       
-        if(isLastRoom)
+        if (isLastRoom)
         {
             Debug.Log("Starting new round...");
-            GameManager.Instance.StartNewRound();
+            GameManager.Instance.StartCoroutine(GameManager.Instance.StartNewRound());
+        }
+        else
+        {
+            StartCoroutine(AnimateDoorOpening());
         }
     }
 
@@ -101,21 +104,22 @@ public class Room : MonoBehaviour
 
                 if (areaExit != null)
                 {
-                    // Desplazar la cámara hacia la posición de AreaExit, ajustando el offset si es necesario
-                    Vector3 areaExitPosition = areaExit.transform.position;
-                    virtualCamera.transform.position = new Vector3(areaExitPosition.x, areaExitPosition.y, virtualCamera.transform.position.z);
+                    // Usar la posición global del AreaExit
+                    Vector3 areaExitPosition = new Vector3(areaExit.transform.position.x, areaExit.transform.position.y, originalCameraPosition.z);
 
-                    // Cambiar el Follow a la puerta solo por un tiempo
-                    if (virtualCamera != null)
-                    {
-                        virtualCamera.Follow = door;
-                        yield return new WaitForSeconds(focusDuration);
-                    }
+                    // Detener el seguimiento temporalmente
+                    virtualCamera.Follow = null;
+
+                    // Mover la cámara suavemente hacia la puerta
+                    yield return MoveCameraToPosition(areaExitPosition, 1f);
 
                     // Abrir la puerta
                     door.gameObject.SetActive(true);
 
-                    // Gestionar los coliders
+                    // Permanecer enfocado en la puerta mientras se abre
+                    yield return new WaitForSeconds(focusDuration);
+
+                    // Gestionar los colliders
                     Transform colliders = door.GetComponentInParent<Room>()?.transform.Find("colliders");
                     if (colliders != null && colliders.Find(door.name) != null)
                     {
@@ -133,19 +137,42 @@ public class Room : MonoBehaviour
                             connectedColliders.Find(connectedDoor.name).gameObject.SetActive(false);
                         }
                     }
+
+                    yield return new WaitForSeconds(0.5f);
                 }
             }
         }
 
-        // Regresar la cámara a su posición original y seguir al jugador
-        if (virtualCamera != null)
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        if (playerTransform != null)
         {
-            virtualCamera.transform.position = originalCameraPosition;  // Restaurar la posición original
-            virtualCamera.transform.rotation = originalCameraRotation;  // Restaurar la rotación original
+            Vector3 playerCameraPosition = new Vector3(playerTransform.position.x, playerTransform.position.y, originalCameraPosition.z);
 
-            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-            virtualCamera.Follow = playerTransform;  // Volver a seguir al jugador
+            // Mover la cámara de vuelta al jugador
+            yield return MoveCameraToPosition(playerCameraPosition, 1f);
+
+            // Restaurar el seguimiento al jugador
+            virtualCamera.Follow = playerTransform;
         }
+    }
+
+    private IEnumerator MoveCameraToPosition(Vector3 targetPosition, float duration)
+    {
+        Vector3 startPosition = virtualCamera.transform.position;
+        float elapsedTime = 0f;
+
+        Debug.Log($"Starting camera move from {startPosition} to {targetPosition}.");
+
+        while (elapsedTime < duration)
+        {
+            virtualCamera.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        virtualCamera.transform.position = targetPosition;
+        Debug.Log($"Camera moved to {targetPosition}.");
     }
 
 
