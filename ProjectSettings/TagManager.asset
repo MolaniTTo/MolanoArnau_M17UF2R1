@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Obstacle
   - Room
+  - none
   layers:
   - Default
   - TransparentFX

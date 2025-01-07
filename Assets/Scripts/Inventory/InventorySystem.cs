@@ -24,7 +24,7 @@ public class InventorySystem : MonoBehaviour
         playerInputActions.Enable();
     }
 
-    private void ToggleActiveSlot(int numValue)
+    public void ToggleActiveSlot(int numValue)
     {
         if(transform.GetChild(numValue-1).GetComponentInChildren<InventorySlot>().GetWeaponInfo() == null)
         {
@@ -46,13 +46,24 @@ public class InventorySystem : MonoBehaviour
                 Debug.Log($"Slot {index} unlocked!");
             }
         }
+    }
 
+    public void ResetSlots()
+    {
+        var slots = GetComponentsInChildren<InventorySlot>();
+        foreach (var slot in slots)
+        {
+            if (slot != slots[0])
+            {
+                slot.LockSlot();
+            }
+        }
     }
 
     private IEnumerator InitializeInventory()
     {
         // Esperar un frame para asegurarse de que todos los objetos han sido instanciados
-        yield return new WaitForSeconds(0.5f);  
+        yield return new WaitForSeconds(3.5f);  
 
         if (GetComponentInChildren<InventorySlot>() == null || GetComponentInChildren<InventorySlot>().GetWeaponInfo() == null)
         {

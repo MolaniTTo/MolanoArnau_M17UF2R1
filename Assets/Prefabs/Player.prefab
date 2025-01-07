@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 4153612624299063433}
   - component: {fileID: 2067489028110763940}
   - component: {fileID: 2878015648851676518}
+  - component: {fileID: 3852749311244263752}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -486,6 +487,7 @@ MonoBehaviour:
   facingLeft: 0
   isDashing: 0
   isDied: 0
+  isPlayerActive: 0
 --- !u!95 &9040289308592283022
 Animator:
   serializedVersion: 5
@@ -666,3 +668,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockBackForce: 10
   knockBachDuration: 0.3
+--- !u!114 &3852749311244263752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5167048140116247073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f09989fbf020846beccdc8fc32d01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: a98e223e605732c4796badbba2d55ee9, type: 2}
+  restoreDefaultMatTime: 0.2

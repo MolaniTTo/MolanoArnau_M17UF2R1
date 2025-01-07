@@ -42,11 +42,13 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("Componentes encontrados correctamente.");
-        StartNewGame();
+        StartCoroutine(StartNewGame());
     }
 
-    public void StartNewGame()
+    public IEnumerator StartNewGame()
     {
+        screenFade.FadeOut();
+        yield return new WaitForSeconds(2f);
         Debug.Log("Comenzando un nuevo juego.");
         currentRound = 1;
         if(initGame != null)
@@ -63,15 +65,17 @@ public class GameManager : MonoBehaviour
         Debug.Log("Comenzando una nueva ronda.");
         currentRound++;
         EnemyCounter enemyCounter = FindObjectOfType<EnemyCounter>();
-        if(enemyCounter != null)
-        {
-            enemyCounter.UpdateKillsToUnlockForRound(currentRound);
-        }
+       
         if (initGame != null)
         {
             initGame.SetRound(currentRound);
         }
+
         InitializeGame();
+        if (enemyCounter != null)
+        {
+            enemyCounter.StartNewRound(currentRound);
+        }
     }
 
     public void InitializeGame()
@@ -90,6 +94,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Mapa generado. Iniciando el juego...");
         initGame.StartGame();
         screenFade.FadeIn();
+        yield return new WaitForSeconds(1f);
+        initGame.FlickerAndActive();
     }
 
     private void ClearCurrentState()

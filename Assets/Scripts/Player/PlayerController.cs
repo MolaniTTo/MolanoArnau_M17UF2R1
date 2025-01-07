@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
 
     private PlayerInputActions ic; // Referencia al Input Action
     private Animator animator; // Referencia al componente Animator
+    private Flash flash; // Referencia al componente Flash
 
     [SerializeField] private float dashSpeed = 9f;
     [SerializeField] private float speed = 5f;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     public bool facingLeft = false;
     public bool isDashing = false;
     public bool isDied = false;
+    public bool isPlayerActive = false;
 
     private Sword sword; // Referencia a la espasa
 
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         ic = new PlayerInputActions();
         ic.Player.SetCallbacks(this);
         animator = GetComponent<Animator>();
-
+        flash = GetComponent<Flash>();
         sword = GetComponentInChildren<Sword>(); //Busquem la espasa com a fill del jugador
 
     }
@@ -70,6 +72,11 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     private void OnDisable()
     {
         ic.Disable();
+    }
+
+    public void SetPlayerActive(bool isActive)
+    {
+        isPlayerActive = isActive;
     }
 
     public Transform GetWeaponCollider()
@@ -107,7 +114,6 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     {
         if(context.performed)
         {
-
             // Calcular la dirección del cursor desde la posición del jugador
             Vector2 mousePosition = context.ReadValue<Vector2>();
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
@@ -124,8 +130,6 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
                 facingLeft = false;
             }
         }
-
-
     }
 
     public void OnRightClick(InputAction.CallbackContext context)
@@ -142,6 +146,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
             sword?.Attack();
         }
     }
+
 
 
     private void MovePlayer()
@@ -180,6 +185,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        flash.PlayerFlicker();
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -193,6 +199,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         animator.SetTrigger("Die");
         isDied = true;
         Debug.Log("Player has died.");
+        SetPlayerActive(false);
     }
     private void UpdateHealthBar()
     {

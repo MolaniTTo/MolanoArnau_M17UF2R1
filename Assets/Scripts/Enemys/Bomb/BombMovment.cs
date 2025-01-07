@@ -19,10 +19,13 @@ public class BombMovment : MonoBehaviour
     private float timeInExplosionRadius = 0f;
     SpriteRenderer spriteRenderer;
     EnemyHealth enemyHealth;
+    PlayerController playerController;
+
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerController = player.GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyHealth = GetComponent<EnemyHealth>();
@@ -30,8 +33,8 @@ public class BombMovment : MonoBehaviour
 
     private void Update()
     {
-        if(isDead || isFadingOut) return;
 
+        if (isDead || isFadingOut || playerController == null || !playerController.isPlayerActive) return; // Verificar si el jugador está activo
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         // Si el jugador está dentro del radio de detección
         if (distanceToPlayer <= detectionRadious)

@@ -49,7 +49,7 @@ public class InitGame : MonoBehaviour
                 else
                 {
                     existingPlayer.transform.position = roomComponent.spawnPoint.position;
-                }
+                } 
                 virtualCamera.Follow = existingPlayer.transform;
                 // Asignar el confiner inicial
                 if (roomComponent.roomConfiner != null)
@@ -62,6 +62,31 @@ public class InitGame : MonoBehaviour
                     Debug.LogError("StartRoom no tiene un confiner asignado.");
                 }
             }
+        }
+    }
+
+    public void FlickerAndActive()
+    {
+        Debug.Log("Flicker and active");
+        GameObject existingPlayer = GameObject.FindGameObjectWithTag("Player");
+        if (existingPlayer != null)
+        {
+            Debug.Log("Player encontrado");
+            Flash flash = existingPlayer.GetComponent<Flash>();
+            if (flash != null)
+            {
+                Debug.Log("Componente Flash encontrado");
+                StartCoroutine(flash.PlayerFlicker());
+            }
+            else
+            {
+                Debug.LogError("No se ha encontrado el componente Flash en el jugador.");
+            }
+            
+        }
+        else
+        {
+            Debug.LogError("No se ha encontrado el jugador.");
         }
     }
 

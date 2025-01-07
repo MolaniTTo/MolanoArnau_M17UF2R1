@@ -868,7 +868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.7911868, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.79215693, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.92509365, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.9903991, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1501,6 +1501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 13f3f4ddc18937349b97f68ed36ae1ca, type: 2}
   isUnlocked: 0
+  itemImage: {fileID: 2098489279}
 --- !u!1 &1326592026
 GameObject:
   m_ObjectHideFlags: 3
@@ -1724,7 +1725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.92509365, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.9903991, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1763,6 +1764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 9c0fc1c3e1609ec429a8017bd3e8d34c, type: 2}
   isUnlocked: 1
+  itemImage: {fileID: 557530518}
 --- !u!1 &1677507177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,7 +1963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.92509365, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.9903991, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2000,6 +2002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: 858e38928b8cebc47a0d72d39c297884, type: 2}
   isUnlocked: 0
+  itemImage: {fileID: 693018344}
 --- !u!1 &1851659011
 GameObject:
   m_ObjectHideFlags: 0
