@@ -36,6 +36,10 @@ public class Flash : MonoBehaviour
         spriteRenderer.material = whiteFlashMat;
         yield return new WaitForSeconds(restoreDefaultMatTime);
         spriteRenderer.material = defaultMat;
+        yield return new WaitForSeconds(restoreDefaultMatTime);
+        spriteRenderer.material = whiteFlashMat;
+        yield return new WaitForSeconds(restoreDefaultMatTime);
+        spriteRenderer.material = defaultMat;
         Debug.Log("PlayerFlicker Executed");
         GameObject existingPlayer = GameObject.FindGameObjectWithTag("Player");
         existingPlayer.GetComponent<PlayerController>().SetPlayerActive(true);

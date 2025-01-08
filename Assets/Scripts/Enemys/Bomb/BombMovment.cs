@@ -34,7 +34,7 @@ public class BombMovment : MonoBehaviour
     private void Update()
     {
 
-        if (isDead || isFadingOut || playerController == null || !playerController.isPlayerActive) return; // Verificar si el jugador está activo
+        if (isDead || isFadingOut || playerController == null || playerController.isPlayerActive == false) return; // Verificar si el jugador está activo
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         // Si el jugador está dentro del radio de detección
         if (distanceToPlayer <= detectionRadious)

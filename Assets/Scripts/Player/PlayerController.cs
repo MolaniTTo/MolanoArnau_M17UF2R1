@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        flash.PlayerFlicker();
+        StartCoroutine(flash.PlayerFlicker());
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -200,6 +200,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         isDied = true;
         Debug.Log("Player has died.");
         SetPlayerActive(false);
+
     }
     private void UpdateHealthBar()
     {
