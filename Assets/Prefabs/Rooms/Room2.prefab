@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 8055338413957506536}
   m_Layer: 0
   m_Name: Fire2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2178,7 +2178,7 @@ GameObject:
   - component: {fileID: 8520038293066569398}
   m_Layer: 0
   m_Name: FrontObjectsRoom2_5
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2368,7 +2368,7 @@ GameObject:
   - component: {fileID: 7974757959935889555}
   m_Layer: 0
   m_Name: FrontObjects_11
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2488,7 +2488,7 @@ GameObject:
   - component: {fileID: 1853555034783765814}
   m_Layer: 0
   m_Name: FrontObjectsRoom2_4
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2885,7 +2885,7 @@ GameObject:
   - component: {fileID: 8190442769937540648}
   m_Layer: 0
   m_Name: FrontObjectsRoom2_1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31516,7 +31516,7 @@ GameObject:
   - component: {fileID: 7219068874036195978}
   m_Layer: 0
   m_Name: FrontObjects_1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31666,7 +31666,7 @@ GameObject:
   - component: {fileID: 7745391220024508869}
   m_Layer: 0
   m_Name: FrontObjectsRoom2_0
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31750,7 +31750,7 @@ GameObject:
   - component: {fileID: 4435074208713241033}
   m_Layer: 0
   m_Name: FrontObjectsRoom2_2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31834,7 +31834,7 @@ GameObject:
   - component: {fileID: 5519299050152122220}
   m_Layer: 0
   m_Name: FrontObjectsRoom2_3
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67311,7 +67311,7 @@ GameObject:
   - component: {fileID: 7603938110256099533}
   m_Layer: 0
   m_Name: FrontObjects_6
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

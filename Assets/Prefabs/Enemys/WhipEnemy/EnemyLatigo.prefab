@@ -146,6 +146,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7217346163609578089}
+  - {fileID: 156952167684450152}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6789375161197903835
@@ -331,6 +332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCounter: {fileID: 0}
+  healthBarPrefab: {fileID: 6326447643032445046, guid: 613bb68fa9b925e448439c213c60a678, type: 3}
+  healthBarPosition: {fileID: 156952167684450152}
   startingHealth: 20
 --- !u!114 &6718760857722381716
 MonoBehaviour:
@@ -346,3 +349,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteFlashMat: {fileID: 2100000, guid: b3e8022f0bc15fc47af307f81e665df6, type: 2}
   restoreDefaultMatTime: 0.2
+--- !u!1 &6895578766358104099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 156952167684450152}
+  m_Layer: 0
+  m_Name: HealthBarPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &156952167684450152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6895578766358104099}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.216, y: 0.976, z: -0.002714532}
+  m_LocalScale: {x: 0.5649684, y: 0.5649684, z: 0.5649684}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 127374393935349738}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -13,9 +13,12 @@ public class Sword : MonoBehaviour, IWeapon
 
     private GameObject slashAnim;
 
+    private float currentCooldown;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        currentCooldown = weaponSO.weaponCooldown;
     }
 
     private void Start()
@@ -43,6 +46,13 @@ public class Sword : MonoBehaviour, IWeapon
     public WeaponSO GetWeaponSO()
     {
         return weaponSO;
+    }
+
+    public void SetWeaponCooldown(float newCooldown)
+    {
+        currentCooldown = newCooldown;
+        weaponSO.weaponCooldown = newCooldown;
+        Debug.Log("Setting new cooldown to sword: " + newCooldown);
     }
 
     public void Attack()
@@ -98,4 +108,6 @@ public class Sword : MonoBehaviour, IWeapon
             weaponCollider.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
+
+
 }

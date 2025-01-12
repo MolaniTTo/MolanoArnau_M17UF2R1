@@ -94,11 +94,14 @@ public class BombMovment : MonoBehaviour
             if (playerController != null)
             {
                 playerController.TakeDamage(damage); // Aplicar daño al jugador
-                KnockBack knockBack = player.GetComponent<KnockBack>();
-                if (knockBack != null)
+                if(!playerController.shieldActive)
                 {
-                    Vector2 knockBackDirection = (player.position - transform.position).normalized;
-                    knockBack.ApplyKnockBack(knockBackDirection); // Empujar al jugador
+                    KnockBack knockBack = player.GetComponent<KnockBack>();
+                    if (knockBack != null)
+                    {
+                        Vector2 knockBackDirection = (player.position - transform.position).normalized;
+                        knockBack.ApplyKnockBack(knockBackDirection); // Empujar al jugador
+                    }
                 }
             }
         }

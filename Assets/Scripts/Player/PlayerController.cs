@@ -11,13 +11,18 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     private PlayerInputActions ic; // Referencia al Input Action
     private Animator animator; // Referencia al componente Animator
     private Flash flash; // Referencia al componente Flash
+    private ScreenFade screenFade; // Referencia al componente ScreenFade
+    private EnemyCounter enemyCounter; // Referencia al contador de enemigos
 
     [SerializeField] private float dashSpeed = 9f;
     [SerializeField] private float speed = 5f;
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int shield = 150;
     private int currentHealth;
 
     [SerializeField] private Image healthBar;
+    [SerializeField] private GameObject shieldBarObj;
+    [SerializeField] private Image shieldBar;
 
     [SerializeField] private TrailRenderer mytrailRenderer;
     [SerializeField] private Transform weaponCollider;
@@ -34,6 +39,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     public bool isDashing = false;
     public bool isDied = false;
     public bool isPlayerActive = false;
+    public bool shieldActive = false;
 
     private Sword sword; // Referencia a la espasa
 
@@ -46,15 +52,23 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         animator = GetComponent<Animator>();
         flash = GetComponent<Flash>();
         sword = GetComponentInChildren<Sword>(); //Busquem la espasa com a fill del jugador
+        screenFade = FindObjectOfType<ScreenFade>();
+        enemyCounter = FindObjectOfType<EnemyCounter>();
 
     }
 
     public void Start()
     {
         currentHealth = maxHealth;
-        healthBar = GameObject.Find("BackGround").GetComponent<Image>();
+
+        healthBar = GameObject.Find("HealthBackGround").GetComponent<Image>();
+        shieldBar = GameObject.Find("ShieldBarBackGround").GetComponent<Image>();
+        shieldBarObj = GameObject.Find("ShieldBar");
+        shieldBarObj.SetActive(false);
         UpdateHealthBar();
+
         ic.Combat.Dash.performed += _ => Dash();
+
     }
 
     void Update()
@@ -147,8 +161,6 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         }
     }
 
-
-
     private void MovePlayer()
     {
         if (isMovementBlocked) return;
@@ -184,22 +196,62 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     }
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        StartCoroutine(flash.PlayerFlicker());
-        if (currentHealth <= 0)
+        if(shieldActive)
         {
-            currentHealth = 0;
-            Die();
+            shield -= damage;
+            StartCoroutine(flash.PlayerFlicker());
+            if (shield <= 0)
+            {
+                shield = 0;
+                shieldActive = false;
+                shieldBarObj.SetActive(false);
+            }
+            UpdateShieldBar();
+            return;
+        }
+        else
+        {
+            currentHealth -= damage;
+            StartCoroutine(flash.PlayerFlicker());
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                StartCoroutine(Die());
+            }
+            UpdateHealthBar();
+        }
+    }
+
+   public void Heal(int healAmount)
+   {
+        Debug.Log("Player healed for " + healAmount + " health.");
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
         }
         UpdateHealthBar();
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
+        UpdateHealthBar();
         animator.SetTrigger("Die");
         isDied = true;
         Debug.Log("Player has died.");
         SetPlayerActive(false);
+        isMovementBlocked = true;
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(GameManager.Instance.InitializeGameWithDelay());
+        yield return new WaitForSeconds(2f);
+        animator.ResetTrigger("Die");
+        animator.SetTrigger("Respawn");
+        currentHealth = maxHealth;
+        isDied = false;
+        isMovementBlocked = false;
+        enemyCounter.Reset();
+        UpdateHealthBar();
+        SetPlayerActive(true);
 
     }
     private void UpdateHealthBar()
@@ -208,6 +260,24 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         {
             healthBar.fillAmount = (float)currentHealth / maxHealth;
         }
+    }
+
+    public void ActivateShield()
+    {
+        Debug.Log("Player shield activated.");
+        shieldBarObj.SetActive(true);
+        shieldActive = true;
+        shield = 150;
+        UpdateShieldBar();
+    }
+
+    private void UpdateShieldBar()
+    {
+        if (shieldBar != null)
+        {
+            shieldBar.fillAmount = (float)shield / 150;
+        }
+
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -251,5 +321,3 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         isDashing = false;
     }
 }
-
-

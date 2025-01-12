@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AreaExit : MonoBehaviour
@@ -29,17 +30,31 @@ public class AreaExit : MonoBehaviour
 
     private IEnumerator HandleRoomTransition(Transform player)
     {
+        //Si el areaExit tiene como tag "EntryStore" se asigna areaEntrance y roomConfiner de manera manual
+        if (gameObject.CompareTag("EntryStore"))
+        {
+            areaEntrance = GameObject.FindGameObjectWithTag("EntranceStore").transform;
+            roomConfiner = GameObject.FindGameObjectWithTag("Store").GetComponentInChildren<PolygonCollider2D>();
+        }
+        if (gameObject.CompareTag("ExitStore"))
+        {
+            areaEntrance = GameObject.FindGameObjectWithTag("EntryDungeon").transform;
+            roomConfiner = GameObject.FindGameObjectWithTag("ConfinerConectionWithStore").GetComponentInParent<PolygonCollider2D>();
+        }
         PlayerController.Instance.isMovementBlocked = true;
+        PlayerController.Instance.isPlayerActive = false;
         screenFade.FadeOut();
         yield return new WaitForSeconds(2f);
 
         player.position = areaEntrance.position;
         confinerManager.UpdateConfiner(roomConfiner);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.3f);
 
         screenFade.FadeIn();
         PlayerController.Instance.isMovementBlocked = false;
+        yield return new WaitForSeconds(0.8f);
+        PlayerController.Instance.isPlayerActive = true;
        
-
     }
+
 }

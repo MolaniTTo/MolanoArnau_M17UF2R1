@@ -98,7 +98,7 @@ public class InitGame : MonoBehaviour
 
 
     private IEnumerator SpawnEnemiesInAllRooms()
-    {
+    {  
         Room[] allRooms = FindObjectsOfType<Room>();
 
         foreach (Room room in allRooms)

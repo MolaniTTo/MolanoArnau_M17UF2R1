@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 939726600727425665}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.534, y: 0.105, z: 0}
+  m_LocalPosition: {x: 2.662, y: 0.299, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,5 +303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccea95e46ed37294690322906a7b0388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 2
+  damageAmount: 1.5
+  flameThrowerDamageInterval: 0.1
   weaponName: Arrow

@@ -8,6 +8,13 @@ TagManager:
   - Obstacle
   - Room
   - none
+  - ExitStore
+  - EntryStore
+  - EntranceStore
+  - EntryDungeon
+  - Store
+  - ConfinerConectionWithStore
+  - BuyButton
   layers:
   - Default
   - TransparentFX
@@ -15,8 +22,8 @@ TagManager:
   - Camera
   - Water
   - UI
-  - 
-  - 
+  - Bullets
+  - Enemy
   - 
   - 
   - 

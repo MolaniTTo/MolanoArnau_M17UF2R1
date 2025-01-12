@@ -5045,5 +5045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccea95e46ed37294690322906a7b0388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 0.09
+  damageAmount: 1
+  flameThrowerDamageInterval: 0.1
   weaponName: FlameThrower

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private SnakeMapGenerator mapGenerator;
     private InitGame initGame;
     public ScreenFade screenFade;
+    private EnemyCounter enemyCounter;
     public int currentRound = 2;
 
     private void Awake()
@@ -28,12 +29,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(InitializeGameWithDelay());
     }
 
-    private IEnumerator InitializeGameWithDelay()
+    public IEnumerator InitializeGameWithDelay()
     {
         yield return new WaitForSeconds(0.1f);
         mapGenerator = FindObjectOfType<SnakeMapGenerator>();
         initGame = FindObjectOfType<InitGame>();
         screenFade = FindObjectOfType<ScreenFade>();
+        enemyCounter = FindObjectOfType<EnemyCounter>();
 
         if (mapGenerator == null || initGame == null)
         {
@@ -96,6 +98,7 @@ public class GameManager : MonoBehaviour
         screenFade.FadeIn();
         yield return new WaitForSeconds(1f);
         initGame.FlickerAndActive();
+
     }
 
     private void ClearCurrentState()

@@ -64,4 +64,9 @@ public class FlameThrower : MonoBehaviour, IWeapon
     {
         return weaponSO;
     }
+
+    public void SetWeaponCooldown(float newCooldown)
+    {
+        throw new System.NotImplementedException();
+    }
 }

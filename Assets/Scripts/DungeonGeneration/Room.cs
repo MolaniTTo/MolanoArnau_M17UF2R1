@@ -1,7 +1,6 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -13,7 +12,7 @@ public class Room : MonoBehaviour
 
     private CinemachineVirtualCamera virtualCamera;
     private Transform playerTransform;
-    [SerializeField] private float focusDuration = 2f;
+    [SerializeField] private float focusDuration = 1f;
 
     private List<GameObject> activeEnemies = new List<GameObject>();
     private bool isCleared = false;
@@ -113,11 +112,9 @@ public class Room : MonoBehaviour
                     // Mover la cámara suavemente hacia la puerta
                     yield return MoveCameraToPosition(areaExitPosition, 1f);
 
-                    // Abrir la puerta
-                    door.gameObject.SetActive(true);
-
                     // Permanecer enfocado en la puerta mientras se abre
                     yield return new WaitForSeconds(focusDuration);
+                    door.gameObject.SetActive(true);
 
                     // Gestionar los colliders
                     Transform colliders = door.GetComponentInParent<Room>()?.transform.Find("colliders");

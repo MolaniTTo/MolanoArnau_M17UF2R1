@@ -41,8 +41,28 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     {
         CurrentActiveWeapon = newWeapon;
 
-        AttackCooldown();
-        TimeBetweenAttacks = (CurrentActiveWeapon as IWeapon).GetWeaponSO().weaponCooldown;
+        if(CurrentActiveWeapon is IWeapon weapon)
+        {
+            WeaponSO weaponSO = weapon.GetWeaponSO();
+            AttackCooldown();
+            TimeBetweenAttacks = weaponSO.weaponCooldown;
+            UpdateActiveWeaponProperties();
+        }
+
+    }
+
+    public void UpdateActiveWeaponProperties()
+    {
+        if (CurrentActiveWeapon is IWeapon weapon)
+        {
+            WeaponSO weaponSO = weapon.GetWeaponSO();
+
+            // Actualizar el cooldown del arma activa
+            weapon.SetWeaponCooldown(weaponSO.weaponCooldown);
+
+            // Recalcular el tiempo entre ataques
+            TimeBetweenAttacks = weaponSO.weaponCooldown;
+        }
     }
 
     public void WeaponNull()
@@ -91,5 +111,14 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
             }
             (CurrentActiveWeapon as IWeapon)?.Attack();
         }
+    }
+
+    public WeaponSO GetCurrentWeaponSO()
+    {
+        if (CurrentActiveWeapon is IWeapon weapon)
+        {
+            return weapon.GetWeaponSO();
+        }
+        return null;
     }
 }

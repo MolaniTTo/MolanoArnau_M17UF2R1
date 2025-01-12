@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6502919693212020477}
   - component: {fileID: 8013133100322808261}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DownLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7059711656345338155}
   - component: {fileID: 841908785328284296}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UpRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 1895038512411959174}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4802, y: 0.3584, z: 0.04999058}
+  m_LocalPosition: {x: 0.4801, y: 0.36, z: 0.04999058}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -168,6 +168,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3910086470764824294
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9222799838408729006}
+  m_Layer: 0
+  m_Name: HealthBarPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9222799838408729006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910086470764824294}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.198, y: 0.983, z: -0.0000000021046713}
+  m_LocalScale: {x: 0.5649684, y: 0.5649684, z: 0.5649684}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7069580455883885123}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4818628460256449937
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +215,8 @@ GameObject:
   - component: {fileID: 3997082305021303637}
   - component: {fileID: 2576197428466321522}
   - component: {fileID: 504389132377372550}
-  m_Layer: 0
+  - component: {fileID: -7982496446916909511}
+  m_Layer: 7
   m_Name: EnemyTorreta
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -205,6 +237,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2529926204807969983}
+  - {fileID: 9222799838408729006}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6002450663022311990
@@ -292,19 +325,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757470e3a0ec73a468987005d45a58cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefabs:
-  - {fileID: 3717613027759683379, guid: b25ab16ae85a361439d68e9818b94001, type: 3}
-  - {fileID: 3835462631648980640, guid: 08e6b3e993b5c1449bfaf7f792aa1d98, type: 3}
-  - {fileID: 3415510367980224573, guid: 7d9ef3f860966fe489730f104ad41805, type: 3}
-  - {fileID: 2381373320773126481, guid: 2eb210b776b91164db8b5e312655b4bf, type: 3}
+  bulletPool: {fileID: -7982496446916909511}
   firePoints:
   - {fileID: 7059711656345338155}
-  - {fileID: 1588990065329358150}
   - {fileID: 8956803820869949757}
   - {fileID: 6502919693212020477}
-  Player: {fileID: 7342152835514400731, guid: dd79f32be5e4bd0459b17d441de68d29, type: 3}
+  - {fileID: 1588990065329358150}
   minDistance: 5
   myAnimator: {fileID: 6652005354163679419}
+  shootingConfigurations:
+  - minAngle: 22.5
+    maxAngle: 67.5
+    bulletIndices: 00000000
+    directions:
+    - {x: 1, y: 1}
+    firePointIndices: 00000000
+  - minAngle: 67.5
+    maxAngle: 112.5
+    bulletIndices: 0000000001000000
+    directions:
+    - {x: 0, y: 1}
+    - {x: 0, y: 1}
+    firePointIndices: 0000000001000000
+  - minAngle: 112.5
+    maxAngle: 157.5
+    bulletIndices: 01000000
+    directions:
+    - {x: -1, y: 1}
+    firePointIndices: 01000000
+  - minAngle: 157.5
+    maxAngle: 202.5
+    bulletIndices: 0100000002000000
+    directions:
+    - {x: -1, y: 0}
+    - {x: -1, y: 0}
+    firePointIndices: 0100000002000000
+  - minAngle: 202.5
+    maxAngle: 247.5
+    bulletIndices: 02000000
+    directions:
+    - {x: -1, y: -1}
+    firePointIndices: 02000000
+  - minAngle: 247.5
+    maxAngle: 292.5
+    bulletIndices: 0200000003000000
+    directions:
+    - {x: 0, y: -1}
+    - {x: 0, y: -1}
+    firePointIndices: 0200000003000000
+  - minAngle: 292.5
+    maxAngle: 337.5
+    bulletIndices: 03000000
+    directions:
+    - {x: 1, y: -1}
+    firePointIndices: 03000000
+  - minAngle: 337.5
+    maxAngle: 360
+    bulletIndices: 0300000000000000
+    directions:
+    - {x: 1, y: 0}
+    - {x: 1, y: 0}
+    firePointIndices: 0300000000000000
+  - minAngle: 0
+    maxAngle: 22.5
+    bulletIndices: 0300000000000000
+    directions:
+    - {x: 1, y: 0}
+    - {x: 1, y: 0}
+    firePointIndices: 0300000000000000
 --- !u!70 &388367293146025985
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -387,6 +475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c67b84af9e4913489b164071d5f4e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCounter: {fileID: 0}
+  healthBarPrefab: {fileID: 6326447643032445046, guid: 613bb68fa9b925e448439c213c60a678, type: 3}
+  healthBarPosition: {fileID: 9222799838408729006}
   startingHealth: 15
 --- !u!114 &504389132377372550
 MonoBehaviour:
@@ -402,6 +493,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteFlashMat: {fileID: 2100000, guid: b3e8022f0bc15fc47af307f81e665df6, type: 2}
   restoreDefaultMatTime: 0.2
+--- !u!114 &-7982496446916909511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4818628460256449937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a7c9f35d5b7db74cba1fc18ba939c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefabs:
+  - {fileID: 3717613027759683379, guid: b25ab16ae85a361439d68e9818b94001, type: 3}
+  - {fileID: 3415510367980224573, guid: 7d9ef3f860966fe489730f104ad41805, type: 3}
+  - {fileID: 2381373320773126481, guid: 2eb210b776b91164db8b5e312655b4bf, type: 3}
+  - {fileID: 3835462631648980640, guid: 08e6b3e993b5c1449bfaf7f792aa1d98, type: 3}
+  poolSize: 3
 --- !u!1 &5334205253534128216
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8956803820869949757}
   - component: {fileID: 5516915978049776200}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UpLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2529926204807969983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TransformFirePoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1588990065329358150}
   - component: {fileID: 2093452265333339320}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DownRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +656,7 @@ Transform:
   m_GameObject: {fileID: 5489676952728265700}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4801, y: -0.3299, z: 0.04999058}
+  m_LocalPosition: {x: 0.4801, y: -0.3001, z: 0.04999058}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
