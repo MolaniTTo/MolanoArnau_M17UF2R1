@@ -9,23 +9,26 @@ public class Turret : MonoBehaviour
     private Transform player;
     public float minDistance = 15f;
     public Animator myAnimator;
+    PlayerController playerController;
+
 
     [System.Serializable]
     public class ShootingConfiguration
     {
-        public float minAngle;         // Ángulo mínimo
-        public float maxAngle;         // Ángulo máximo
-        public int[] bulletIndices;    // Índices de las balas en el pool
-        public Vector2[] directions;  // Direcciones de las balas
-        public int[] firePointIndices; // Índices de los fire points usados
+        public float minAngle;         //angle mínim
+        public float maxAngle;         //angle maxim
+        public int[] bulletIndices;    //index de la bala
+        public Vector2[] directions;  //direccions de les bales
+        public int[] firePointIndices; //index dels firepoints
     }
 
-    public List<ShootingConfiguration> shootingConfigurations;
+    public List<ShootingConfiguration> shootingConfigurations; //llista de configuracions de dispar
 
     private void Start()
     {
         myAnimator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerController = player.GetComponent<PlayerController>();
     }
 
     public void IsInArea()
@@ -39,23 +42,24 @@ public class Turret : MonoBehaviour
 
     public void Shoot()
     {
-        // Calcular la dirección del jugador
+        if (playerController == null || playerController.isPlayerActive == false) return; //verifiquem si el player està actiu
+        //calcular la direcció del jugador
         Vector2 direction = player.position - transform.position;
 
-        // Calcular el ángulo entre la dirección de la torreta (transform.up) y la dirección hacia el jugador
+        //calcular l'angle entre la direcció de la torreta (transform.up) i la direcció cap al jugador
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         if (angle < 0)
         {
-            angle += 360f;
+            angle += 360f; //si l'angle és negatiu, sumem 360 per a que sigui positiu
         }
 
-        // Buscar la configuración que coincide con el rango de ángulo
+        //busquem la configuració de dispar adequada segons l'angle
         foreach (var config in shootingConfigurations)
         {
             if (angle > config.minAngle && angle <= config.maxAngle)
             {
-                // Disparar las balas según la configuración
+                //dispars segons la configuració
                 for (int i = 0; i < config.bulletIndices.Length; i++)
                 {
                     int bulletIndex = config.bulletIndices[i];
@@ -67,12 +71,12 @@ public class Turret : MonoBehaviour
                     bullet.GetComponent<BulletEnemy>().SetDirection(bulletDirection);
                     bullet.GetComponent<BulletEnemy>().InitializeBullet(bulletIndex);
                 }
-                break; // Salir del bucle una vez que encontramos una configuración válida
+                break; //sortim del bucle
             }
         }
     }
 
-    /*public void Shoot()
+    /*public void Shoot() //aixi de pocho ho havia fet al principi, feia temps q no feia tants else if xd
     {
         // Calcular la dirección del jugador
         Vector2 direction = player.position - transform.position;

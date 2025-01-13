@@ -15,6 +15,7 @@ TagManager:
   - Store
   - ConfinerConectionWithStore
   - BuyButton
+  - Persistent
   layers:
   - Default
   - TransparentFX

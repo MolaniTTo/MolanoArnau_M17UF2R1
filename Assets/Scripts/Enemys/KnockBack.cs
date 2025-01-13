@@ -13,10 +13,6 @@ public class KnockBack : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        if(rb == null)
-        {
-            Debug.LogError("Rigidbody2D not found");
-        }
     }
 
     public void ApplyKnockBack(Vector2 direction)
@@ -25,15 +21,15 @@ public class KnockBack : MonoBehaviour
         {
             isKnockedBack = true;
             rb.velocity = Vector2.zero;
-            rb.AddForce(direction.normalized * knockBackForce, ForceMode2D.Impulse);
+            rb.AddForce(direction.normalized * knockBackForce, ForceMode2D.Impulse); //Apliquem la força de knockback
             StartCoroutine(EndKnockBack());
         }
     }
 
     private IEnumerator EndKnockBack()
     {
-        yield return new WaitForSeconds(knockBachDuration);
-        rb.velocity = Vector2.zero; //Detenem la empenta
+        yield return new WaitForSeconds(knockBachDuration); //Esperem el temps de knockback
+        rb.velocity = Vector2.zero; //Detenem l'empenta
         isKnockedBack = false;
     }
 }

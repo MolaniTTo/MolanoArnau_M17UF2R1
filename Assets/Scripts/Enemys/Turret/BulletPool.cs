@@ -4,56 +4,56 @@ using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
-    public GameObject[] bulletPrefabs;  // Diferentes prefabs de balas
-    public int poolSize = 10;  // Tamaño del pool para cada tipo de bala
+    public GameObject[] bulletPrefabs;  // Prefabs de les bales
+    public int poolSize = 10;  //tamany de la pool
 
-    // Lista de pools para cada tipo de bala
+    //llista de llistes de gameobjects per a cada tipus de bala
     private List<GameObject>[] pools;
 
     private void Start()
     {
-        // Inicializa el array de pools
+        //inicialitza l'array de pools
         pools = new List<GameObject>[bulletPrefabs.Length];
 
-        // Inicializa los pools para cada prefab de bala
+        //inicialitza les pools per a cada tipus de bala
         for (int i = 0; i < bulletPrefabs.Length; i++)
         {
             pools[i] = new List<GameObject>();
 
-            // Rellena el pool con balas desactivadas
+            //omple la pool amb les bales
             for (int j = 0; j < poolSize; j++)
             {
                 GameObject bullet = Instantiate(bulletPrefabs[i]);
-                bullet.SetActive(false);  // Desactiva la bala en el pool
+                bullet.SetActive(false);  //Desactiva la bala
                 pools[i].Add(bullet);
             }
         }
     }
 
-    // Método para obtener una bala de un tipo específico
+    // Mètode per obtenir una bala del pool
     public GameObject GetBullet(int index)
     {
-        // Si el pool de este tipo de bala está vacío, crea una nueva
+        //si la pool no està buida, retorna una bala
         if (pools[index].Count > 0)
         {
             GameObject bullet = pools[index][0];
-            pools[index].RemoveAt(0);  // Elimina la bala del pool
+            pools[index].RemoveAt(0);  // Elimina la bala de la pool
             bullet.SetActive(true);  // Activa la bala
             return bullet;
         }
         else
         {
-            // Si el pool está vacío, crea una nueva (opcional)
+            //si la pool està buida, crea una nova bala
             GameObject bullet = Instantiate(bulletPrefabs[index]);
             return bullet;
         }
     }
 
-    // Método para devolver una bala al pool
+    //metode per retornar una bala al pool
     public void ReturnBullet(int index, GameObject bullet)
     {
         bullet.SetActive(false);  // Desactiva la bala
-        pools[index].Add(bullet);  // La añade al pool
+        pools[index].Add(bullet);  // L'afegeix a la pool
         Debug.Log("Bullet returned to pool");
     }
 }

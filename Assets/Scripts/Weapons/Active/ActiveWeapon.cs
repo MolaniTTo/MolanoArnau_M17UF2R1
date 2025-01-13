@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActiveWeapon : Singleton<ActiveWeapon>
 {
-    public MonoBehaviour CurrentActiveWeapon { get; private set; }
+    public MonoBehaviour CurrentActiveWeapon { get; private set; } // Arma activa
 
     private PlayerInputActions playerInputActions;
 
@@ -12,7 +12,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     private bool attackButtonDown, isAttacking = false;
 
-    protected override void Awake()
+    protected override void Awake() //com que és un singleton, el awake s'ha de cridar així
     {
         base.Awake();
 
@@ -37,7 +37,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         Attack();
     }
 
-    public void NewWeapon(MonoBehaviour newWeapon)
+    public void NewWeapon(MonoBehaviour newWeapon) // Assignar un nou arma
     {
         CurrentActiveWeapon = newWeapon;
 
@@ -51,33 +51,33 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     }
 
-    public void UpdateActiveWeaponProperties()
+    public void UpdateActiveWeaponProperties() // Actualitzar les propietats de l'arma activa
     {
         if (CurrentActiveWeapon is IWeapon weapon)
         {
             WeaponSO weaponSO = weapon.GetWeaponSO();
 
-            // Actualizar el cooldown del arma activa
+            //el cooldown de l'arma activa s'actualitza
             weapon.SetWeaponCooldown(weaponSO.weaponCooldown);
 
-            // Recalcular el tiempo entre ataques
+            //recalcula el temps entre atacs
             TimeBetweenAttacks = weaponSO.weaponCooldown;
         }
     }
 
-    public void WeaponNull()
+    public void WeaponNull() // Eliminar l'arma activa
     {
         CurrentActiveWeapon = null;
     }
 
-    public void AttackCooldown()
+    public void AttackCooldown() // Cooldown entre atacs
     {
         isAttacking = true;
         StopAllCoroutines();
         StartCoroutine(TimeBetAttacksR());
     }
 
-    private IEnumerator TimeBetAttacksR()
+    private IEnumerator TimeBetAttacksR() //acabo de veure q se'm va colar una R al final del nom de la funció
     {
         yield return new WaitForSeconds(TimeBetweenAttacks);
         isAttacking = false;
@@ -89,7 +89,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         attackButtonDown = true;
     }
 
-    private void StopAttacking()
+    private void StopAttacking() // Deixar d'atacar
     {
         attackButtonDown = false;
 
@@ -99,21 +99,20 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
         }
     }
 
-    private void Attack()
+    private void Attack() // Atacar
     {
         if(attackButtonDown && !isAttacking)
         {
             AttackCooldown();
             if(CurrentActiveWeapon == null)
             {
-                Debug.LogError("No weapon is assigned to the player!");
                 return;
             }
             (CurrentActiveWeapon as IWeapon)?.Attack();
         }
     }
 
-    public WeaponSO GetCurrentWeaponSO()
+    public WeaponSO GetCurrentWeaponSO() // Obtenir l'arma actual
     {
         if (CurrentActiveWeapon is IWeapon weapon)
         {

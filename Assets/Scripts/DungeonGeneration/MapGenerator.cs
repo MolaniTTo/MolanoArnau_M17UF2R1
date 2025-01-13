@@ -5,98 +5,91 @@ using System.Collections.Generic;
 public class SnakeMapGenerator : MonoBehaviour
 {
     public bool IsMapGenerated { get; private set; }
-    public int rows = 10; // Número de filas
-    public int columns = 10; // Número de columnas
-    public GameObject[] roomPrefabs; // Lista de prefabs de habitaciones (Room1, Room2, etc.)
-    public Grid grid; // El Grid del prefab Room1
+    public int rows = 10; //numero de files
+    public int columns = 10; //num de columnes
+    public GameObject[] roomPrefabs; //prefabs de les habitacions
+    public Grid grid; //el grid on es generaran les habitacions (el de la room1)
 
-    public int snakeLength = 5; // Longitud de la serpiente
-    private GameObject[,] roomMatrix; // Matriz para almacenar referencias de habitaciones
-    private Vector2Int[] directions = new Vector2Int[] // Direcciones posibles
+    public int snakeLength = 5; //longitud de la snake
+    private GameObject[,] roomMatrix; //matriu per emmagatzemar les habitacions
+    private Vector2Int[] directions = new Vector2Int[] //direccions possibles
     {
-        new Vector2Int(0, 1),  // Derecha
-        new Vector2Int(0, -1), // Izquierda
-        new Vector2Int(1, 0),  // Arriba
-        new Vector2Int(-1, 0)  // Abajo
+        new Vector2Int(0, 1), //dreta
+        new Vector2Int(0, -1), //esquerra
+        new Vector2Int(1, 0),  //amunt
+        new Vector2Int(-1, 0)  //avall
     };
 
-    private List<Vector2Int> roomPositions = new List<Vector2Int>(); // Lista para almacenar las posiciones de las habitaciones
-    private List<GameObject> availablePrefabs; // Lista para manejar los prefabs disponibles
+    private List<Vector2Int> roomPositions = new List<Vector2Int>(); //llista de posicions de les habitacions
+    private List<GameObject> availablePrefabs; //llista de prefabs disponibles
 
 
 
-    // Generar la serpiente de habitaciones
+    //Generem la snake de rooms
     public void GenerateSnake()
     {
         IsMapGenerated = false;
-        Debug.Log("Generando serpiente de habitaciones...");
         if (roomPrefabs == null || roomPrefabs.Length == 0 || grid == null)
         {
-            Debug.LogError("No se han asignado prefabs de habitación o Grid no asignado.");
             return;
         }
 
-        // Inicializar la matriz para almacenar las habitaciones
+        //Inicialitzar la matriu de les habitacions
         roomMatrix = new GameObject[rows, columns];
 
         // Inicializar la lista de prefabs disponibles
         availablePrefabs = new List<GameObject>(roomPrefabs);
 
-        // Obtener el tamaño de la celda de la cuadrícula (cellSize)
+        //Obtenim la mida de les cel·les del grid (cada quadricula)
         Vector3 cellSize = grid.cellSize;
 
-        // Obtener las dimensiones del Tilemaps dentro del primer prefab de habitación
+        //Obtenim les tilemaps del primer prefab de la habitació
         Tilemap[] tilemaps = roomPrefabs[0].GetComponentsInChildren<Tilemap>();
 
         if (tilemaps.Length == 0)
         {
-            Debug.LogError("No se encontraron Tilemaps en el primer prefab de habitación.");
             return;
         }
 
-        // Encontrar las dimensiones del Tilemap
+        //Trobem els limits de la cel·la de la habitació (els tilemaps)
         BoundsInt roomBoundsInt = tilemaps[0].cellBounds;
 
-        // Calcular el tamaño de la habitación en el mundo
+        //Calculem la mida de la habitació en unitats del mon
         float width = roomBoundsInt.size.x * cellSize.x;
         float height = roomBoundsInt.size.y * cellSize.y;
 
-        Debug.Log($"Tamaño de la habitación: {width}x{height} (en unidades del mundo)");
-
-        // Generar la serpiente de habitaciones
+        //Generar la snake ara si
         GenerateSnakeRooms(width, height);
         IsMapGenerated = true;
     }
 
-    // Método para generar las habitaciones de la serpiente
+    //Metode per generar les habitacions de la snake
     void GenerateSnakeRooms(float width, float height)
     {
-        // Empezar en una posición inicial
+        //Començar per la posició central
         Vector2Int currentPos = new Vector2Int(rows / 2, columns / 2);
         roomMatrix[currentPos.x, currentPos.y] = PlaceRoom(currentPos, width, height, "Start");
 
-        // Guardar la posición de la primera habitación
+        //Guarda la posició de la primera habitació
         roomPositions.Add(currentPos);
 
-        // Generar las habitaciones intermedias y la última
+        //Generar les rooms intermitges i la final
         for (int i = 1; i < snakeLength; i++)
         {
             if (availablePrefabs.Count == 0)
             {
-                Debug.LogWarning("No quedan más prefabs disponibles para generar habitaciones.");
                 return;
             }
 
-            // Obtener una posición adyacente válida
+            //Obtenir una posició vàlida per la següent habitació (adjacent)
             Vector2Int nextPos = GetNextValidPosition(currentPos);
 
             if (nextPos == Vector2Int.zero)
             {
-                Debug.LogError("No se encontraron posiciones adyacentes válidas. La serpiente no puede continuar.");
                 return;
             }
 
-            // Instanciar la habitación
+            //Instanciem la nova habitació
             GameObject newRoom = PlaceRoom(nextPos, width, height, i == snakeLength - 1 ? "End" : $"Room {i}");
             if(i == snakeLength - 1)
             {
@@ -106,38 +99,38 @@ public class SnakeMapGenerator : MonoBehaviour
                     roomComponent.isLastRoom = true;
                 }
             }
-            // Guardar la posición de la nueva habitación
+            //Guardem la posició de la nova habitació
             roomPositions.Add(nextPos);
 
-            // Conectar puertas basándonos en las posiciones de las habitaciones
+            //Connectem les habitacions basant-nos en les posicions actuals i següents
             ConnectRooms(currentPos, nextPos);
 
-            // Actualizar la posición actual
+            //Actualitzem la posició actual
             currentPos = nextPos;
         }
     }
 
-    // Coloca una habitación en la posición especificada
+    //Posiciona una room en la posició de la matriu
     GameObject PlaceRoom(Vector2Int gridPosition, float width, float height, string name)
     {
-        // Convertir la posición de la cuadrícula en coordenadas del mundo
+        //Converteix la posicio de la quadricula a posicio del mon
         Vector3 position = new Vector3(gridPosition.y * width, gridPosition.x * height, 0);
 
-        // Seleccionar un prefab aleatorio de los disponibles
+        //Selecciona un prefab aleatori dels disponibles
         int randomIndex = Random.Range(0, availablePrefabs.Count);
         GameObject selectedRoom = availablePrefabs[randomIndex];
 
-        // Eliminar el prefab de la lista de disponibles
+        //Elimina el prefab seleccionat de la llista de disponibles
         availablePrefabs.RemoveAt(randomIndex);
 
-        // Instanciar la habitación
+        //Instancia la room seleccionada a la posicio calculada
         GameObject roomInstance = Instantiate(selectedRoom, position, Quaternion.identity);
         roomInstance.name = name;
 
-        // Obtener el componente AreaExit de la habitación generada
+        //Obte el component AreaExit de la room instanciada
         AreaExit areaExit = roomInstance.GetComponentInChildren<AreaExit>();
         Room roomComponent = roomInstance.GetComponent<Room>();
-        // Asignar el roomConfiner (PolygonCollider2D) de la habitación generada
+        //Assigna el confiner de la room a l'AreaExit de la room
         PolygonCollider2D roomConfiner = roomInstance.GetComponentInChildren<PolygonCollider2D>();
         if (roomComponent != null && roomConfiner != null)
         {
@@ -148,14 +141,14 @@ public class SnakeMapGenerator : MonoBehaviour
             areaExit.roomConfiner = roomConfiner; // Asignamos el confiner a la habitación
         }
 
-        // Almacenar la habitación en la matriz
+        //Emmagatzema la room a la matriu de les habitacions
         roomMatrix[gridPosition.x, gridPosition.y] = roomInstance;
 
         return roomInstance;
     }
 
 
-    // Conecta las habitaciones en dos posiciones de la matriz
+    //Conectem les habitacions basant-nos en les posicions actuals i següents
     void ConnectRooms(Vector2Int posA, Vector2Int posB)
     {
         GameObject roomA = roomMatrix[posA.x, posA.y];
@@ -166,29 +159,28 @@ public class SnakeMapGenerator : MonoBehaviour
 
         if (doorsA == null || doorsB == null)
         {
-            Debug.LogError("No se encontró el objeto 'Doors' en alguna habitación.");
             return;
         }
 
         Transform doorA = null, doorB = null;
 
-        // Conectar puertas y configurar áreas
-        if (posB.x == posA.x && posB.y == posA.y + 1) // Derecha
+        //Connectem les portes basant-nos en la posició de les habitacions
+        if (posB.x == posA.x && posB.y == posA.y + 1) //Dreta
         {
             doorA = doorsA.Find("RightDoor");
             doorB = doorsB.Find("LeftDoor");
         }
-        else if (posB.x == posA.x && posB.y == posA.y - 1) // Izquierda
+        else if (posB.x == posA.x && posB.y == posA.y - 1) //esquerra
         {
             doorA = doorsA.Find("LeftDoor");
             doorB = doorsB.Find("RightDoor");
         }
-        else if (posB.x == posA.x + 1 && posB.y == posA.y) // Arriba
+        else if (posB.x == posA.x + 1 && posB.y == posA.y) //amunt
         {
             doorA = doorsA.Find("TopDoor");
             doorB = doorsB.Find("BottomDoor");
         }
-        else if (posB.x == posA.x - 1 && posB.y == posA.y) // Abajo
+        else if (posB.x == posA.x - 1 && posB.y == posA.y) //avall
         {
             doorA = doorsA.Find("BottomDoor");
             doorB = doorsB.Find("TopDoor");
@@ -201,23 +193,22 @@ public class SnakeMapGenerator : MonoBehaviour
             {
                 List<Transform> updatedDoors = new List<Transform>(roomComponentA.DoorsToUnlock);
                 updatedDoors.Add(doorA);
-                roomComponentA.DoorsToUnlock = updatedDoors.ToArray();
+                roomComponentA.DoorsToUnlock = updatedDoors.ToArray(); // Afegir la porta a la llista de portes a desbloquejar
             }
 
             SetupDoorConnection(doorA, doorB);
         }
     }
 
-    // Método para configurar las conexiones entre puertas y áreas
+    //Metode per configurar la connexió entre dues portes
     void SetupDoorConnection(Transform doorA, Transform doorB)
     {
         if (doorA == null || doorB == null)
         {
-            Debug.LogError("No se encontró alguna de las puertas al intentar configurar conexiones.");
             return;
         }
 
-        // Buscar los colliders correspondientes dentro del objeto 'Colliders' de la habitación
+        //Busquem els colliders de les habitacions per desactivar-los
         Transform collidersA = doorA.GetComponentInParent<Room>().transform.Find("colliders");
         Transform collidersB = doorB.GetComponentInParent<Room>().transform.Find("colliders");
 
@@ -232,11 +223,11 @@ public class SnakeMapGenerator : MonoBehaviour
         }
 
 
-        // Activar las puertas (no desactivamos las puertas, solo los colliders)
+        //Activem les portes de les habitacions per a la connexió
         doorA.gameObject.SetActive(false);
         doorB.gameObject.SetActive(false);
 
-        // Configurar AreaExit y AreaEntrance
+        //Configuració de l'areaExit i entrance de les portes
         AreaExit areaExitA = doorA.GetComponentInChildren<AreaExit>();
         Transform areaEntranceB = doorB.Find("AreaEntrance");
 
@@ -245,7 +236,7 @@ public class SnakeMapGenerator : MonoBehaviour
             areaExitA.areaEntrance = areaEntranceB;
         }
 
-        // Hacer lo mismo al revés (de B a A)
+        //Fem el mateix al reves per la porta B
         AreaExit areaExitB = doorB.GetComponentInChildren<AreaExit>();
         Transform areaEntranceA = doorA.Find("AreaEntrance");
 
@@ -254,29 +245,29 @@ public class SnakeMapGenerator : MonoBehaviour
             areaExitB.areaEntrance = areaEntranceA;
         }
 
-        // Configuración de confiners de las habitaciones (por si es necesario)
+        //Configurem el confiner de les habitacions
         Room roomComponentA = doorA.GetComponentInParent<Room>();
         Room roomComponentB = doorB.GetComponentInParent<Room>();
 
         if (areaExitA != null && roomComponentB != null)
         {
             areaExitA.areaEntrance = doorB.Find("AreaEntrance");
-            areaExitA.roomConfiner = roomComponentB.roomConfiner; // Asignar confiner de la siguiente habitación
+            areaExitA.roomConfiner = roomComponentB.roomConfiner; //Assignem el confiner de la habitació actual
         }
 
         if (areaExitB != null && roomComponentA != null)
         {
             areaExitB.areaEntrance = doorA.Find("AreaEntrance");
-            areaExitB.roomConfiner = roomComponentA.roomConfiner; // Asignar confiner de la habitación actual
+            areaExitB.roomConfiner = roomComponentA.roomConfiner;
         }
     }
 
-    // Obtiene una posición adyacente válida
+    //Obtenim una posició vàlida per la següent habitació
     Vector2Int GetNextValidPosition(Vector2Int currentPos)
     {
         List<Vector2Int> validPositions = new List<Vector2Int>();
 
-        foreach (var direction in directions)
+        foreach (var direction in directions) //per cada direccio possible comprovem si la posicio es valida (similar al buscaminas)
         {
             Vector2Int newPosition = currentPos + direction;
 
@@ -290,10 +281,18 @@ public class SnakeMapGenerator : MonoBehaviour
 
         if (validPositions.Count > 0)
         {
-            return validPositions[Random.Range(0, validPositions.Count)];
+            return validPositions[Random.Range(0, validPositions.Count)]; //Retorna una posicio valida random
         }
 
-        return Vector2Int.zero; // Sin posiciones válidas
+        return Vector2Int.zero; //Si no hi ha posicions valides retorna zero
+    }
+
+    public void ResetGenerator()
+    {
+        IsMapGenerated = false;
+        roomMatrix = null;
+        roomPositions.Clear();
+        availablePrefabs = null;
     }
 
 }

@@ -124,6 +124,18 @@ public class GameManager : MonoBehaviour
             Destroy(room);
         }
 
+        SnakeMapGenerator mapGenerator = FindObjectOfType<SnakeMapGenerator>();
+        mapGenerator.ResetGenerator();
+
         Debug.Log("Estado previo limpiado.");
     }
+
+    public void ClearGame()
+    {
+        foreach (var obj in FindObjectsOfType<GameObject>())
+        {
+            Destroy(obj);
+        }
+    }
+   
 }

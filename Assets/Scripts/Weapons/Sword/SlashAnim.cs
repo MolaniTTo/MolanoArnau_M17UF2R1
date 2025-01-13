@@ -14,7 +14,7 @@ public class SlashAnim : MonoBehaviour
 
     private void Update()
     {
-        if (ps && !ps.IsAlive())
+        if (ps && !ps.IsAlive()) //si les particules han acabat de reproduir-se es destrueix l'objecte
         {
             DestroySelf();
         }

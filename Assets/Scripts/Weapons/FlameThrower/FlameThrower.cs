@@ -8,6 +8,7 @@ public class FlameThrower : MonoBehaviour, IWeapon
     [SerializeField] private WeaponSO weaponSO;
     private ParticleSystem flameThrowerParticles;
     private PolygonCollider2D flameThrowerCollider;
+    private WeaponAudio weaponAudio;
 
     bool isAttacking;
     
@@ -18,21 +19,19 @@ public class FlameThrower : MonoBehaviour, IWeapon
         flameThrowerParticles.Stop();
 
         flameThrowerCollider = GetComponentInChildren<PolygonCollider2D>();
+        weaponAudio = GetComponent<WeaponAudio>();
         if(flameThrowerCollider != null)
         {
             flameThrowerCollider.enabled = false;
-        }
-        else
-        {
-            Debug.LogError("FlameThrower Collider not found");
         }
     }
 
     public void Update()
     {
-        if (!isAttacking && flameThrowerParticles.isPlaying)
+        if (!isAttacking && flameThrowerParticles.isPlaying) //si no estem atacant i les particules estan activades
         {
             flameThrowerParticles.Stop();
+            weaponAudio.StopSound();
             if(flameThrowerCollider != null)
             {
                 flameThrowerCollider.enabled = false;
@@ -47,9 +46,10 @@ public class FlameThrower : MonoBehaviour, IWeapon
         if(!flameThrowerParticles.isPlaying)
         {
             flameThrowerParticles.Play();
+            weaponAudio.StartSound();
             if(flameThrowerCollider != null)
             {
-                flameThrowerCollider.enabled = true;
+                flameThrowerCollider.enabled = true;//activem el collider que esta com a fill del flameThrower
             }
             
         } 
@@ -67,6 +67,6 @@ public class FlameThrower : MonoBehaviour, IWeapon
 
     public void SetWeaponCooldown(float newCooldown)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("No implementat amb aquesta arma");
     }
 }

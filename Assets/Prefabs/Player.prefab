@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
+  flameThrowerDamageInterval: 0.1
   weaponName: Sword
 --- !u!1 &5137026633248240795
 GameObject:
@@ -361,6 +362,8 @@ GameObject:
   - component: {fileID: 2067489028110763940}
   - component: {fileID: 2878015648851676518}
   - component: {fileID: 3852749311244263752}
+  - component: {fileID: 4869608645979713313}
+  - component: {fileID: 4892871800273391552}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -480,7 +483,10 @@ MonoBehaviour:
   dashSpeed: 5
   speed: 5
   maxHealth: 100
+  shield: 150
   healthBar: {fileID: 0}
+  shieldBarObj: {fileID: 0}
+  shieldBar: {fileID: 0}
   mytrailRenderer: {fileID: 7503487415981651115}
   weaponCollider: {fileID: 4190088553152329944}
   SlashAnimSpawnPoint: {fileID: 8987885736772180761}
@@ -488,6 +494,7 @@ MonoBehaviour:
   isDashing: 0
   isDied: 0
   isPlayerActive: 0
+  shieldActive: 0
 --- !u!95 &9040289308592283022
 Animator:
   serializedVersion: 5
@@ -682,3 +689,118 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteFlashMat: {fileID: 2100000, guid: a98e223e605732c4796badbba2d55ee9, type: 2}
   restoreDefaultMatTime: 0.2
+--- !u!82 &4869608645979713313
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5167048140116247073}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &4892871800273391552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5167048140116247073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a237c5a82de764e96aa0f284f135ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSound: {fileID: 0}
+  DashSound: {fileID: 8300000, guid: 311b687e6398b39468cb16ef550b7be7, type: 3}
+  WalkSound: {fileID: 8300000, guid: b40454e2849b94045a861586916b2326, type: 3}
+  Item: {fileID: 0}
+  Solution: {fileID: 0}
+  Damage: {fileID: 8300000, guid: d49b6b5b6bb3a9849935d55edbe910c7, type: 3}
+  Death: {fileID: 8300000, guid: 250c2fbaafc6324478991ffd2a25352c, type: 3}

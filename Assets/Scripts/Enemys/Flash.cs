@@ -18,7 +18,7 @@ public class Flash : MonoBehaviour
         defaultMat = spriteRenderer.material;
     }
 
-    public IEnumerator FlashRoutine()
+    public IEnumerator FlashRoutine() //Funció que farà q el objecte parpadeji
     {
         spriteRenderer.material = whiteFlashMat;
         yield return new WaitForSeconds(restoreDefaultMatTime);
@@ -26,7 +26,7 @@ public class Flash : MonoBehaviour
         enemyHealth.DetectDeath();
     }
 
-    public IEnumerator PlayerFlicker()
+    public IEnumerator PlayerFlicker() //podria haber posat un for pero estic tostao ya :(
     {
         Debug.Log("PlayerFlicker Started");
         spriteRenderer.material = whiteFlashMat;

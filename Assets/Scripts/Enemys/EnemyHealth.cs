@@ -33,37 +33,30 @@ public class EnemyHealth : MonoBehaviour
         {
             enemyCounter.RegisterEnemy(this);
         }
-        else
-        {
-            Debug.LogWarning("No se ha asignado el EnemyCounter");
-        }
+    
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage) //Aquesta funció s'executarà quan l'enemic rebi mal
     {
         if (isDeath) return;
 
         currentHealth -= damage;
-        StartCoroutine(flash.FlashRoutine());
+        StartCoroutine(flash.FlashRoutine()); //Flash de l'enemic
 
-        // Instanciar la barra de vida si no existe
+        //Instanciem la barra de vida si no existeix encara
         if (instantiatedHealthBar == null)
         {
             instantiatedHealthBar = Instantiate(healthBarPrefab, healthBarPosition.position, Quaternion.identity, healthBarPosition);
 
-            // Buscar el componente BackGround dentro de la jerarquía correctamente
+            // Busquem el component Image de la barra de vida
             Transform healthBar = instantiatedHealthBar.transform.Find("HealthBar");
             if (healthBar != null)
             {
                 healthBarBackGround = healthBar.Find("BackGround").GetComponent<Image>();
             }
-            else
-            {
-                Debug.LogError("No se pudo encontrar el objeto HealthBar o BackGround en la barra de vida instanciada.");
-            }
         }
 
-        // Actualizar la barra de vida
+        //actualotzem la barra de vida
         UpdateHealthBar();
     }
 
@@ -71,7 +64,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (instantiatedHealthBar != null)
         {
-            healthBarBackGround.fillAmount = currentHealth / startingHealth;
+            healthBarBackGround.fillAmount = currentHealth / startingHealth; //fem que la barra de vida sigui proporcional a la vida actual
         }
     }
 
@@ -87,8 +80,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(isDeath) return;
         isDeath = true;
-        Debug.Log($"{name} ha muerto.");
-        // Disparar el evento
+        //disparem l'event de mort de l'enemic Carlos odio els events :)
         OnEnemyDeath?.Invoke(gameObject);
         if (instantiatedHealthBar != null)
         {

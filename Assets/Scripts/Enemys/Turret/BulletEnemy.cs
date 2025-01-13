@@ -15,7 +15,7 @@ public class BulletEnemy : MonoBehaviour
     private Vector2 moveDirection;
     private BulletPool bulletPool;
 
-    private int bulletIndex;  // Almacena el índice de la bala
+    private int bulletIndex;  //emmagaatzemarà l'índex de la bala al ser inicialitzada
 
     void Start()
     {
@@ -26,20 +26,20 @@ public class BulletEnemy : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(moveDirection * speed * Time.deltaTime);
+        transform.Translate(moveDirection * speed * Time.deltaTime); //com que es una bala en si que instanciare, ja poso q es mogui
         if(Vector3.Distance(startPosition, transform.position) > maxDistance)
         {
-            ReturnToPool();
+            ReturnToPool();//si la bala ha recorregut més de la distància màxima, la tornem al pool
         }
        
     }
 
-    public void SetDirection(Vector2 direction)
+    public void SetDirection(Vector2 direction) //per a que la bala es mogui en la direcció correcta
     {
         moveDirection = direction.normalized;
     }
 
-    public void SetBulletIndex(int index)
+    public void SetBulletIndex(int index) //li passem el índex de la bala al ser inicialitzada
     {
         bulletIndex = index;
     }
@@ -60,29 +60,29 @@ public class BulletEnemy : MonoBehaviour
             if (knockBack != null)
             {
                 Vector2 knockBackDirection = (player.position - transform.position).normalized;
-                knockBack.ApplyKnockBack(knockBackDirection); // Empujar al jugador
+                knockBack.ApplyKnockBack(knockBackDirection); //emputxem al player
             }
             ReturnToPool();
         }
     }
 
 
-    void ReturnToPool()
+    void ReturnToPool() //funció per tornar la bala al pool
     {
         if (explosionEffect != null)
         {
-            GameObject explosionInstance = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            GameObject explosionInstance = Instantiate(explosionEffect, transform.position, Quaternion.identity); 
             Destroy(explosionInstance, 1.5f);
         }
 
-        // Devolver la bala al pool usando el índice correspondiente
+        //retornem la bala al pool i la desactivem
         bulletPool.ReturnBullet(bulletIndex, gameObject);
         gameObject.SetActive(false);
     }
 
-    // Cuando obtengas la bala desde el pool, asegúrate de pasarle el índice correcto
+    //funció per inicialitzar la bala amb el índex de la bala
     public void InitializeBullet(int index)
     {
-        bulletIndex = index;  // Guarda el índice de la bala al ser inicializada
+        bulletIndex = index;
     }
 }

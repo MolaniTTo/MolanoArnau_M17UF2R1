@@ -19,22 +19,22 @@ public class Arrow : MonoBehaviour
         CheckMaxDistance();
     }
 
-    private void MoveArrow()
+    private void MoveArrow() //Movem la fletxa
     {
         transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
     }
 
-    private void CheckMaxDistance()
+    private void CheckMaxDistance() //Comprovem si la fletxa ha recorregut la distància màxima
     {
         float distanceTraveled = Vector3.Distance(startPosition, transform.position);
         if(distanceTraveled >= maxDistance)
         {
-            Destroy(gameObject);
+            Destroy(gameObject); //aqui no he fet una pool, ho he fet amb el torreta
         }
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //quan la fletxa colisiona amb un enemic, la destruim
     {
         if(collision.CompareTag("Enemy"))
         {

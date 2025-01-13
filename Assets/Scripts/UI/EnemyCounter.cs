@@ -24,7 +24,7 @@ public class EnemyCounter : MonoBehaviour
         UpdateCounter();
     }
 
-    public void Reset()
+    public void Reset() //al final ns si crido aquest metode ara q ho penso (estic muerto)
     {
         deathCount = 0;
         roundDeathCount = 0;
@@ -32,11 +32,11 @@ public class EnemyCounter : MonoBehaviour
         headCount = 0;
         inventorySystem.ResetSlots();
         inventorySystem.ToggleActiveSlot(1);
-        UpdateKillsToUnlockForRound(0);
+        UpdateKillsToUnlockForRound(1);
         UpdateCounter();
     }
 
-    public void StartNewRound(int currentRound)
+    public void StartNewRound(int currentRound) //per la nova ronda
     {
         previousRoundsDeathCount = deathCount;
         roundDeathCount = 0;
@@ -48,7 +48,7 @@ public class EnemyCounter : MonoBehaviour
         UpdateKillsToUnlockForRound(currentRound);
     }
 
-    public void RegisterEnemy(EnemyHealth enemy)
+    public void RegisterEnemy(EnemyHealth enemy) //registra el nou enemic i crida a l'event 
     {
         totalEnemies++;
         enemy.OnEnemyDeath += OnEnemyDied;
@@ -64,29 +64,28 @@ public class EnemyCounter : MonoBehaviour
         CheckForUnlocks();
     }
 
-    private void CheckForUnlocks()
+    private void CheckForUnlocks() //comprova si s'han de desbloquejar slots
     {
         for (int i = 0; i < killsToUnlockSlots.Length; i++)
         {
             if (roundDeathCount >= killsToUnlockSlots[i])
             {
-                inventorySystem.UnlockSlot(i); // Notifica el desbloqueo al sistema de inventario.
+                inventorySystem.UnlockSlot(i); //notificia el desbloqueig del slot
             }
         }
     }
 
-    public void UpdateKillsToUnlockForRound(int currentRound)
+    public void UpdateKillsToUnlockForRound(int currentRound) //actualitza el nombre d'enemics a matar per a desbloquejar cada slot, en cas de fer moooooltes rondes, no podra desbloquejar ni el flamethrower ni l'arc i mabye esta una mica desequilibrat, pero depen de lo chetao q vaya
     {
         for (int i = 0; i < killsToUnlockSlots.Length; i++)
         {
             killsToUnlockSlots[i] = basekillsToUnlockSlots[i] * currentRound;
         }
-        Debug.Log($"Kills para desbloqueo actualizados para la ronda {currentRound}: {string.Join(", ", killsToUnlockSlots)}");
     }
 
     private void UpdateCounter()
     {
-        counterText.text = $"{deathCount} / {totalEnemies}";
+        counterText.text = $"{deathCount} / {totalEnemies}"; //actualitza el text del contador
 
         headCounterText.text = $"{headCount}";
     }
@@ -104,12 +103,12 @@ public class EnemyCounter : MonoBehaviour
     private IEnumerator DecreaseHeadCountCoroutine(int amount)
     {
         int initialHeadCount = headCount;
-        int targetHeadCount = Mathf.Max(0, headCount - amount); // Asegurarnos de que el contador no sea negativo
+        int targetHeadCount = Mathf.Max(0, headCount - amount); //assegurar que el contador no baixi de 0
 
         float elapsedTime = 0f;
-        float duration = 2f; // Duración de la animación (en segundos)
+        float duration = 2f;
 
-        // Animación de la disminución gradual del contador
+        //animacio de baixada del contador
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -118,7 +117,7 @@ public class EnemyCounter : MonoBehaviour
             yield return null;
         }
 
-        // Asegurarnos de que el contador llegue al valor final
+        //ens assegurem que el contador es el correcte
         headCount = targetHeadCount;
         UpdateCounter();
     }

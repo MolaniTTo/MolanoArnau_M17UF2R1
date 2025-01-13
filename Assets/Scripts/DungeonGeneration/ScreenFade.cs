@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScreenFade : MonoBehaviour
 {
-    public Image fadeImage; // La imagen que cubre la pantalla
-    public float fadeDuration = 0.5f; // Duración del fade in y fade out
+    public Image fadeImage; //la imatge que farem servir per fer el fade
+    public float fadeDuration = 0.5f; //la durada del fade
 
     private IEnumerator fadeRoutine;
 
@@ -16,7 +16,6 @@ public class ScreenFade : MonoBehaviour
 
     public void FadeOut()
     {
-        Debug.Log("FadeOut");
         if (fadeRoutine != null)
         {
             StopCoroutine(fadeRoutine);
@@ -40,14 +39,13 @@ public class ScreenFade : MonoBehaviour
 
     private IEnumerator FadeOutRoutine()
     {
-        Debug.Log("FadeOutRoutine");
         float timer = 0f;
         Color color = fadeImage.color;
 
-        while (timer < fadeDuration)
+        while (timer < fadeDuration) //mentre el temps sigui menor que la durada dle fade
         {
             timer += Time.deltaTime;
-            color.a = Mathf.Lerp(0, 1, timer / fadeDuration);
+            color.a = Mathf.Lerp(0, 1, timer / fadeDuration); //interpolem entre 0 i 1 del alpha(transparent)
             fadeImage.color = color;
             yield return null;
         }
@@ -66,10 +64,4 @@ public class ScreenFade : MonoBehaviour
             yield return null;
         }
     }
-
-   
-
-   
-
-   
 }

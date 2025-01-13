@@ -21,7 +21,7 @@ public class Bow : MonoBehaviour, IWeapon
 
     public void Attack()
     {
-        animator.SetTrigger("Attack");
+        animator.SetTrigger("Attack"); //Dispara l'animació de l'atac
         GameObject arrow = Instantiate(arrowPrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
 
     }
@@ -36,9 +36,8 @@ public class Bow : MonoBehaviour, IWeapon
         return arrowPrefab;
     }
 
-    public void SetWeaponCooldown(float newCooldown)
+    public void SetWeaponCooldown(float newCooldown) //Aquesta funció la cridarem des de la shop per canviar el cooldown de l'arc
     {
-        Debug.Log("Setting new cooldown to bow: " + newCooldown);
         currentCooldown = newCooldown;
         weaponSO.weaponCooldown = newCooldown;
     }

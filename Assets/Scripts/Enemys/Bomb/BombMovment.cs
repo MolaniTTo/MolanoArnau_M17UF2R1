@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class BombMovment : MonoBehaviour
 {
-    public float detectionRadious = 5f;  // Radio de detección para seguir al jugador
-    public float explosionRadious = 3f; // Radio de explosión
-    public float explosionDelay = 2f;  // Tiempo necesario dentro del radio de explosión para detonar
-    public float moveSpeed = 2f;        // Velocidad de movimiento del enemigo
+    public float detectionRadious = 5f; //radi de detecció
+    public float explosionRadious = 3f;//radi d'explosió
+    public float explosionDelay = 2f;//temps d'espera per a l'explosió
+    public float moveSpeed = 2f;//velocitat de moviment
 
     public int damage = 15;
     public float fadeDuration = 1f;
@@ -31,39 +31,39 @@ public class BombMovment : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    private void Update()
+    private void Update() //se que son moltes coses dins l'update i no es la state machine de tus sueños pero estic death amb aquest projece ya
     {
 
-        if (isDead || isFadingOut || playerController == null || playerController.isPlayerActive == false) return; // Verificar si el jugador está activo
+        if (isDead || isFadingOut || playerController == null || playerController.isPlayerActive == false) return; //verifiquem si el player està actiu
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        // Si el jugador está dentro del radio de detección
+        //si el player està dins del radi de detecció
         if (distanceToPlayer <= detectionRadious)
         {
-            // Si el jugador está dentro del radio de explosión
+            //si el player esta dins del radi d'explosió
             if (distanceToPlayer <= explosionRadious)
             {
-                timeInExplosionRadius += Time.deltaTime; // Incrementar el tiempo dentro del radio
+                timeInExplosionRadius += Time.deltaTime; //incrementem el temps dins del radi d'explosió
 
                 if (timeInExplosionRadius >= explosionDelay)
                 {
-                    StartExplosion(); // Detonar si se alcanza el tiempo requerido
+                    StartExplosion(); //explota si el temps dins del radi d'explosió és suficient
                 }
                 else
                 {
-                    animator.SetBool("IsWalking", true); // Cambiar animación si no está caminando
+                    animator.SetBool("IsWalking", true); //cambiem l'estat de l'animator
                     FollowPlayer();
                 }
             }
             else
             {
-                // Reseteamos el tiempo si el jugador abandona el radio de explosión
+                //resetegem el temps dins del radi d'explosió
                 timeInExplosionRadius = 0f;
                 FollowPlayer();
             }
         }
         else
         {
-            animator.SetBool("IsWalking", false); // No caminar si el jugador está fuera del radio
+            animator.SetBool("IsWalking", false); //no es camina si el player no està dins del radi de detecció
         }
     }
 
@@ -73,34 +73,33 @@ public class BombMovment : MonoBehaviour
         if (player == null) return;
         animator.SetBool("IsWalking", true);
 
-        // Movimiento hacia el jugador
-        Vector2 direction = (player.position - transform.position).normalized;
+        //Moviment cap al player
+        Vector2 direction = (player.position - transform.position).normalized; //direcció cap al player
         transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
     }
 
     void StartExplosion()
     {
         isExploding = true;
-        Debug.Log("BOOOM! Explosion triggered.");
         animator.SetTrigger("Explode");
     }
 
     public void HandleExplosionDamage()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer <= explosionRadious)
+        if (distanceToPlayer <= explosionRadious) //si el player esta dins del radi d'explosió
         {
-            PlayerController playerController = player.GetComponent<PlayerController>();
+            PlayerController playerController = player.GetComponent<PlayerController>(); 
             if (playerController != null)
             {
-                playerController.TakeDamage(damage); // Aplicar daño al jugador
+                playerController.TakeDamage(damage); //Apliquem dany al player
                 if(!playerController.shieldActive)
                 {
-                    KnockBack knockBack = player.GetComponent<KnockBack>();
+                    KnockBack knockBack = player.GetComponent<KnockBack>(); //parides que he posat pero estan chuleta
                     if (knockBack != null)
                     {
                         Vector2 knockBackDirection = (player.position - transform.position).normalized;
-                        knockBack.ApplyKnockBack(knockBackDirection); // Empujar al jugador
+                        knockBack.ApplyKnockBack(knockBackDirection); //emputxa al player
                     }
                 }
             }
@@ -108,7 +107,7 @@ public class BombMovment : MonoBehaviour
         isFadingOut = true;
 
     }
-    IEnumerator FadeOut()
+    IEnumerator FadeOut() //funció per fer el fade out al enemic (ns pq la vaig posar) pero aqui esta
     {
 
         animator.SetBool("IsWalking", false);
@@ -127,9 +126,8 @@ public class BombMovment : MonoBehaviour
         enemyHealth.Die();
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected() //aixo m'ha ajudat amb els radis
     {
-        // Dibujar radios en la vista de escena
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadious);
 

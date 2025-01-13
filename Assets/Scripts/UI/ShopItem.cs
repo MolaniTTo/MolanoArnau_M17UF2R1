@@ -13,8 +13,14 @@ public class ShopItem : MonoBehaviour
     private Transform weaponCollider;
     private GameObject arrow;
     private PlayerController player;
+    private WeaponAudio weaponAudio;
 
     private BuyButtonController buyButtonController;
+
+    private void Awake()
+    {
+        weaponAudio = FindObjectOfType<WeaponAudio>();
+    }
 
     private void Start()
     {
@@ -25,7 +31,7 @@ public class ShopItem : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) //quan el player entra en el trigger de l'objecte
     {
         if (other.CompareTag("Player") && interactionCanvas != null)
         {
@@ -37,7 +43,7 @@ public class ShopItem : MonoBehaviour
             ActivateCanvas();
             activeShopItem = this;
 
-            // Mostrar el botón de compra
+            //mosta el botó de compra
             if (buyButtonController != null)
             {
                 buyButtonController.ShowBuyButton(this);
@@ -47,14 +53,14 @@ public class ShopItem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && interactionCanvas != null)
+        if (other.CompareTag("Player") && interactionCanvas != null) //quan el player surt del trigger de l'objecte
         {
             if (activeShopItem == this)
             {
                 DeactivateCanvas();
                 activeShopItem = null;
 
-                // Ocultar el botón de compra
+                //s'amaga el botó de compra
                 if (buyButtonController != null)
                 {
                     buyButtonController.HideBuyButton();
@@ -67,7 +73,7 @@ public class ShopItem : MonoBehaviour
     {
         if (interactionCanvas != null)
         {
-            interactionCanvas.SetActive(true);
+            interactionCanvas.SetActive(true); //activa el text del ítem
         }
     }
 
@@ -75,7 +81,7 @@ public class ShopItem : MonoBehaviour
     {
         if (interactionCanvas != null)
         {
-            interactionCanvas.SetActive(false);
+            interactionCanvas.SetActive(false); //desactiva el text del ítem
         }
     }
 
@@ -86,122 +92,69 @@ public class ShopItem : MonoBehaviour
             enemyCounter = FindObjectOfType<EnemyCounter>();
         }
 
-
         player = FindObjectOfType<PlayerController>(); 
-        if (player == null)
-        {
-            Debug.Log("Player found");
-            return;
-        }
 
         IWeapon activeWeapon = ActiveWeapon.Instance.CurrentActiveWeapon as IWeapon;
-        if (activeWeapon == null)
-        {
-            Debug.Log("Active weapon found");
-            return;
-        }
 
         WeaponSO weaponSO = ActiveWeapon.Instance.GetCurrentWeaponSO();
 
-        //la sword
         sword = FindObjectOfType<Sword>(); 
-        if(sword != null)
-        {
-            Debug.Log("Sword found");
-        }
-        //la bow
+     
         bow = FindObjectOfType<Bow>();
-        if (bow != null)
-        {
-            Debug.Log("Bow found");
-        }
-
-        //el collider de la espada que esta dentro del player dentro de un objeto con el componente activeWeapon
+       
         weaponCollider = player.GetWeaponCollider();
-        if (weaponCollider != null)
-        {
-            Debug.Log("WeaponCollider found");
-        }
 
-        //el collider de la flecha que es un prefab que se instancia cuando disparamos con el arco
         arrow = bow?.GetArrow();
-        if (arrow != null)
-        {
-            Debug.Log("Arrow found");
-        }
 
-
-        if (enemyCounter != null && enemyCounter.GetHeadCount() >= cost)
+        if (enemyCounter != null && enemyCounter.GetHeadCount() >= cost) //si tenim prous caps per comprar l'objecte
         {
-            bool validPurchase = false;
+            bool validPurchase = false; //compra vàlida
 
             switch (itemName)
             {
                 case "DANZA DEL FILO":
                     if (activeWeapon is Sword)
                     {
-                        Debug.Log("Sword cooldown decreased");
                         weaponSO.weaponCooldown -= 0.1f;
-                        ActiveWeapon.Instance.UpdateActiveWeaponProperties();
+                        ActiveWeapon.Instance.UpdateActiveWeaponProperties(); //actualitza les propietats de l'arma activa
                         validPurchase = true;
 
-                    }
-                    else
-                    {
-                        Debug.LogError("Cannot buy sword cooldown: Active weapon is not a sword.");
                     }
                     break;
 
                 case "TENSION PERFECTA":
                     if (activeWeapon is Bow)
                     {
-                        Debug.Log("Bow cooldown decreased");
                         weaponSO.weaponCooldown -= 0.1f;
-                        ActiveWeapon.Instance.UpdateActiveWeaponProperties();
+                        ActiveWeapon.Instance.UpdateActiveWeaponProperties(); //el cooldown de l'arma activa el baixa
                         validPurchase = true;
-                    }
-                    else
-                    {
-                        Debug.LogError("Cannot buy bow cooldown: Active weapon is not a bow.");
                     }
                     break;
 
                 case "BENDICION VITAL":
-                    Debug.Log("Player healed");
-                    player?.Heal(100);
+                    player?.Heal(100); //cura el player
                     validPurchase = true;
                     break;
 
                 case "MURO INQUEBRANTABLE":
-                    Debug.Log("Player shield");
-                    player?.ActivateShield();
+                    player?.ActivateShield(); //activa el escut
                     validPurchase = true;
                     break;
 
                 case "FLECHAS VENGADORAS":
                     if (activeWeapon is Bow)
                     {
-                        Debug.Log("Bow damage increased");
                         Bow bow = activeWeapon as Bow;
-                        bow.GetArrow()?.GetComponent<DamageSource>()?.IncreaseDamage(1f);
+                        bow.GetArrow()?.GetComponent<DamageSource>()?.IncreaseDamage(1f); //augmenta el damage de les fletxes
                         validPurchase = true;
-                    }
-                    else
-                    {
-                        Debug.LogError("Cannot buy bow damage: Active weapon is not a bow.");
                     }
                     break;
 
                 case "CORTE IMPLACABLE":
                     if (activeWeapon is Sword)
                     {
-                        Debug.Log("Sword damage increased");
-                        weaponCollider?.GetComponent<DamageSource>()?.IncreaseDamage(1f);
+                        weaponCollider?.GetComponent<DamageSource>()?.IncreaseDamage(1f); //augmenta el damage de l'espasa
                         validPurchase = true;
-                    }
-                    else
-                    {
-                        Debug.LogError("Cannot buy sword damage: Active weapon is not a sword.");
                     }
                     break;
             }
@@ -209,10 +162,8 @@ public class ShopItem : MonoBehaviour
             if (validPurchase)
             {
                 enemyCounter.DecreaseHeadCountGradually(cost);
-            }
-            else
-            {
-                Debug.LogError($"Purchase failed: Not enough conditions met for item '{itemName}'");
+
+                weaponAudio?.PlayPlayerSound(weaponAudio.Item);
             }
         }
     }

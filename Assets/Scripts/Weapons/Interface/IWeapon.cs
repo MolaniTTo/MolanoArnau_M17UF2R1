@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IWeapon
 {   
-    public void Attack();
-    public WeaponSO GetWeaponSO();
+    public void Attack(); //Mètode per atacar
+    public WeaponSO GetWeaponSO(); //Mètode per obtenir l'objecte Scriptable Object de l'arma
 
-    public void SetWeaponCooldown(float newCooldown);
+    public void SetWeaponCooldown(float newCooldown); //Mètode per canviar el cooldown de l'arma
 
 }

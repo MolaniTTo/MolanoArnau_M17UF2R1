@@ -22,7 +22,7 @@ public class InventorySlot : MonoBehaviour
         return isUnlocked ? weaponSO : null; //nomes retorno l'arma si el slot esta desbloquejat
     }
 
-    public void UnlockSlot() //no es una tenda com a tal, pero necessites matar a x enemics per a desbloquejar-la
+    public void UnlockSlot() //no es una tenda pero una complicacio mes q vaig afegir es q els slots es puguin desbloquejar
     {
         isUnlocked = true;
         UpdateSlotTransparency();
@@ -39,7 +39,7 @@ public class InventorySlot : MonoBehaviour
         if (itemImageComponent != null)
         {
             Color color = itemImageComponent.color;
-            color.a = isUnlocked ? 1f : 0.2f;  // Si está desbloqueado, opaco; si está bloqueado, transparente
+            color.a = isUnlocked ? 1f : 0.2f;  //si esta desbloquejat la transparencia es 1, sino 0.2
             itemImageComponent.color = color;
         }
     }

@@ -4,70 +4,55 @@ using TMPro;
 
 public class BuyButtonController : MonoBehaviour
 {
-    private GameObject buyButton; // El botón en la escena
-    private TextMeshProUGUI buttonText; // El texto del botón
-    private ShopItem currentShopItem; // El ítem actualmente activo en la tienda
-    private EnemyCounter enemyCounter; // Referencia al contador de enemigos
+    private GameObject buyButton; //boto de compra
+    private TextMeshProUGUI buttonText; //text del boto de compra
+    private ShopItem currentShopItem; //item de la botiga actual
+    private EnemyCounter enemyCounter; //referencia al contador d'enemics
 
     private void Start()
     {
-        // Buscar el botón con el tag BuyButton
         buyButton = GameObject.FindGameObjectWithTag("BuyButton");
         if (buyButton == null)
         {
-            Debug.LogError("No se encontró el botón de compra con el tag 'BuyButton'.");
             return;
         }
 
-        // Obtener el componente TextMeshPro del texto del botón
+        //component de text del boto
         buttonText = buyButton.GetComponentInChildren<TextMeshProUGUI>();
-        if (buttonText == null)
-        {
-            Debug.LogError("No se encontró un componente TextMeshProUGUI en el botón de compra.");
-        }
 
-        // Configurar el evento onClick del botón
+        //configuracio del onClick del boto
         Button buttonComponent = buyButton.GetComponent<Button>();
         if (buttonComponent != null)
         {
             buttonComponent.onClick.AddListener(OnBuyButtonClicked);
         }
-        else
-        {
-            Debug.LogError("El botón no tiene un componente Button.");
-        }
 
-        // Iniciar el botón como invisible
+        //iniciem com a ocult
         HideBuyButton();
-
         enemyCounter = FindObjectOfType<EnemyCounter>();
-        if (enemyCounter == null)
-        {
-            Debug.LogError("No se encontró un EnemyCounter en la escena.");
-        }
     }
 
     public void ShowBuyButton(ShopItem shopItem)
     {
-        currentShopItem = shopItem; // Asignar el ítem activo
+        currentShopItem = shopItem; //li passem el item actual
 
         if (buyButton != null)
         {
-            // Hacer visible la imagen del botón
+            //fer visible la imatge del boto
             Image buttonImage = buyButton.GetComponent<Image>();
             if (buttonImage != null)
             {
                 buttonImage.enabled = true;
             }
 
-            // Hacer visible el texto del botón
+            //fer visible el text del boto
             if (buttonText != null)
             {
                 buttonText.enabled = true;
                 buttonText.text = $"Comprar {shopItem.itemName} ({shopItem.cost})";
             }
 
-            // Activar la interacción del botón
+            //activar la interacciodel boto
             Button buttonComponent = buyButton.GetComponent<Button>();
             if (buttonComponent != null)
             {
@@ -78,24 +63,24 @@ public class BuyButtonController : MonoBehaviour
 
     public void HideBuyButton()
     {
-        currentShopItem = null; // Limpiar el ítem activo
+        currentShopItem = null; //borrem el item actual
 
         if (buyButton != null)
         {
-            // Ocultar la imagen del botón
+            //ocultem la imatge del boto
             Image buttonImage = buyButton.GetComponent<Image>();
             if (buttonImage != null)
             {
                 buttonImage.enabled = false;
             }
 
-            // Ocultar el texto del botón
+            //ocultem text
             if (buttonText != null)
             {
                 buttonText.enabled = false;
             }
 
-            // Desactivar la interacción del botón
+            //desactivar la interacció del boto
             Button buttonComponent = buyButton.GetComponent<Button>();
             if (buttonComponent != null)
             {
@@ -110,12 +95,12 @@ public class BuyButtonController : MonoBehaviour
         {
             if (CanPurchaseItem(out string warningMessage))
             {
-                currentShopItem.BuyItem(); // Llamar al método de compra en el ítem activo
-                UpdateButtonText(); // Actualizar el texto después de la compra
+                currentShopItem.BuyItem(); //cridem al metode de compra
+                UpdateButtonText(); //actualitzar les dades de compra
             }
             else
             {
-                // Mostrar mensaje de advertencia en el botón
+                //mostrar missatge d'error
                 buttonText.text = warningMessage;
             }
         }
@@ -126,33 +111,31 @@ public class BuyButtonController : MonoBehaviour
     {
         warningMessage = string.Empty;
 
-        // Verificar si hay suficiente dinero
+        //mirar si tenim sufieicents caps
         if (enemyCounter.GetHeadCount() < currentShopItem.cost)
         {
             warningMessage = "No tienes suficientes cabezas.";
             return false;
         }
 
-        // Verificar si el arma activa es compatible
+        // mirem si l'arma es compatible amb l'item que volem millorar
         IWeapon activeWeapon = ActiveWeapon.Instance.CurrentActiveWeapon as IWeapon;
-        if (currentShopItem.itemName == "DANZA DEL FILO" && !(activeWeapon is Sword))
+        if ((currentShopItem.itemName == "DANZA DEL FILO" || currentShopItem.itemName == "CORTE IMPLACABLE") && !(activeWeapon is Sword))
         {
-            warningMessage = "Equipa la espada para mejorar su cooldown.";
+            warningMessage = "Equipa la espada para poder mejorarla.";
             return false;
         }
 
-        if (currentShopItem.itemName == "TENSION PERFECTA" && !(activeWeapon is Bow))
+        if ((currentShopItem.itemName == "TENSION PERFECTA" || currentShopItem.itemName == "FLECHAS VENGADORAS") && !(activeWeapon is Bow))
         {
-            warningMessage = "Equipa el arco para mejorar su cooldown.";
+            warningMessage = "Equipa el arco para mejorarlo.";
             return false;
         }
-
-        // Otros casos se pueden agregar aquí
 
         return true;
     }
 
-    private void UpdateButtonText()
+    private void UpdateButtonText() //actualitzar el text del boto
     {
         if (buttonText != null && currentShopItem != null)
         {

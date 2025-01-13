@@ -5,26 +5,22 @@ using UnityEngine;
 
 public class CameraConfinerManager : MonoBehaviour
 {
-    public CinemachineConfiner2D confiner;
+    public CinemachineConfiner2D confiner; // Referencia al CinemachineConfiner
 
-    public void UpdateConfiner(PolygonCollider2D roomConfiner)
+    public void UpdateConfiner(PolygonCollider2D roomConfiner) //per actualitzar el confiner de la càmera
     {
         if (confiner == null)
         {
-            Debug.LogError("No se ha asignado un CinemachineConfiner.");
             return;
         }
 
         if (roomConfiner == null)
         {
-            Debug.LogError("No se ha asignado un PolygonCollider2D.");
             return;
         }
 
-        // Asignar null y luego el nuevo confiner
-        confiner.m_BoundingShape2D = null;
+        
+        confiner.m_BoundingShape2D = null; // Eliminem el confiner actual i assignem el nou
         confiner.m_BoundingShape2D = roomConfiner;
-
-        Debug.Log("Confiner de la cámara actualizado.");
     }
 }

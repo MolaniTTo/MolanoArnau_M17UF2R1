@@ -1,18 +1,20 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerActions , PlayerInputActions.ICombatActions
 {
     public static PlayerController Instance { get; private set; } //Singleton
-    public bool FacingLeft { get { return facingLeft; } } // Propiedad para obtener la dirección del jugador
+    public bool FacingLeft { get { return facingLeft; } } //per saber si el jugador mira a l'esquerra
 
-    private PlayerInputActions ic; // Referencia al Input Action
-    private Animator animator; // Referencia al componente Animator
-    private Flash flash; // Referencia al componente Flash
-    private ScreenFade screenFade; // Referencia al componente ScreenFade
-    private EnemyCounter enemyCounter; // Referencia al contador de enemigos
+    private PlayerInputActions ic; //referencia al inputactions
+    private Animator animator; //animator
+    private Flash flash; //flash
+    private ScreenFade screenFade; //component de fade
+    private WeaponAudio weaponAudio; //al weapon audio
+    private MusicZone musicZone; //al music zone
 
     [SerializeField] private float dashSpeed = 9f;
     [SerializeField] private float speed = 5f;
@@ -24,22 +26,23 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     [SerializeField] private GameObject shieldBarObj;
     [SerializeField] private Image shieldBar;
 
-    [SerializeField] private TrailRenderer mytrailRenderer;
-    [SerializeField] private Transform weaponCollider;
+    [SerializeField] private TrailRenderer mytrailRenderer; //trail renderer del dash
+    [SerializeField] private Transform weaponCollider; //collider de l'arma sword
     [SerializeField] private Transform SlashAnimSpawnPoint;
 
 
-    private Vector2 moveDirection;    // Dirección del movimiento
-    public bool isMovementBlocked { get; set; } = false;  // Estado del movimiento
+    private Vector2 moveDirection; //direcció del moviment
+    public bool isMovementBlocked { get; set; } = false;  //estat del moviment
     public Vector2 lookDirection { get; private set;}
 
-    public bool isRightClickPressed { get; private set; }// Estado del clic derecho
-    public bool isLeftClickPressed { get; private set; }  // Estado del clic izquierd
+    public bool isRightClickPressed { get; private set; }//estat del clic dret
+    public bool isLeftClickPressed { get; private set; }  //estat del clic esquerre
     public bool facingLeft = false;
     public bool isDashing = false;
     public bool isDied = false;
     public bool isPlayerActive = false;
     public bool shieldActive = false;
+    private bool isWalkingSoundPlaying = false;
 
     private Sword sword; // Referencia a la espasa
 
@@ -53,7 +56,8 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         flash = GetComponent<Flash>();
         sword = GetComponentInChildren<Sword>(); //Busquem la espasa com a fill del jugador
         screenFade = FindObjectOfType<ScreenFade>();
-        enemyCounter = FindObjectOfType<EnemyCounter>();
+        weaponAudio = GetComponent<WeaponAudio>();
+        musicZone = FindObjectOfType<MusicZone>();
 
     }
 
@@ -93,25 +97,17 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         isPlayerActive = isActive;
     }
 
-    public Transform GetWeaponCollider()
+    public Transform GetWeaponCollider() //Retornem el collider de l'arma sword
     {
-        if (weaponCollider == null)
-        {
-            Debug.LogError("Weapon Collider is not assigned in PlayerController!");
-        }
         return weaponCollider;
     }
 
-    public Transform GetSlashAnimSpawnPoint()
+    public Transform GetSlashAnimSpawnPoint() //el punt d'espawn del slash
     {
-        if (SlashAnimSpawnPoint == null)
-        {
-            Debug.LogError("SlashAnimSpawnPoint is not assigned in PlayerController!");
-        }
         return SlashAnimSpawnPoint;
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context) //Callback del moviment
     {
         if(context.performed)
         {
@@ -124,11 +120,12 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
 
     }
 
-    public void OnLook(InputAction.CallbackContext context)
+    public void OnLook(InputAction.CallbackContext context) //IMPORTANT!!! he posat aquesta funcio que nomes funcioni quan mantinguis el click dret (com si fos apuntar) perque no m'agradava que nomes mires al cursor per atacar, aixi que si ataques amb el click dret mantingut sempre seguira al cursor
     {
-        if(context.performed)
+
+        if(context.performed) //lo de adal ho dic perq vegis q el requisit el cumpleixo pero ho he posat amb aquesta funcionalitat de mantenir com si fos apuntar
         {
-            // Calcular la dirección del cursor desde la posición del jugador
+            //calcular la direcció del cursor respecte el jugador
             Vector2 mousePosition = context.ReadValue<Vector2>();
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
             Vector3 direction = (worldPosition - transform.position).normalized;
@@ -146,14 +143,13 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         }
     }
 
-    public void OnRightClick(InputAction.CallbackContext context)
+    public void OnRightClick(InputAction.CallbackContext context) //Callback del clic dret
     {
         isRightClickPressed = context.phase == InputActionPhase.Performed;
     }
 
-    public void OnLeftClick(InputAction.CallbackContext context)
+    public void OnLeftClick(InputAction.CallbackContext context) //Callback del clic esquerre
     {
-        // Actualizar el estado del clic izquierdo
         isLeftClickPressed = context.phase == InputActionPhase.Performed;
         if (isLeftClickPressed)
         {
@@ -164,25 +160,42 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     private void MovePlayer()
     {
         if (isMovementBlocked) return;
-        // Aplicar el movimiento
+        //aplica el moviment del jugador
         Vector3 movement = new Vector3(moveDirection.x, moveDirection.y, 0f);
         transform.position += movement * speed * Time.deltaTime;
+
+        if(moveDirection != Vector2.zero)
+        {
+            if (!isWalkingSoundPlaying)
+            {
+                weaponAudio.PlayPlayerSound(weaponAudio.WalkSound);
+                isWalkingSoundPlaying = true;
+            }
+        }
+        else
+        {
+            if(isWalkingSoundPlaying)
+            {
+                weaponAudio.StopPlayerSound();
+                isWalkingSoundPlaying = false;
+            }
+        }
     }
     private void HandleAnimations()
     {
-        if (isRightClickPressed) // Si se presiona el clic derecho
+        if (isRightClickPressed) //si es prem el clic dret
         {
-            // Animación basada en la dirección del cursor
+            // Animacio es basa en la direcció del cursor
             animator.SetFloat("AnimationDirectionX", lookDirection.x);
             animator.SetFloat("AnimationDirectionY", lookDirection.y);
         }
-        else if (moveDirection != Vector2.zero) // Movimiento con teclado
+        else if (moveDirection != Vector2.zero) //sino, la animacio es basa en la direcció del moviment
         {
             animator.SetFloat("AnimationDirectionX", moveDirection.x);
             animator.SetFloat("AnimationDirectionY", moveDirection.y);
         }
 
-        // Establecer la velocidad en el Blend Tree
+        //estableix la velocitat al blend tree
         animator.SetFloat("Speed", moveDirection.magnitude);
     }
 
@@ -190,14 +203,15 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Player hit");
-            TakeDamage(5);
+            TakeDamage(5); //si colisiona amb un enemic, el jugador rep mal
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage) //funció per rebre dany
     {
-        if(shieldActive)
+       
+        if (shieldActive && !isDied) //si tenim escut
         {
+            weaponAudio.PlayPlayerSound(weaponAudio.Damage);
             shield -= damage;
             StartCoroutine(flash.PlayerFlicker());
             if (shield <= 0)
@@ -209,8 +223,9 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
             UpdateShieldBar();
             return;
         }
-        else
+        else if(!isDied && !shieldActive) //si no tenim escut
         {
+            weaponAudio.PlayPlayerSound(weaponAudio.Damage);
             currentHealth -= damage;
             StartCoroutine(flash.PlayerFlicker());
             if (currentHealth <= 0)
@@ -222,9 +237,8 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         }
     }
 
-   public void Heal(int healAmount)
+   public void Heal(int healAmount) //pocio de curació
    {
-        Debug.Log("Player healed for " + healAmount + " health.");
         currentHealth += healAmount;
         if (currentHealth > maxHealth)
         {
@@ -233,28 +247,27 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         UpdateHealthBar();
     }
 
-    private IEnumerator Die()
+    private IEnumerator Die() //funció per morir i carregar la escena de tornar a jugar o pa casa
     {
+        if(isDied) yield break;
+        if (musicZone != null)
+        {
+            StartCoroutine(musicZone.FadeOutMusic());
+        }
+        isDied = true;
+
         UpdateHealthBar();
         animator.SetTrigger("Die");
-        isDied = true;
-        Debug.Log("Player has died.");
-        SetPlayerActive(false);
+        weaponAudio.PlayPlayerSound(weaponAudio.Death);
         isMovementBlocked = true;
         yield return new WaitForSeconds(2f);
-        StartCoroutine(GameManager.Instance.InitializeGameWithDelay());
+        screenFade.FadeOut();
         yield return new WaitForSeconds(2f);
-        animator.ResetTrigger("Die");
-        animator.SetTrigger("Respawn");
-        currentHealth = maxHealth;
-        isDied = false;
-        isMovementBlocked = false;
-        enemyCounter.Reset();
-        UpdateHealthBar();
-        SetPlayerActive(true);
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
+        GameManager.Instance.ClearGame();
 
     }
-    private void UpdateHealthBar()
+    private void UpdateHealthBar() //actualitzar la barra de vida
     {
         if (healthBar != null)
         {
@@ -262,25 +275,24 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         }
     }
 
-    public void ActivateShield()
+    public void ActivateShield() //activar l'escut (ho crida la tenda)
     {
-        Debug.Log("Player shield activated.");
+        if (shieldActive) return;
         shieldBarObj.SetActive(true);
         shieldActive = true;
         shield = 150;
         UpdateShieldBar();
     }
 
-    private void UpdateShieldBar()
+    private void UpdateShieldBar() //actualitzar la barra de l'escut
     {
         if (shieldBar != null)
         {
             shieldBar.fillAmount = (float)shield / 150;
         }
-
     }
 
-    public void OnAttack(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context) //funcionalitats que vaig posar al mapa al principi i les vaig acabar fent de diferent manera
     {
         throw new System.NotImplementedException();
     }
@@ -291,7 +303,7 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
     }
 
 
-    public void OnDash(InputAction.CallbackContext context)
+    public void OnDash(InputAction.CallbackContext context) //Callback del dash
     {
         if(context.performed)
         {
@@ -299,18 +311,19 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         }
     }
 
-    private void Dash()
+    private void Dash() //funció del dash
     {
         if(!isDashing)
         {
             isDashing = true;
+            weaponAudio.PlayPlayerSound(weaponAudio.DashSound);
             speed*= dashSpeed;
             mytrailRenderer.emitting = true;
             StartCoroutine(EndDashRoutine());
         } 
     }
 
-    private IEnumerator EndDashRoutine()
+    private IEnumerator EndDashRoutine() //rutina del dash
     {   
         float dashTime = 0.2f;
         float dashCD = 0.25f;
@@ -319,5 +332,10 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         mytrailRenderer.emitting = false;
         yield return new WaitForSeconds(dashCD);
         isDashing = false;
+        if(isWalkingSoundPlaying)
+        {
+            weaponAudio.StopPlayerSound();
+            isWalkingSoundPlaying = false;
+        }
     }
 }
