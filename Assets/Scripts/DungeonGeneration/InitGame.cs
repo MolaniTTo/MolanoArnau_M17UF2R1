@@ -11,12 +11,14 @@ public class InitGame : MonoBehaviour
     public GameObject[] enemyPrefabs; // Array de prefabs d'enemics
     private CinemachineConfiner2D confiner;
     private List<GameObject> activeEnemies = new List<GameObject>(); // Lista dels enemics actius
+    private CloudParallax cloudParallaxScript; // Referencia al script de parallax
 
     private int round = 1;  
 
     private void Awake()
     {
         confiner = FindObjectOfType<CinemachineConfiner2D>();
+        cloudParallaxScript = FindObjectOfType<CloudParallax>();
         confiner.m_BoundingShape2D = null;
     }
 
@@ -44,10 +46,12 @@ public class InitGame : MonoBehaviour
                 if (existingPlayer == null) // Si no existeix el jugador, el creem
                 {
                     existingPlayer = Instantiate(playerPrefab, roomComponent.spawnPoint.position, Quaternion.identity);
+                    cloudParallaxScript.AssignPlayer(existingPlayer.transform);
                 }
                 else // Si ja existeix, el movem a la posició de spawn
                 {
                     existingPlayer.transform.position = roomComponent.spawnPoint.position;
+                    cloudParallaxScript.AssignPlayer(existingPlayer.transform);
                 } 
                 virtualCamera.Follow = existingPlayer.transform; // Assignem la càmera al jugador
                 // Asignar el confiner inicial
