@@ -263,8 +263,9 @@ public class PlayerController : MonoBehaviour , PlayerInputActions.IPlayerAction
         yield return new WaitForSeconds(2f);
         screenFade.FadeOut();
         yield return new WaitForSeconds(2f);
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
         GameManager.Instance.ClearGame();
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainMenu");
+
 
     }
     private void UpdateHealthBar() //actualitzar la barra de vida

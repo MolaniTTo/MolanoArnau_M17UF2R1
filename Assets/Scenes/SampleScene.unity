@@ -3203,6 +3203,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenFade: {fileID: 0}
   currentRound: 1
+  weapons:
+  - {fileID: 11400000, guid: 13f3f4ddc18937349b97f68ed36ae1ca, type: 2}
+  - {fileID: 11400000, guid: 858e38928b8cebc47a0d72d39c297884, type: 2}
+  - {fileID: 11400000, guid: 9c0fc1c3e1609ec429a8017bd3e8d34c, type: 2}
 --- !u!4 &673019513
 Transform:
   m_ObjectHideFlags: 0

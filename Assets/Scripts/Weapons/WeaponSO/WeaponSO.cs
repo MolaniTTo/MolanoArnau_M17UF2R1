@@ -8,5 +8,10 @@ public class WeaponSO : ScriptableObject
 {
     public GameObject weaponPrefab;
     public float weaponCooldown;
+    [HideInInspector] public float defaultCooldown;
+    private void OnEnable()
+    {
+        defaultCooldown = weaponCooldown;
+    }
 }
 

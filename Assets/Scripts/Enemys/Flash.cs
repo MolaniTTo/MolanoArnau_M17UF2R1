@@ -28,7 +28,6 @@ public class Flash : MonoBehaviour
 
     public IEnumerator PlayerFlicker() //podria haber posat un for pero estic tostao ya :(
     {
-        Debug.Log("PlayerFlicker Started");
         spriteRenderer.material = whiteFlashMat;
         yield return new WaitForSeconds(restoreDefaultMatTime);
         spriteRenderer.material = defaultMat;
@@ -40,7 +39,6 @@ public class Flash : MonoBehaviour
         spriteRenderer.material = whiteFlashMat;
         yield return new WaitForSeconds(restoreDefaultMatTime);
         spriteRenderer.material = defaultMat;
-        Debug.Log("PlayerFlicker Executed");
         GameObject existingPlayer = GameObject.FindGameObjectWithTag("Player");
         existingPlayer.GetComponent<PlayerController>().SetPlayerActive(true);
 

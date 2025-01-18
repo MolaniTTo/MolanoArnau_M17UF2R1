@@ -76,6 +76,11 @@ public class DamageSource : MonoBehaviour
         damageAmount += additionalDamage;
     }
 
+    public void Resetdamage(float damage)
+    {
+        damageAmount = damage;
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +10,8 @@ public class GameManager : MonoBehaviour
     private InitGame initGame;
     public ScreenFade screenFade;
     private EnemyCounter enemyCounter;
-    public int currentRound = 2;
+    public int currentRound = 1;
+    public List<WeaponSO> weapons;
 
     private void Awake()
     {
@@ -135,6 +137,27 @@ public class GameManager : MonoBehaviour
         foreach (var obj in FindObjectsOfType<GameObject>())
         {
             Destroy(obj);
+        }
+        foreach (var obj in FindObjectsOfType<DamageSource>())
+        {
+            //si es la espada
+            if (obj.gameObject.name == "WeaponCollider")
+            {
+                obj.GetComponent<DamageSource>().Resetdamage(1);
+                Debug.Log("Sword damage updated");
+            }
+            else if (obj.gameObject.name == "FireCollider")
+            {
+                obj.GetComponent<DamageSource>().Resetdamage(0.1f);
+            }
+            else if (obj.gameObject.name == "Arrow")
+            {
+                obj.GetComponent<DamageSource>().Resetdamage(1.5f);
+            }
+        }
+        foreach (WeaponSO weapon in weapons)
+        {
+            weapon.weaponCooldown = weapon.defaultCooldown;
         }
     }
    
