@@ -50,4 +50,4 @@ El joc incorpora mecàniques clàssiques de roguelike, com ara moviment tàctic,
 ## **Instruccions d'Instal·lació**
 1. Descarregar o clonar el repositori:
    ```bash
-   git clone https://gitlab.com/_M17UF2R1.git
+   https://github.com/MolaniTTo/MolanoArnau_M17UF2R1.git
