@@ -42,6 +42,7 @@ El joc incorpora mecàniques clàssiques de roguelike, com ara moviment tàctic,
 | **Acció**            | **Tecla**     |
 |-----------------------|---------------|
 | Moviment             | W, A, S, D    |
+| Dash                 |     Espai     |
 | Atacar               | Botó esquerre del ratolí |
 | Canviar arma         | Tecles numèriques 1-3 |
 | Pausar el joc        | Esc           |
