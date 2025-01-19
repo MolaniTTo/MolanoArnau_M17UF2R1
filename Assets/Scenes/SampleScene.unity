@@ -300,7 +300,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 356089292}
   - {fileID: 1851659012}
   - {fileID: 822978289}
   - {fileID: 65531802}
@@ -309,6 +308,7 @@ RectTransform:
   - {fileID: 1217792955}
   - {fileID: 459855103}
   - {fileID: 1183770618}
+  - {fileID: 356089292}
   - {fileID: 692479836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1413,7 +1413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 356089294}
-  fadeDuration: 1
+  fadeDuration: 1.5
 --- !u!114 &356089294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,7 +1427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3464,7 +3464,7 @@ MonoBehaviour:
   counterText: {fileID: 65531800}
   headCounterText: {fileID: 1183770619}
   inventorySystem: {fileID: 1851659014}
-  headCount: 100
+  headCount: 0
   basekillsToUnlockSlots: 00000000050000000a000000
 --- !u!1 &768886865
 GameObject:

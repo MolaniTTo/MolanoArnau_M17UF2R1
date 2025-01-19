@@ -54,6 +54,5 @@ public class BulletPool : MonoBehaviour
     {
         bullet.SetActive(false);  // Desactiva la bala
         pools[index].Add(bullet);  // L'afegeix a la pool
-        Debug.Log("Bullet returned to pool");
     }
 }

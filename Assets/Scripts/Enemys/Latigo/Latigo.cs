@@ -37,7 +37,6 @@ public class Latigo : MonoBehaviour //aquest enemic ni el demanaves ni re pero e
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Latigo ha golpeado al jugador");
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(10);
             KnockBack knockBack = player.GetComponent<KnockBack>();
             if (knockBack != null)

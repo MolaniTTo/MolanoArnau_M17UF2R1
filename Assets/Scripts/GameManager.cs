@@ -41,19 +41,15 @@ public class GameManager : MonoBehaviour
 
         if (mapGenerator == null || initGame == null)
         {
-            Debug.LogError("No se ha encontrado el generador de mapas o el script de inicio del juego.");
             yield break;
         }
 
-        Debug.Log("Componentes encontrados correctamente.");
-        StartCoroutine(StartNewGame());
+        StartCoroutine(StartNewGame()); //comença un nou joc
     }
 
-    public IEnumerator StartNewGame()
+    public IEnumerator StartNewGame() //iniciem el joc
     {
-        screenFade.FadeOut();
         yield return new WaitForSeconds(2f);
-        Debug.Log("Comenzando un nuevo juego.");
         currentRound = 1;
         if(initGame != null)
         {
@@ -66,7 +62,6 @@ public class GameManager : MonoBehaviour
     {
         screenFade.FadeOut();
         yield return new WaitForSeconds(2f);
-        Debug.Log("Comenzando una nueva ronda.");
         currentRound++;
         EnemyCounter enemyCounter = FindObjectOfType<EnemyCounter>();
        
@@ -84,29 +79,25 @@ public class GameManager : MonoBehaviour
 
     public void InitializeGame()
     {
-        Debug.Log("Inicializando juego...");
         ClearCurrentState();
-        Debug.Log("Estado previo limpiado. Generando mapa...");
-        mapGenerator.GenerateSnake(); // Agregar Debug aquí para ver si se llama.
+        mapGenerator.GenerateSnake(); 
         StartCoroutine(StartGameAfterMapGenerated());
     }
 
     private IEnumerator StartGameAfterMapGenerated()
     {
-        Debug.Log("Esperando a que se genere el mapa...");
         yield return new WaitUntil(() => mapGenerator.IsMapGenerated);
-        Debug.Log("Mapa generado. Iniciando el juego...");
         initGame.StartGame();
+        yield return new WaitForSeconds(1.5f);
         screenFade.FadeIn();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3.5f);
         initGame.FlickerAndActive();
 
     }
 
     private void ClearCurrentState()
     {
-        Debug.Log("Limpiando estado previo...");
-        // Limpia enemigos
+        //neteja enemics i habitacions
         foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             Destroy(enemy);
@@ -129,10 +120,9 @@ public class GameManager : MonoBehaviour
         SnakeMapGenerator mapGenerator = FindObjectOfType<SnakeMapGenerator>();
         mapGenerator.ResetGenerator();
 
-        Debug.Log("Estado previo limpiado.");
     }
 
-    public void ClearGame()
+    public void ClearGame() //reinicio els objectes i restauro els valors per defecte
     {
         foreach (var obj in FindObjectsOfType<GameObject>())
         {
@@ -144,7 +134,6 @@ public class GameManager : MonoBehaviour
             if (obj.gameObject.name == "WeaponCollider")
             {
                 obj.GetComponent<DamageSource>().Resetdamage(1);
-                Debug.Log("Sword damage updated");
             }
             else if (obj.gameObject.name == "FireCollider")
             {

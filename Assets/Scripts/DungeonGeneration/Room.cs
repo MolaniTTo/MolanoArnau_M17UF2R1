@@ -120,6 +120,12 @@ public class Room : MonoBehaviour
                     {
                         StartCoroutine(musicZone.FadeOutMusic());
                     }
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    if (player != null)
+                    {
+                        player.GetComponent<PlayerController>().isMovementBlocked = true;
+                    }
+                    
                     yield return MoveCameraToPosition(areaExitPosition, 1f);
 
                     //Mirem la porta com s'obre
@@ -166,6 +172,7 @@ public class Room : MonoBehaviour
 
             //Restableix el seguiment del jugador per la càmera
             virtualCamera.Follow = playerTransform;
+            playerTransform.GetComponent<PlayerController>().isMovementBlocked = false;
         }
     }
 

@@ -799,8 +799,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSound: {fileID: 0}
   DashSound: {fileID: 8300000, guid: 311b687e6398b39468cb16ef550b7be7, type: 3}
-  WalkSound: {fileID: 8300000, guid: b40454e2849b94045a861586916b2326, type: 3}
+  WalkSound: {fileID: 8300000, guid: d6f7c91ea333d0449a159bad9c362a20, type: 3}
   Item: {fileID: 0}
   Solution: {fileID: 0}
   Damage: {fileID: 8300000, guid: d49b6b5b6bb3a9849935d55edbe910c7, type: 3}
   Death: {fileID: 8300000, guid: 250c2fbaafc6324478991ffd2a25352c, type: 3}
+  Explode: {fileID: 0}
+  BulletShot: {fileID: 0}
