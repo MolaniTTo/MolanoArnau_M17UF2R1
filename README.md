@@ -1,7 +1,7 @@
-# **CognomsNom_M17UF2R1: Roguelike Project**
+# **RimbauMolanoArnau_M17UF2R1: Roguelike Project**
 
 ## **Descripció del Joc**
-El projecte és un videojoc **roguelike** 2D, on el jugador explora nivells generats proceduralment, s'enfronta a enemics i supera desafiaments per avançar al següent nivell.
+El projecte és un videojoc **Roguelike** 2.5D, on el jugador explora nivells generats proceduralment, s'enfronta a enemics i supera desafiaments per avançar al següent nivell.
 
 El joc incorpora mecàniques clàssiques de roguelike, com ara moviment tàctic, inventari amb armes diverses, enemics amb comportaments únics i una experiència rejugable gràcies al disseny procedural dels nivells.
 
@@ -17,24 +17,23 @@ El joc incorpora mecàniques clàssiques de roguelike, com ara moviment tàctic,
 - **Enemics:**
   - **Enemic Torreta:** fixa al lloc, dispara projectils dirigits al jugador.
   - **Enemic Bomba:** segueix el jugador i explota en contacte.
+  - **Enemic Fuet:** fixa al lloc, dona fuetades al jugador si esta dins del rang.
 
 - **Armes:**
   - **Sniper:** tret ràpid de llarga distància.
-  - **Llançagranades:** tret parabòlic amb explosió repulsiva.
   - **Llançaflames:** raig continu de partícules que fa dany progressiu.
   - **Melee:** atac de curta distància amb empenta.
 
 - **Nivells:**
   - Mapes generats proceduralment amb zones transitables i no transitables.
   - Nivells amb portes que s'obren per complir certs esdeveniments (matar enemics, trobar claus...).
-  - Scrolling de fons dinàmic amb efecte de parallaxi.
+  - Scrolling de fons dinàmic amb efecte de parallax (nuvols).
 
 - **So i música:**
   - Música en bucle.
-  - Sons específics per esdeveniments: canvi de gravetat, mort, canvi d'escena, etc.
+  - Sons específics per esdeveniments: desbloqueig de portes, noves armes, mort, canvi d'escena, etc.
 
 - **Interfície:**
-  - Sistema de diàlegs amb opcions que afecten el camí del jugador.
   - Inventari per equipar armes, gestionat amb Scriptable Objects.
   - HUD amb vida, munició i informació essencial del jugador.
   - Barra de vida visible sobre els enemics.
@@ -44,11 +43,11 @@ El joc incorpora mecàniques clàssiques de roguelike, com ara moviment tàctic,
 |-----------------------|---------------|
 | Moviment             | W, A, S, D    |
 | Atacar               | Botó esquerre del ratolí |
-| Canviar arma         | Tecles numèriques 1-4 |
+| Canviar arma         | Tecles numèriques 1-3 |
 | Pausar el joc        | Esc           |
 | Interactuar          | E             |
 
 ## **Instruccions d'Instal·lació**
 1. Descarregar o clonar el repositori:
    ```bash
-   git clone https://gitlab.com/CognomsNom_M17UF2R1.git
+   git clone https://gitlab.com/_M17UF2R1.git
